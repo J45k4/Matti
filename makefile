@@ -1,2 +1,1 @@
-# Makefile of matrixserver project
-#testataan
+# Makefile of matrixserver project 
