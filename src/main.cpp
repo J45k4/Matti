@@ -9,7 +9,7 @@ int main(int argc, char **argv)
     Wt::WServer server(argv[0]);
     server.setServerConfiguration(argc, argv, WTHTTP_CONFIGURATION);
     //server.addEntryPoint(Wt::Application, createRootApplication, "/");
-    server.addResource(new API(), "/");
+    server.addResource(new SetApi(), "/set");
     if (server.start()) {
       int sig = Wt::WServer::waitForShutdown(argv[0]);
       std::cerr << "Shutdown (signal = " << sig << ")" << std::endl;

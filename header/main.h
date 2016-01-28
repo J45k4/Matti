@@ -3,6 +3,6 @@
 
 #include <Wt/WApplication>
 #include <Wt/WServer>
-#include "api.h"
+#include "setapi.h"
 
 #endif // MAIN_H

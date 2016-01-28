@@ -6,13 +6,13 @@
 #include <stdlib.h>
 #include <string>
 #include <map>
-#include "Matrix.h"
+//#include "Matrix.h"
 
 using namespace std;
 
 class SetApi : public Wt::WResource
 {
-    Json::Object response;
+    ///Json::Object response;
 
     
 public:
