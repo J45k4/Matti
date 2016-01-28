@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string>
 #include <map>
+#include "matrixconn.h"
 //#include "Matrix.h"
 
 using namespace std;
