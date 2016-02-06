@@ -1,5 +1,5 @@
-#ifndef SETAPI_H
-#define SETAPI_H
+#ifndef HELPAPI_H
+#define HELPAPI_H
 
 #include <Wt/WResource>
 #include <Wt/Http/Response>
@@ -11,15 +11,15 @@
 
 using namespace std;
 
-class SetApi : public Wt::WResource
+class HelpApi : public Wt::WResource
 {
     ///Json::Object response;
 
     
 public:
-    SetApi();
+    HelpApi();
     
-    ~SetApi();
+    ~HelpApi();
     
     
     virtual void handleRequest(const Wt::Http::Request& request, Wt::Http::Response& response);
@@ -27,4 +27,4 @@ public:
 
 };
 
-#endif // SETAPI_H
+#endif // HELPAPI_H

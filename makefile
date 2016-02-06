@@ -21,23 +21,31 @@ EXECUTABLE = matti
 
 all: $(EXECUTABLE)
 
-$(OBJ_DIR)matrixconn.o: $(SRC_DIR)matrixconn.cpp $(HEADER_DIR)matrixconn.h
+$(OBJ_DIR)matrixconnection.o: $(SRC_DIR)matrixconnection.cpp $(HEADER_DIR)matrixconnection.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(OBJ_DIR)setapi.o: $(SRC_DIR)setapi.cpp $(HEADER_DIR)setapi.h $(OBJ_DIR)matrixconn.o
+$(OBJ_DIR)setapi.o: $(SRC_DIR)setapi.cpp $(HEADER_DIR)setapi.h $(OBJ_DIR)matrixconnection.o
+	$(CC) -c -o $@ $< $(CFLAGS)
+    
+$(OBJ_DIR)help.o: $(SRC_DIR)help.cpp $(HEADER_DIR)help.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(OBJ_DIR)main.o: $(SRC_DIR)main.cpp $(HEADER_DIR)main.h $(OBJ_DIR)setapi.o
+$(OBJ_DIR)main.o: $(SRC_DIR)main.cpp $(HEADER_DIR)main.h $(OBJ_DIR)setapi.o $(OBJ_DIR)help.o
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 	
-$(EXECUTABLE): $(OBJ_FILES)
-	$(CC) $(LDFLAGS) $^ -o executable/$(EXECUTABLE)
-    
-debug: $(EXECUTABLE) run
+$(EXECUTABLE): $(OBJ_DIR)main.o
+	$(CC) $(LDFLAGS) $(OBJ_FILES) -o executable/$(EXECUTABLE)
     
 run:
-	./$(EXECUTABLE) --docroot ./ --http-address 0.0.0.0 --http-port 80
+	./executable/$(EXECUTABLE) --docroot ./ --http-address 0.0.0.0 --http-port 8080   
+    
+debug: $(EXECUTABLE) run
+
+clean:
+	rm $(OBJ_DIR)*.o
+    
+
 	
 .PHONY: clean
 	
