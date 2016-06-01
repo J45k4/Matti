@@ -65,7 +65,7 @@ $(OBJ_DIR)matrix.o: $(SRC_DIR)matrix.cpp $(HEADER_DIR)matrix.h
 $(OBJ_DIR)client.o: $(SRC_DIR)client.cpp $(HEADER_DIR)client.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(OBJ_DIR)main.o: $(SRC_DIR)main.cpp $(HEADER_DIR)main.h $(OBJ_DIR)MattiRequest.pb.o $(OBJ_DIR)client.o $(OBJ_DIR)matrix.o
+$(OBJ_DIR)main.o: $(SRC_DIR)main.cpp $(HEADER_DIR)main.h $(OBJ_DIR)client.o $(OBJ_DIR)matrix.o $(OBJ_DIR)RequestValue.pb.o $(OBJ_DIR)MattiRequest.pb.o $(OBJ_DIR)MakeConnectionRequest.pb.o
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 	
