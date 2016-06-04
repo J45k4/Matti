@@ -94,11 +94,18 @@ class RequestValue : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional uint32 values = 1;
+  void clear_values();
+  static const int kValuesFieldNumber = 1;
+  ::google::protobuf::uint32 values() const;
+  void set_values(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:RequestValue)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
+  ::google::protobuf::uint32 values_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_RequestValue_2eproto();
   friend void protobuf_AssignDesc_RequestValue_2eproto();
@@ -114,6 +121,20 @@ class RequestValue : public ::google::protobuf::Message {
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // RequestValue
+
+// optional uint32 values = 1;
+inline void RequestValue::clear_values() {
+  values_ = 0u;
+}
+inline ::google::protobuf::uint32 RequestValue::values() const {
+  // @@protoc_insertion_point(field_get:RequestValue.values)
+  return values_;
+}
+inline void RequestValue::set_values(::google::protobuf::uint32 value) {
+  
+  values_ = value;
+  // @@protoc_insertion_point(field_set:RequestValue.values)
+}
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 

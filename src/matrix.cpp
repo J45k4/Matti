@@ -40,6 +40,14 @@ Matrix::Matrix(const char *ip, const char* port) {
 Matrix::~Matrix() {
 	close(socketfd);
 }
+
+unsigned int *Matrix::getVideoConnections() {
+	return videoConnections;
+}
+	
+unsigned int *Matrix::getKwmConnections() {
+	return kwmConnections;
+}
 	
 void Matrix::setVideo(int con, int cpu) {
 	char buffer[6] = {0x2, 71, 128 + con, 128 + cpu, 0x3};
@@ -53,11 +61,31 @@ void Matrix::setKwm(int con, int cpu) {
 	
 }
 	
+void Matrix::requestAllStates() {
+	Check();
+	char buffer[3] = {0x2, 0x53, 0x3};
+	send(socketfd, buffer, 3, 0);
+	unsigned char readbuffer[1024];
+	int bytes = read(socketfd, &readbuffer, sizeof(readbuffer));
+	printf(" %d \n", readbuffer[2]);
+	for (int i = 0; i < 16;i++) {
+		videoConnections[i] = readbuffer[i+2]-128;
+	}
+	for (int i = 0; i < 16; i++) {
+		kwmConnections[i] = readbuffer[i+18]-128;
+	}
+	
+	for (int i = 0; i < 16; i++) {
+		printf(" %d ", videoConnections[i]);
+	}
+}
+	
 void Matrix::Check() {
 	time_t timeNow;
 	time(&timeNow);
 	if (difftime(timeNow, lastPacket) > timeout) {
 		Disconnect();
+		Connect();
 	}
 }
 	

@@ -17,13 +17,19 @@ class Matrix {
 	float timeout = 50.0;
 
 	time_t lastPacket;
+	unsigned int videoConnections[16];
+	unsigned int kwmConnections[16];
 	
 public:
 	Matrix(const char *ip, const char* port);
 	~Matrix();
 	
+	unsigned int *getVideoConnections();
+	unsigned int *getKwmConnections();
+	
  	void setVideo(int con, int cpu);
 	void setKwm(int con, int cpu);
+	void requestAllStates();
 	void Check();
 	void setTimeout();
 	int Connect();

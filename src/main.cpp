@@ -19,7 +19,14 @@ using namespace std;
 #include <signal.h>
 #include <poll.h>
 
+#include <signal.h>
+
 #include "MattiRequest.pb.h"
+#include "MattiResponse.pb.h"
+#include "VideoConnection.pb.h"
+#include "VideoConnections.pb.h"
+#include "KwmConnections.pb.h"
+#include "KwmConnection.pb.h"
 
 #include "client.h"
 #include "matrix.h"
@@ -31,16 +38,29 @@ list<Client> clients;
 
 #define POLL_SIZE 32
 
+int serverfd;
+
+MattiResponse* serveRequest(MattiRequest *request, int fd);
+
+Matrix matrix("192.168.180.98", "5555");
+
+void signal_callback_handler(int signum)
+{
+    printf("Caught signal %d\n",signum);
+    close(serverfd);
+    exit(signum);
+}
 
 int main() {
+    
+	signal(SIGINT, signal_callback_handler);
 	
 	
-	Matrix matrix("192.168.180.98", "5555");
 	matrix.Connect();
     
     ssize_t nbytes;
     
-    int serverfd, maxfd, newClient, nready, i;
+    int maxfd, newClient, nready, i;
     int client_sockfd;
     int server_len, client_len;
     struct sockaddr_in server , client;
@@ -65,7 +85,7 @@ int main() {
     //Prepare the sockaddr_in structure
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons(4444);
+    server.sin_port = htons(4445);
      
     //Bind
     if( bind(serverfd,(struct sockaddr *)&server , sizeof(server)) < 0)
@@ -123,23 +143,142 @@ int main() {
                     }
                  
                 else {
-                    read(poll_set[fd_index].fd, &buffer, sizeof(buffer));
-                    //printf("received %s", buffer);
+                    int bytes = read(poll_set[fd_index].fd, &buffer, sizeof(buffer));
                     fflush(stdout);
                     MattiRequest *request = new MattiRequest();
                     request->ParseFromString(buffer);
-                    printf("cpu: %d con: %d", request->makevideoconnection().cpu(), request->makevideoconnection().con());
- 		            matrix.Check();
-		            if (!matrix.Connected()) matrix.Connect();
-		            matrix.setVideo(request->makevideoconnection().con(), request->makevideoconnection().cpu());
- 
+                    MattiResponse *response = serveRequest(request, poll_set[fd_index].fd);
+                    //string responseData;
+			        //response->SerializeToString(&responseData);          
+                    //write(poll_set[fd_index].fd, responseData.c_str(), sizeof(responseData));	            
+                }
+            }           
+        }       
+    }
+
+    }
+		
+	return 0;
+}
+
+
+
+MattiResponse* serveRequest(MattiRequest *request, int fd) {
+    MattiResponse *response = new MattiResponse();
+    response->set_ticket(request->ticket());
+    printf("case: %d\n", request->requestMessage_case());
+    fflush(stdout);
+    switch(request->requestMessage_case()) {
+        case 2: {
+             matrix.Check();
+		     if (!matrix.Connected()) matrix.Connect();
+		     matrix.setVideo(request->videoconnection().con(), request->videoconnection().cpu());
+             VideoConnection *videoConnection = new VideoConnection();
+             videoConnection->set_con(request->videoconnection().con());
+             videoConnection->set_cpu(request->videoconnection().cpu());
+             response->set_allocated_videoconnection(videoConnection);
+            break;
+        }
+        case 3: {
+            
+            break;
+        }
+        case 4: {
+            printf("requstvalue %d\n", request->requestvalue().values());
+            switch(request->requestvalue().values()) {
+                case 1: {
+                    printf("case 1");
+                    matrix.requestAllStates();
+                    
+                    unsigned int *videoConnections = matrix.getVideoConnections();
+                    unsigned int *kwmConnections = matrix.getKwmConnections();
+                    MattiResponse *response = new MattiResponse();
+                    response->set_ticket(request->ticket());
+                    
+                    VideoConnections *videoConnectionsMessage = new VideoConnections();
+                    
+                    response->set_allocated_videoconnections(videoConnectionsMessage);
+                    
+                    VideoConnection *videoConnection = videoConnectionsMessage->add_videoconnection();
+                    videoConnection->set_con(1);
+                    videoConnection->set_cpu(videoConnections[0]);
+                    
+                    // VideoConnections *videoConnectionsMessage = new VideoConnections();
+                    for (int i = 0; i < 16; i++) {
+                        printf("i %d fd %d", i, fd);
+                        fflush(stdout);
+                        VideoConnection *videoConnection = videoConnectionsMessage->add_videoconnection();
+                        videoConnection->set_con(i+1);
+                        videoConnection->set_cpu(videoConnections[i]);
+                        // response = new MattiResponse();
+                        // response->set_ticket(request->ticket());
+                        //KwmConnection *kwmConnection = new KwmConnection();
+                        // kwmConnection->set_cpu(i+1);
+                        // kwmConnection->set_con(kwmConnections[i]);
+                        // response->set_allocated_kwmconnection(kwmConnection);
+                        // response->SerializeToString(&responseData);          
+                        // write(fd, responseData.c_str(), sizeof(responseData)); 
+                        // fflush(stdout);
+                        //  usleep(30000);                     
+                    }
+                    // response->set_allocated_videoconnections(videoConnectionsMessage);
+                    string responseData;
+			        response->SerializeToString(&responseData);          
+                    write(fd, responseData.c_str(), responseData.length());
+					
+					response = new MattiResponse();
+                    response->set_ticket(request->ticket());
+					
+					KwmConnections * kwmConnectionsMessage = new KwmConnections();
+					response->set_allocated_kwmconnections(kwmConnectionsMessage);
+					
+					for (int i = 0; i < 16; i++) {
+						KwmConnection * kwmConnection = kwmConnectionsMessage->add_kwmconnection();
+						kwmConnection->set_con(kwmConnections[i]);
+						kwmConnection->set_cpu(i+1);
+					}
+					
+			        response->SerializeToString(&responseData);          
+                    write(fd, responseData.c_str(), responseData.length());
+                }
+            }
+        }
+        case 0: {
+        
+            break;
+        }
+        default:
+        
+            break;
+    }
+    return response;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     //printf("Serving client on fd %d\n", poll_set[fd_index].fd);
                     //ch++;
                     //write(poll_set[fd_index].fd, &ch, 1);
-                }
-            }           
-            
-        }   
+
+
+
+
 
 
         //  if (-1 == (nready = select(maxfd+1, &readfds, NULL, NULL, NULL)))
@@ -202,8 +341,14 @@ int main() {
         //          }
         //      }
         //  }
-         
-    }
+
+
+
+
+
+
+
+
 
            
     //        if (-1 == (retval = select(serverfd, &rfds, NULL, NULL, &tv)) {
@@ -253,19 +398,6 @@ int main() {
 	// 	//int len = strlen(buffer);
 	// 	//bytes_sent = send(socketfd, buffer, len, 0);
 	// }
-    }
-		
-	return 0;
-}
-
-
-
-
-
-
-
-
-
 
 
 

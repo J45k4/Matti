@@ -46,6 +46,18 @@ $(OBJ_DIR)MakeConnectionRequest.pb.o: $(SRC_DIR)MakeConnectionRequest.pb.cc $(HE
 	$(CC) -c -o $@ $< $(CFLAGS)	
 	
 $(OBJ_DIR)ValueMessage.pb.o: $(SRC_DIR)ValueMessage.pb.cc $(HEADER_DIR)ValueMessage.pb.h
+	$(CC) -c -o $@ $< $(CFLAGS)
+	
+$(OBJ_DIR)VideoConnections.pb.o: $(SRC_DIR)VideoConnections.pb.cc $(HEADER_DIR)VideoConnections.pb.h
+	$(CC) -c -o $@ $< $(CFLAGS)	
+
+$(OBJ_DIR)KwmConnections.pb.o: $(SRC_DIR)KwmConnections.pb.cc $(HEADER_DIR)KwmConnections.pb.h
+	$(CC) -c -o $@ $< $(CFLAGS)		
+	
+$(OBJ_DIR)VideoConnection.pb.o: $(SRC_DIR)VideoConnection.pb.cc $(HEADER_DIR)VideoConnection.pb.h
+	$(CC) -c -o $@ $< $(CFLAGS)	
+	
+$(OBJ_DIR)KwmConnection.pb.o: $(SRC_DIR)KwmConnection.pb.cc $(HEADER_DIR)KwmConnection.pb.h
 	$(CC) -c -o $@ $< $(CFLAGS)	
 
 	
@@ -65,7 +77,9 @@ $(OBJ_DIR)matrix.o: $(SRC_DIR)matrix.cpp $(HEADER_DIR)matrix.h
 $(OBJ_DIR)client.o: $(SRC_DIR)client.cpp $(HEADER_DIR)client.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(OBJ_DIR)main.o: $(SRC_DIR)main.cpp $(HEADER_DIR)main.h $(OBJ_DIR)client.o $(OBJ_DIR)matrix.o $(OBJ_DIR)RequestValue.pb.o $(OBJ_DIR)MattiRequest.pb.o $(OBJ_DIR)MakeConnectionRequest.pb.o
+$(OBJ_DIR)main.o: $(SRC_DIR)main.cpp $(HEADER_DIR)main.h $(OBJ_DIR)client.o $(OBJ_DIR)matrix.o $(OBJ_DIR)RequestValue.pb.o \
+$(OBJ_DIR)MattiRequest.pb.o $(OBJ_DIR)MattiResponse.pb.o $(OBJ_DIR)VideoConnection.pb.o $(OBJ_DIR)KwmConnection.pb.o \
+$(OBJ_DIR)VideoConnections.pb.o $(OBJ_DIR)KwmConnections.pb.o
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 	

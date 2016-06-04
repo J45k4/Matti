@@ -23,7 +23,10 @@ const ::google::protobuf::Descriptor* MattiResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MattiResponse_reflection_ = NULL;
 struct MattiResponseOneofInstance {
-  const ::ValueMessage* valuemessage_;
+  const ::VideoConnection* videoconnection_;
+  const ::KwmConnection* kwmconnection_;
+  const ::VideoConnections* videoconnections_;
+  const ::KwmConnections* kwmconnections_;
 }* MattiResponse_default_oneof_instance_ = NULL;
 
 }  // namespace
@@ -36,9 +39,12 @@ void protobuf_AssignDesc_MattiResponse_2eproto() {
       "MattiResponse.proto");
   GOOGLE_CHECK(file != NULL);
   MattiResponse_descriptor_ = file->message_type(0);
-  static const int MattiResponse_offsets_[3] = {
+  static const int MattiResponse_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiResponse, ticket_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, valuemessage_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, videoconnection_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, kwmconnection_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, videoconnections_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, kwmconnections_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiResponse, requestMessage_),
   };
   MattiResponse_reflection_ =
@@ -84,12 +90,20 @@ void protobuf_AddDesc_MattiResponse_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::protobuf_AddDesc_ValueMessage_2eproto();
+  ::protobuf_AddDesc_VideoConnection_2eproto();
+  ::protobuf_AddDesc_KwmConnection_2eproto();
+  ::protobuf_AddDesc_VideoConnections_2eproto();
+  ::protobuf_AddDesc_KwmConnections_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\023MattiResponse.proto\032\022ValueMessage.prot"
-    "o\"X\n\rMattiResponse\022\016\n\006ticket\030\001 \001(\r\022%\n\014va"
-    "lueMessage\030\002 \001(\0132\r.ValueMessageH\000B\020\n\016req"
-    "uestMessageb\006proto3", 139);
+    "\n\023MattiResponse.proto\032\025VideoConnection.p"
+    "roto\032\023KwmConnection.proto\032\026VideoConnecti"
+    "ons.proto\032\024KwmConnections.proto\"\341\001\n\rMatt"
+    "iResponse\022\016\n\006ticket\030\001 \001(\r\022+\n\017videoConnec"
+    "tion\030\002 \001(\0132\020.VideoConnectionH\000\022\'\n\rkwmCon"
+    "nection\030\003 \001(\0132\016.KwmConnectionH\000\022-\n\020video"
+    "Connections\030\004 \001(\0132\021.VideoConnectionsH\000\022)"
+    "\n\016kwmConnections\030\005 \001(\0132\017.KwmConnectionsH"
+    "\000B\020\n\016requestMessageb\006proto3", 347);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MattiResponse.proto", &protobuf_RegisterTypes);
   MattiResponse::default_instance_ = new MattiResponse();
@@ -119,7 +133,10 @@ static void MergeFromFail(int line) {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MattiResponse::kTicketFieldNumber;
-const int MattiResponse::kValueMessageFieldNumber;
+const int MattiResponse::kVideoConnectionFieldNumber;
+const int MattiResponse::kKwmConnectionFieldNumber;
+const int MattiResponse::kVideoConnectionsFieldNumber;
+const int MattiResponse::kKwmConnectionsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MattiResponse::MattiResponse()
@@ -130,7 +147,10 @@ MattiResponse::MattiResponse()
 
 void MattiResponse::InitAsDefaultInstance() {
   _is_default_instance_ = true;
-  MattiResponse_default_oneof_instance_->valuemessage_ = const_cast< ::ValueMessage*>(&::ValueMessage::default_instance());
+  MattiResponse_default_oneof_instance_->videoconnection_ = const_cast< ::VideoConnection*>(&::VideoConnection::default_instance());
+  MattiResponse_default_oneof_instance_->kwmconnection_ = const_cast< ::KwmConnection*>(&::KwmConnection::default_instance());
+  MattiResponse_default_oneof_instance_->videoconnections_ = const_cast< ::VideoConnections*>(&::VideoConnections::default_instance());
+  MattiResponse_default_oneof_instance_->kwmconnections_ = const_cast< ::KwmConnections*>(&::KwmConnections::default_instance());
 }
 
 MattiResponse::MattiResponse(const MattiResponse& from)
@@ -188,8 +208,20 @@ MattiResponse* MattiResponse::New(::google::protobuf::Arena* arena) const {
 
 void MattiResponse::clear_requestMessage() {
   switch(requestMessage_case()) {
-    case kValueMessage: {
-      delete requestMessage_.valuemessage_;
+    case kVideoConnection: {
+      delete requestMessage_.videoconnection_;
+      break;
+    }
+    case kKwmConnection: {
+      delete requestMessage_.kwmconnection_;
+      break;
+    }
+    case kVideoConnections: {
+      delete requestMessage_.videoconnections_;
+      break;
+    }
+    case kKwmConnections: {
+      delete requestMessage_.kwmconnections_;
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -225,16 +257,55 @@ bool MattiResponse::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_valueMessage;
+        if (input->ExpectTag(18)) goto parse_videoConnection;
         break;
       }
 
-      // optional .ValueMessage valueMessage = 2;
+      // optional .VideoConnection videoConnection = 2;
       case 2: {
         if (tag == 18) {
-         parse_valueMessage:
+         parse_videoConnection:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_valuemessage()));
+               input, mutable_videoconnection()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_kwmConnection;
+        break;
+      }
+
+      // optional .KwmConnection kwmConnection = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_kwmConnection:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_kwmconnection()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_videoConnections;
+        break;
+      }
+
+      // optional .VideoConnections videoConnections = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_videoConnections:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_videoconnections()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_kwmConnections;
+        break;
+      }
+
+      // optional .KwmConnections kwmConnections = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_kwmConnections:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_kwmconnections()));
         } else {
           goto handle_unusual;
         }
@@ -271,10 +342,28 @@ void MattiResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->ticket(), output);
   }
 
-  // optional .ValueMessage valueMessage = 2;
-  if (has_valuemessage()) {
+  // optional .VideoConnection videoConnection = 2;
+  if (has_videoconnection()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *requestMessage_.valuemessage_, output);
+      2, *requestMessage_.videoconnection_, output);
+  }
+
+  // optional .KwmConnection kwmConnection = 3;
+  if (has_kwmconnection()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *requestMessage_.kwmconnection_, output);
+  }
+
+  // optional .VideoConnections videoConnections = 4;
+  if (has_videoconnections()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *requestMessage_.videoconnections_, output);
+  }
+
+  // optional .KwmConnections kwmConnections = 5;
+  if (has_kwmconnections()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *requestMessage_.kwmconnections_, output);
   }
 
   // @@protoc_insertion_point(serialize_end:MattiResponse)
@@ -288,11 +377,32 @@ void MattiResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->ticket(), target);
   }
 
-  // optional .ValueMessage valueMessage = 2;
-  if (has_valuemessage()) {
+  // optional .VideoConnection videoConnection = 2;
+  if (has_videoconnection()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, *requestMessage_.valuemessage_, target);
+        2, *requestMessage_.videoconnection_, target);
+  }
+
+  // optional .KwmConnection kwmConnection = 3;
+  if (has_kwmconnection()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, *requestMessage_.kwmconnection_, target);
+  }
+
+  // optional .VideoConnections videoConnections = 4;
+  if (has_videoconnections()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, *requestMessage_.videoconnections_, target);
+  }
+
+  // optional .KwmConnections kwmConnections = 5;
+  if (has_kwmconnections()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, *requestMessage_.kwmconnections_, target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:MattiResponse)
@@ -310,11 +420,32 @@ int MattiResponse::ByteSize() const {
   }
 
   switch (requestMessage_case()) {
-    // optional .ValueMessage valueMessage = 2;
-    case kValueMessage: {
+    // optional .VideoConnection videoConnection = 2;
+    case kVideoConnection: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *requestMessage_.valuemessage_);
+          *requestMessage_.videoconnection_);
+      break;
+    }
+    // optional .KwmConnection kwmConnection = 3;
+    case kKwmConnection: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.kwmconnection_);
+      break;
+    }
+    // optional .VideoConnections videoConnections = 4;
+    case kVideoConnections: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.videoconnections_);
+      break;
+    }
+    // optional .KwmConnections kwmConnections = 5;
+    case kKwmConnections: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.kwmconnections_);
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -342,8 +473,20 @@ void MattiResponse::MergeFrom(const ::google::protobuf::Message& from) {
 void MattiResponse::MergeFrom(const MattiResponse& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   switch (from.requestMessage_case()) {
-    case kValueMessage: {
-      mutable_valuemessage()->::ValueMessage::MergeFrom(from.valuemessage());
+    case kVideoConnection: {
+      mutable_videoconnection()->::VideoConnection::MergeFrom(from.videoconnection());
+      break;
+    }
+    case kKwmConnection: {
+      mutable_kwmconnection()->::KwmConnection::MergeFrom(from.kwmconnection());
+      break;
+    }
+    case kVideoConnections: {
+      mutable_videoconnections()->::VideoConnections::MergeFrom(from.videoconnections());
+      break;
+    }
+    case kKwmConnections: {
+      mutable_kwmconnections()->::KwmConnections::MergeFrom(from.kwmconnections());
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -409,51 +552,192 @@ void MattiResponse::clear_ticket() {
   // @@protoc_insertion_point(field_set:MattiResponse.ticket)
 }
 
-// optional .ValueMessage valueMessage = 2;
-bool MattiResponse::has_valuemessage() const {
-  return requestMessage_case() == kValueMessage;
+// optional .VideoConnection videoConnection = 2;
+bool MattiResponse::has_videoconnection() const {
+  return requestMessage_case() == kVideoConnection;
 }
-void MattiResponse::set_has_valuemessage() {
-  _oneof_case_[0] = kValueMessage;
+void MattiResponse::set_has_videoconnection() {
+  _oneof_case_[0] = kVideoConnection;
 }
-void MattiResponse::clear_valuemessage() {
-  if (has_valuemessage()) {
-    delete requestMessage_.valuemessage_;
+void MattiResponse::clear_videoconnection() {
+  if (has_videoconnection()) {
+    delete requestMessage_.videoconnection_;
     clear_has_requestMessage();
   }
 }
- const ::ValueMessage& MattiResponse::valuemessage() const {
-  // @@protoc_insertion_point(field_get:MattiResponse.valueMessage)
-  return has_valuemessage()
-      ? *requestMessage_.valuemessage_
-      : ::ValueMessage::default_instance();
+ const ::VideoConnection& MattiResponse::videoconnection() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.videoConnection)
+  return has_videoconnection()
+      ? *requestMessage_.videoconnection_
+      : ::VideoConnection::default_instance();
 }
-::ValueMessage* MattiResponse::mutable_valuemessage() {
-  if (!has_valuemessage()) {
+::VideoConnection* MattiResponse::mutable_videoconnection() {
+  if (!has_videoconnection()) {
     clear_requestMessage();
-    set_has_valuemessage();
-    requestMessage_.valuemessage_ = new ::ValueMessage;
+    set_has_videoconnection();
+    requestMessage_.videoconnection_ = new ::VideoConnection;
   }
-  // @@protoc_insertion_point(field_mutable:MattiResponse.valueMessage)
-  return requestMessage_.valuemessage_;
+  // @@protoc_insertion_point(field_mutable:MattiResponse.videoConnection)
+  return requestMessage_.videoconnection_;
 }
-::ValueMessage* MattiResponse::release_valuemessage() {
-  if (has_valuemessage()) {
+::VideoConnection* MattiResponse::release_videoconnection() {
+  if (has_videoconnection()) {
     clear_has_requestMessage();
-    ::ValueMessage* temp = requestMessage_.valuemessage_;
-    requestMessage_.valuemessage_ = NULL;
+    ::VideoConnection* temp = requestMessage_.videoconnection_;
+    requestMessage_.videoconnection_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_valuemessage(::ValueMessage* valuemessage) {
+void MattiResponse::set_allocated_videoconnection(::VideoConnection* videoconnection) {
   clear_requestMessage();
-  if (valuemessage) {
-    set_has_valuemessage();
-    requestMessage_.valuemessage_ = valuemessage;
+  if (videoconnection) {
+    set_has_videoconnection();
+    requestMessage_.videoconnection_ = videoconnection;
   }
-  // @@protoc_insertion_point(field_set_allocated:MattiResponse.valueMessage)
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.videoConnection)
+}
+
+// optional .KwmConnection kwmConnection = 3;
+bool MattiResponse::has_kwmconnection() const {
+  return requestMessage_case() == kKwmConnection;
+}
+void MattiResponse::set_has_kwmconnection() {
+  _oneof_case_[0] = kKwmConnection;
+}
+void MattiResponse::clear_kwmconnection() {
+  if (has_kwmconnection()) {
+    delete requestMessage_.kwmconnection_;
+    clear_has_requestMessage();
+  }
+}
+ const ::KwmConnection& MattiResponse::kwmconnection() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.kwmConnection)
+  return has_kwmconnection()
+      ? *requestMessage_.kwmconnection_
+      : ::KwmConnection::default_instance();
+}
+::KwmConnection* MattiResponse::mutable_kwmconnection() {
+  if (!has_kwmconnection()) {
+    clear_requestMessage();
+    set_has_kwmconnection();
+    requestMessage_.kwmconnection_ = new ::KwmConnection;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.kwmConnection)
+  return requestMessage_.kwmconnection_;
+}
+::KwmConnection* MattiResponse::release_kwmconnection() {
+  if (has_kwmconnection()) {
+    clear_has_requestMessage();
+    ::KwmConnection* temp = requestMessage_.kwmconnection_;
+    requestMessage_.kwmconnection_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_kwmconnection(::KwmConnection* kwmconnection) {
+  clear_requestMessage();
+  if (kwmconnection) {
+    set_has_kwmconnection();
+    requestMessage_.kwmconnection_ = kwmconnection;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.kwmConnection)
+}
+
+// optional .VideoConnections videoConnections = 4;
+bool MattiResponse::has_videoconnections() const {
+  return requestMessage_case() == kVideoConnections;
+}
+void MattiResponse::set_has_videoconnections() {
+  _oneof_case_[0] = kVideoConnections;
+}
+void MattiResponse::clear_videoconnections() {
+  if (has_videoconnections()) {
+    delete requestMessage_.videoconnections_;
+    clear_has_requestMessage();
+  }
+}
+ const ::VideoConnections& MattiResponse::videoconnections() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.videoConnections)
+  return has_videoconnections()
+      ? *requestMessage_.videoconnections_
+      : ::VideoConnections::default_instance();
+}
+::VideoConnections* MattiResponse::mutable_videoconnections() {
+  if (!has_videoconnections()) {
+    clear_requestMessage();
+    set_has_videoconnections();
+    requestMessage_.videoconnections_ = new ::VideoConnections;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.videoConnections)
+  return requestMessage_.videoconnections_;
+}
+::VideoConnections* MattiResponse::release_videoconnections() {
+  if (has_videoconnections()) {
+    clear_has_requestMessage();
+    ::VideoConnections* temp = requestMessage_.videoconnections_;
+    requestMessage_.videoconnections_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_videoconnections(::VideoConnections* videoconnections) {
+  clear_requestMessage();
+  if (videoconnections) {
+    set_has_videoconnections();
+    requestMessage_.videoconnections_ = videoconnections;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.videoConnections)
+}
+
+// optional .KwmConnections kwmConnections = 5;
+bool MattiResponse::has_kwmconnections() const {
+  return requestMessage_case() == kKwmConnections;
+}
+void MattiResponse::set_has_kwmconnections() {
+  _oneof_case_[0] = kKwmConnections;
+}
+void MattiResponse::clear_kwmconnections() {
+  if (has_kwmconnections()) {
+    delete requestMessage_.kwmconnections_;
+    clear_has_requestMessage();
+  }
+}
+ const ::KwmConnections& MattiResponse::kwmconnections() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.kwmConnections)
+  return has_kwmconnections()
+      ? *requestMessage_.kwmconnections_
+      : ::KwmConnections::default_instance();
+}
+::KwmConnections* MattiResponse::mutable_kwmconnections() {
+  if (!has_kwmconnections()) {
+    clear_requestMessage();
+    set_has_kwmconnections();
+    requestMessage_.kwmconnections_ = new ::KwmConnections;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.kwmConnections)
+  return requestMessage_.kwmconnections_;
+}
+::KwmConnections* MattiResponse::release_kwmconnections() {
+  if (has_kwmconnections()) {
+    clear_has_requestMessage();
+    ::KwmConnections* temp = requestMessage_.kwmconnections_;
+    requestMessage_.kwmconnections_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_kwmconnections(::KwmConnections* kwmconnections) {
+  clear_requestMessage();
+  if (kwmconnections) {
+    set_has_kwmconnections();
+    requestMessage_.kwmconnections_ = kwmconnections;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.kwmConnections)
 }
 
 bool MattiResponse::has_requestMessage() const {
