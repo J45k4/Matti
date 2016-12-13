@@ -9,21 +9,6 @@
 #include "AllConnections.pb.h"
 
 using namespace std;
-//namespace dbo = Wt::Dbo;
-
-// #define SET_VIDEO_SIGNAL 0x47
-// #define TURN_CON_OFF 0x48
-// #define SET_ALL_VIDEO_SIGNALS 0x49
-// #define TURN_OFF_ALL_CON_PORTS 0x4A
-// #define SET_KWM_SIGNAL 0x4B
-// #define TURN_CPU_OFF 0x4C
-// #define SET_ALL_KWM_SIGNALS 0x4D
-// #define TURN_OFF_ALL_CPU_PORTS 0x4E
-// #define ESTABLISH_BIDIRECTIONAL_CONNECTION 0x4F
-// const char DISCONNECT_CON = 0x50
-// #define SET_MATRIX_FULL_SETUP 0x51
-// #define RESET_MATRIX 0x52
-// #define REPORT_COMPLETE_SETUP 0x53
 
 class Matrix {
 	int socketfd;
