@@ -33,9 +33,11 @@ void protobuf_AssignDesc_VideoConnection_2eproto() {
       "VideoConnection.proto");
   GOOGLE_CHECK(file != NULL);
   VideoConnection_descriptor_ = file->message_type(0);
-  static const int VideoConnection_offsets_[2] = {
+  static const int VideoConnection_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VideoConnection, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VideoConnection, cpu_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VideoConnection, con_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VideoConnection, matrixid_),
   };
   VideoConnection_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -78,8 +80,9 @@ void protobuf_AddDesc_VideoConnection_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\025VideoConnection.proto\"+\n\017VideoConnecti"
-    "on\022\013\n\003cpu\030\001 \001(\r\022\013\n\003con\030\002 \001(\rb\006proto3", 76);
+    "\n\025VideoConnection.proto\"I\n\017VideoConnecti"
+    "on\022\n\n\002id\030\001 \001(\r\022\013\n\003cpu\030\002 \001(\r\022\013\n\003con\030\003 \001(\r"
+    "\022\020\n\010matrixId\030\004 \001(\rb\006proto3", 106);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "VideoConnection.proto", &protobuf_RegisterTypes);
   VideoConnection::default_instance_ = new VideoConnection();
@@ -107,8 +110,10 @@ static void MergeFromFail(int line) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int VideoConnection::kIdFieldNumber;
 const int VideoConnection::kCpuFieldNumber;
 const int VideoConnection::kConFieldNumber;
+const int VideoConnection::kMatrixIdFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 VideoConnection::VideoConnection()
@@ -132,8 +137,10 @@ VideoConnection::VideoConnection(const VideoConnection& from)
 void VideoConnection::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
+  id_ = 0u;
   cpu_ = 0u;
   con_ = 0u;
+  matrixid_ = 0u;
 }
 
 VideoConnection::~VideoConnection() {
@@ -180,7 +187,7 @@ void VideoConnection::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(cpu_, con_);
+  ZR_(id_, matrixid_);
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -197,9 +204,24 @@ bool VideoConnection::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 cpu = 1;
+      // optional uint32 id = 1;
       case 1: {
         if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &id_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_cpu;
+        break;
+      }
+
+      // optional uint32 cpu = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_cpu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &cpu_)));
@@ -207,17 +229,32 @@ bool VideoConnection::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_con;
+        if (input->ExpectTag(24)) goto parse_con;
         break;
       }
 
-      // optional uint32 con = 2;
-      case 2: {
-        if (tag == 16) {
+      // optional uint32 con = 3;
+      case 3: {
+        if (tag == 24) {
          parse_con:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &con_)));
+
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_matrixId;
+        break;
+      }
+
+      // optional uint32 matrixId = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_matrixId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &matrixid_)));
 
         } else {
           goto handle_unusual;
@@ -250,14 +287,24 @@ failure:
 void VideoConnection::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:VideoConnection)
-  // optional uint32 cpu = 1;
-  if (this->cpu() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->cpu(), output);
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
   }
 
-  // optional uint32 con = 2;
+  // optional uint32 cpu = 2;
+  if (this->cpu() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->cpu(), output);
+  }
+
+  // optional uint32 con = 3;
   if (this->con() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->con(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->con(), output);
+  }
+
+  // optional uint32 matrixId = 4;
+  if (this->matrixid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->matrixid(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:VideoConnection)
@@ -266,14 +313,24 @@ void VideoConnection::SerializeWithCachedSizes(
 ::google::protobuf::uint8* VideoConnection::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:VideoConnection)
-  // optional uint32 cpu = 1;
-  if (this->cpu() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->cpu(), target);
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
   }
 
-  // optional uint32 con = 2;
+  // optional uint32 cpu = 2;
+  if (this->cpu() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->cpu(), target);
+  }
+
+  // optional uint32 con = 3;
   if (this->con() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->con(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->con(), target);
+  }
+
+  // optional uint32 matrixId = 4;
+  if (this->matrixid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->matrixid(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:VideoConnection)
@@ -283,18 +340,32 @@ void VideoConnection::SerializeWithCachedSizes(
 int VideoConnection::ByteSize() const {
   int total_size = 0;
 
-  // optional uint32 cpu = 1;
+  // optional uint32 id = 1;
+  if (this->id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->id());
+  }
+
+  // optional uint32 cpu = 2;
   if (this->cpu() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->cpu());
   }
 
-  // optional uint32 con = 2;
+  // optional uint32 con = 3;
   if (this->con() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->con());
+  }
+
+  // optional uint32 matrixId = 4;
+  if (this->matrixid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->matrixid());
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -317,11 +388,17 @@ void VideoConnection::MergeFrom(const ::google::protobuf::Message& from) {
 
 void VideoConnection::MergeFrom(const VideoConnection& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from.id() != 0) {
+    set_id(from.id());
+  }
   if (from.cpu() != 0) {
     set_cpu(from.cpu());
   }
   if (from.con() != 0) {
     set_con(from.con());
+  }
+  if (from.matrixid() != 0) {
+    set_matrixid(from.matrixid());
   }
 }
 
@@ -347,8 +424,10 @@ void VideoConnection::Swap(VideoConnection* other) {
   InternalSwap(other);
 }
 void VideoConnection::InternalSwap(VideoConnection* other) {
+  std::swap(id_, other->id_);
   std::swap(cpu_, other->cpu_);
   std::swap(con_, other->con_);
+  std::swap(matrixid_, other->matrixid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -364,7 +443,21 @@ void VideoConnection::InternalSwap(VideoConnection* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // VideoConnection
 
-// optional uint32 cpu = 1;
+// optional uint32 id = 1;
+void VideoConnection::clear_id() {
+  id_ = 0u;
+}
+ ::google::protobuf::uint32 VideoConnection::id() const {
+  // @@protoc_insertion_point(field_get:VideoConnection.id)
+  return id_;
+}
+ void VideoConnection::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:VideoConnection.id)
+}
+
+// optional uint32 cpu = 2;
 void VideoConnection::clear_cpu() {
   cpu_ = 0u;
 }
@@ -378,7 +471,7 @@ void VideoConnection::clear_cpu() {
   // @@protoc_insertion_point(field_set:VideoConnection.cpu)
 }
 
-// optional uint32 con = 2;
+// optional uint32 con = 3;
 void VideoConnection::clear_con() {
   con_ = 0u;
 }
@@ -390,6 +483,20 @@ void VideoConnection::clear_con() {
   
   con_ = value;
   // @@protoc_insertion_point(field_set:VideoConnection.con)
+}
+
+// optional uint32 matrixId = 4;
+void VideoConnection::clear_matrixid() {
+  matrixid_ = 0u;
+}
+ ::google::protobuf::uint32 VideoConnection::matrixid() const {
+  // @@protoc_insertion_point(field_get:VideoConnection.matrixId)
+  return matrixid_;
+}
+ void VideoConnection::set_matrixid(::google::protobuf::uint32 value) {
+  
+  matrixid_ = value;
+  // @@protoc_insertion_point(field_set:VideoConnection.matrixId)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

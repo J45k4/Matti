@@ -34,7 +34,7 @@ void protobuf_AssignDesc_VideoConnections_2eproto() {
   GOOGLE_CHECK(file != NULL);
   VideoConnections_descriptor_ = file->message_type(0);
   static const int VideoConnections_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VideoConnections, videoconnection_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VideoConnections, videoconnections_),
   };
   VideoConnections_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -79,8 +79,8 @@ void protobuf_AddDesc_VideoConnections_2eproto() {
   ::protobuf_AddDesc_VideoConnection_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026VideoConnections.proto\032\025VideoConnectio"
-    "n.proto\"=\n\020VideoConnections\022)\n\017videoConn"
-    "ection\030\001 \003(\0132\020.VideoConnectionb\006proto3", 118);
+    "n.proto\">\n\020VideoConnections\022*\n\020videoConn"
+    "ections\030\001 \003(\0132\020.VideoConnectionb\006proto3", 119);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "VideoConnections.proto", &protobuf_RegisterTypes);
   VideoConnections::default_instance_ = new VideoConnections();
@@ -108,7 +108,7 @@ static void MergeFromFail(int line) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int VideoConnections::kVideoConnectionFieldNumber;
+const int VideoConnections::kVideoConnectionsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 VideoConnections::VideoConnections()
@@ -170,7 +170,7 @@ VideoConnections* VideoConnections::New(::google::protobuf::Arena* arena) const 
 }
 
 void VideoConnections::Clear() {
-  videoconnection_.Clear();
+  videoconnections_.Clear();
 }
 
 bool VideoConnections::MergePartialFromCodedStream(
@@ -183,17 +183,17 @@ bool VideoConnections::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .VideoConnection videoConnection = 1;
+      // repeated .VideoConnection videoConnections = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
-         parse_loop_videoConnection:
+         parse_loop_videoConnections:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_videoconnection()));
+                input, add_videoconnections()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(10)) goto parse_loop_videoConnection;
+        if (input->ExpectTag(10)) goto parse_loop_videoConnections;
         input->UnsafeDecrementRecursionDepth();
         if (input->ExpectAtEnd()) goto success;
         break;
@@ -223,10 +223,10 @@ failure:
 void VideoConnections::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:VideoConnections)
-  // repeated .VideoConnection videoConnection = 1;
-  for (unsigned int i = 0, n = this->videoconnection_size(); i < n; i++) {
+  // repeated .VideoConnection videoConnections = 1;
+  for (unsigned int i = 0, n = this->videoconnections_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->videoconnection(i), output);
+      1, this->videoconnections(i), output);
   }
 
   // @@protoc_insertion_point(serialize_end:VideoConnections)
@@ -235,11 +235,11 @@ void VideoConnections::SerializeWithCachedSizes(
 ::google::protobuf::uint8* VideoConnections::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:VideoConnections)
-  // repeated .VideoConnection videoConnection = 1;
-  for (unsigned int i = 0, n = this->videoconnection_size(); i < n; i++) {
+  // repeated .VideoConnection videoConnections = 1;
+  for (unsigned int i = 0, n = this->videoconnections_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->videoconnection(i), target);
+        1, this->videoconnections(i), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:VideoConnections)
@@ -249,12 +249,12 @@ void VideoConnections::SerializeWithCachedSizes(
 int VideoConnections::ByteSize() const {
   int total_size = 0;
 
-  // repeated .VideoConnection videoConnection = 1;
-  total_size += 1 * this->videoconnection_size();
-  for (int i = 0; i < this->videoconnection_size(); i++) {
+  // repeated .VideoConnection videoConnections = 1;
+  total_size += 1 * this->videoconnections_size();
+  for (int i = 0; i < this->videoconnections_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->videoconnection(i));
+        this->videoconnections(i));
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -277,7 +277,7 @@ void VideoConnections::MergeFrom(const ::google::protobuf::Message& from) {
 
 void VideoConnections::MergeFrom(const VideoConnections& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  videoconnection_.MergeFrom(from.videoconnection_);
+  videoconnections_.MergeFrom(from.videoconnections_);
 }
 
 void VideoConnections::CopyFrom(const ::google::protobuf::Message& from) {
@@ -302,7 +302,7 @@ void VideoConnections::Swap(VideoConnections* other) {
   InternalSwap(other);
 }
 void VideoConnections::InternalSwap(VideoConnections* other) {
-  videoconnection_.UnsafeArenaSwap(&other->videoconnection_);
+  videoconnections_.UnsafeArenaSwap(&other->videoconnections_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -318,34 +318,34 @@ void VideoConnections::InternalSwap(VideoConnections* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // VideoConnections
 
-// repeated .VideoConnection videoConnection = 1;
-int VideoConnections::videoconnection_size() const {
-  return videoconnection_.size();
+// repeated .VideoConnection videoConnections = 1;
+int VideoConnections::videoconnections_size() const {
+  return videoconnections_.size();
 }
-void VideoConnections::clear_videoconnection() {
-  videoconnection_.Clear();
+void VideoConnections::clear_videoconnections() {
+  videoconnections_.Clear();
 }
-const ::VideoConnection& VideoConnections::videoconnection(int index) const {
-  // @@protoc_insertion_point(field_get:VideoConnections.videoConnection)
-  return videoconnection_.Get(index);
+const ::VideoConnection& VideoConnections::videoconnections(int index) const {
+  // @@protoc_insertion_point(field_get:VideoConnections.videoConnections)
+  return videoconnections_.Get(index);
 }
-::VideoConnection* VideoConnections::mutable_videoconnection(int index) {
-  // @@protoc_insertion_point(field_mutable:VideoConnections.videoConnection)
-  return videoconnection_.Mutable(index);
+::VideoConnection* VideoConnections::mutable_videoconnections(int index) {
+  // @@protoc_insertion_point(field_mutable:VideoConnections.videoConnections)
+  return videoconnections_.Mutable(index);
 }
-::VideoConnection* VideoConnections::add_videoconnection() {
-  // @@protoc_insertion_point(field_add:VideoConnections.videoConnection)
-  return videoconnection_.Add();
+::VideoConnection* VideoConnections::add_videoconnections() {
+  // @@protoc_insertion_point(field_add:VideoConnections.videoConnections)
+  return videoconnections_.Add();
 }
 ::google::protobuf::RepeatedPtrField< ::VideoConnection >*
-VideoConnections::mutable_videoconnection() {
-  // @@protoc_insertion_point(field_mutable_list:VideoConnections.videoConnection)
-  return &videoconnection_;
+VideoConnections::mutable_videoconnections() {
+  // @@protoc_insertion_point(field_mutable_list:VideoConnections.videoConnections)
+  return &videoconnections_;
 }
 const ::google::protobuf::RepeatedPtrField< ::VideoConnection >&
-VideoConnections::videoconnection() const {
-  // @@protoc_insertion_point(field_list:VideoConnections.videoConnection)
-  return videoconnection_;
+VideoConnections::videoconnections() const {
+  // @@protoc_insertion_point(field_list:VideoConnections.videoConnections)
+  return videoconnections_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

@@ -25,8 +25,13 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 struct MattiResponseOneofInstance {
   const ::VideoConnection* videoconnection_;
   const ::KwmConnection* kwmconnection_;
-  const ::VideoConnections* videoconnections_;
-  const ::KwmConnections* kwmconnections_;
+  const ::MatrixProto* matrix_;
+  const ::Timer* timer_;
+  const ::Program* program_;
+  const ::AllConnections* connections_;
+  const ::Matrixs* matrixs_;
+  const ::Timers* timers_;
+  const ::Programs* programs_;
 }* MattiResponse_default_oneof_instance_ = NULL;
 
 }  // namespace
@@ -39,12 +44,17 @@ void protobuf_AssignDesc_MattiResponse_2eproto() {
       "MattiResponse.proto");
   GOOGLE_CHECK(file != NULL);
   MattiResponse_descriptor_ = file->message_type(0);
-  static const int MattiResponse_offsets_[6] = {
+  static const int MattiResponse_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiResponse, ticket_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, videoconnection_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, kwmconnection_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, videoconnections_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, kwmconnections_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, matrix_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, timer_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, program_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, connections_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, matrixs_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, timers_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, programs_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiResponse, requestMessage_),
   };
   MattiResponse_reflection_ =
@@ -92,18 +102,28 @@ void protobuf_AddDesc_MattiResponse_2eproto() {
 
   ::protobuf_AddDesc_VideoConnection_2eproto();
   ::protobuf_AddDesc_KwmConnection_2eproto();
-  ::protobuf_AddDesc_VideoConnections_2eproto();
-  ::protobuf_AddDesc_KwmConnections_2eproto();
+  ::protobuf_AddDesc_Matrix_2eproto();
+  ::protobuf_AddDesc_Program_2eproto();
+  ::protobuf_AddDesc_Timer_2eproto();
+  ::protobuf_AddDesc_AllConnections_2eproto();
+  ::protobuf_AddDesc_Matrixs_2eproto();
+  ::protobuf_AddDesc_Programs_2eproto();
+  ::protobuf_AddDesc_Timers_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023MattiResponse.proto\032\025VideoConnection.p"
-    "roto\032\023KwmConnection.proto\032\026VideoConnecti"
-    "ons.proto\032\024KwmConnections.proto\"\341\001\n\rMatt"
-    "iResponse\022\016\n\006ticket\030\001 \001(\r\022+\n\017videoConnec"
-    "tion\030\002 \001(\0132\020.VideoConnectionH\000\022\'\n\rkwmCon"
-    "nection\030\003 \001(\0132\016.KwmConnectionH\000\022-\n\020video"
-    "Connections\030\004 \001(\0132\021.VideoConnectionsH\000\022)"
-    "\n\016kwmConnections\030\005 \001(\0132\017.KwmConnectionsH"
-    "\000B\020\n\016requestMessageb\006proto3", 347);
+    "roto\032\023KwmConnection.proto\032\014Matrix.proto\032"
+    "\rProgram.proto\032\013Timer.proto\032\024AllConnecti"
+    "ons.proto\032\rMatrixs.proto\032\016Programs.proto"
+    "\032\014Timers.proto\"\334\002\n\rMattiResponse\022\016\n\006tick"
+    "et\030\001 \001(\r\022+\n\017videoConnection\030\002 \001(\0132\020.Vide"
+    "oConnectionH\000\022\'\n\rkwmConnection\030\003 \001(\0132\016.K"
+    "wmConnectionH\000\022\036\n\006matrix\030\004 \001(\0132\014.MatrixP"
+    "rotoH\000\022\027\n\005timer\030\005 \001(\0132\006.TimerH\000\022\033\n\007progr"
+    "am\030\006 \001(\0132\010.ProgramH\000\022&\n\013connections\030\007 \001("
+    "\0132\017.AllConnectionsH\000\022\033\n\007matrixs\030\010 \001(\0132\010."
+    "MatrixsH\000\022\031\n\006timers\030\t \001(\0132\007.TimersH\000\022\035\n\010"
+    "programs\030\n \001(\0132\t.ProgramsH\000B\020\n\016requestMe"
+    "ssageb\006proto3", 533);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MattiResponse.proto", &protobuf_RegisterTypes);
   MattiResponse::default_instance_ = new MattiResponse();
@@ -135,8 +155,13 @@ static void MergeFromFail(int line) {
 const int MattiResponse::kTicketFieldNumber;
 const int MattiResponse::kVideoConnectionFieldNumber;
 const int MattiResponse::kKwmConnectionFieldNumber;
-const int MattiResponse::kVideoConnectionsFieldNumber;
-const int MattiResponse::kKwmConnectionsFieldNumber;
+const int MattiResponse::kMatrixFieldNumber;
+const int MattiResponse::kTimerFieldNumber;
+const int MattiResponse::kProgramFieldNumber;
+const int MattiResponse::kConnectionsFieldNumber;
+const int MattiResponse::kMatrixsFieldNumber;
+const int MattiResponse::kTimersFieldNumber;
+const int MattiResponse::kProgramsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MattiResponse::MattiResponse()
@@ -149,8 +174,13 @@ void MattiResponse::InitAsDefaultInstance() {
   _is_default_instance_ = true;
   MattiResponse_default_oneof_instance_->videoconnection_ = const_cast< ::VideoConnection*>(&::VideoConnection::default_instance());
   MattiResponse_default_oneof_instance_->kwmconnection_ = const_cast< ::KwmConnection*>(&::KwmConnection::default_instance());
-  MattiResponse_default_oneof_instance_->videoconnections_ = const_cast< ::VideoConnections*>(&::VideoConnections::default_instance());
-  MattiResponse_default_oneof_instance_->kwmconnections_ = const_cast< ::KwmConnections*>(&::KwmConnections::default_instance());
+  MattiResponse_default_oneof_instance_->matrix_ = const_cast< ::MatrixProto*>(&::MatrixProto::default_instance());
+  MattiResponse_default_oneof_instance_->timer_ = const_cast< ::Timer*>(&::Timer::default_instance());
+  MattiResponse_default_oneof_instance_->program_ = const_cast< ::Program*>(&::Program::default_instance());
+  MattiResponse_default_oneof_instance_->connections_ = const_cast< ::AllConnections*>(&::AllConnections::default_instance());
+  MattiResponse_default_oneof_instance_->matrixs_ = const_cast< ::Matrixs*>(&::Matrixs::default_instance());
+  MattiResponse_default_oneof_instance_->timers_ = const_cast< ::Timers*>(&::Timers::default_instance());
+  MattiResponse_default_oneof_instance_->programs_ = const_cast< ::Programs*>(&::Programs::default_instance());
 }
 
 MattiResponse::MattiResponse(const MattiResponse& from)
@@ -216,12 +246,32 @@ void MattiResponse::clear_requestMessage() {
       delete requestMessage_.kwmconnection_;
       break;
     }
-    case kVideoConnections: {
-      delete requestMessage_.videoconnections_;
+    case kMatrix: {
+      delete requestMessage_.matrix_;
       break;
     }
-    case kKwmConnections: {
-      delete requestMessage_.kwmconnections_;
+    case kTimer: {
+      delete requestMessage_.timer_;
+      break;
+    }
+    case kProgram: {
+      delete requestMessage_.program_;
+      break;
+    }
+    case kConnections: {
+      delete requestMessage_.connections_;
+      break;
+    }
+    case kMatrixs: {
+      delete requestMessage_.matrixs_;
+      break;
+    }
+    case kTimers: {
+      delete requestMessage_.timers_;
+      break;
+    }
+    case kPrograms: {
+      delete requestMessage_.programs_;
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -283,29 +333,94 @@ bool MattiResponse::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_videoConnections;
+        if (input->ExpectTag(34)) goto parse_matrix;
         break;
       }
 
-      // optional .VideoConnections videoConnections = 4;
+      // optional .MatrixProto matrix = 4;
       case 4: {
         if (tag == 34) {
-         parse_videoConnections:
+         parse_matrix:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_videoconnections()));
+               input, mutable_matrix()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_kwmConnections;
+        if (input->ExpectTag(42)) goto parse_timer;
         break;
       }
 
-      // optional .KwmConnections kwmConnections = 5;
+      // optional .Timer timer = 5;
       case 5: {
         if (tag == 42) {
-         parse_kwmConnections:
+         parse_timer:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_kwmconnections()));
+               input, mutable_timer()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_program;
+        break;
+      }
+
+      // optional .Program program = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_program:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_program()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_connections;
+        break;
+      }
+
+      // optional .AllConnections connections = 7;
+      case 7: {
+        if (tag == 58) {
+         parse_connections:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_connections()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(66)) goto parse_matrixs;
+        break;
+      }
+
+      // optional .Matrixs matrixs = 8;
+      case 8: {
+        if (tag == 66) {
+         parse_matrixs:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_matrixs()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(74)) goto parse_timers;
+        break;
+      }
+
+      // optional .Timers timers = 9;
+      case 9: {
+        if (tag == 74) {
+         parse_timers:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_timers()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(82)) goto parse_programs;
+        break;
+      }
+
+      // optional .Programs programs = 10;
+      case 10: {
+        if (tag == 82) {
+         parse_programs:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_programs()));
         } else {
           goto handle_unusual;
         }
@@ -354,16 +469,46 @@ void MattiResponse::SerializeWithCachedSizes(
       3, *requestMessage_.kwmconnection_, output);
   }
 
-  // optional .VideoConnections videoConnections = 4;
-  if (has_videoconnections()) {
+  // optional .MatrixProto matrix = 4;
+  if (has_matrix()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *requestMessage_.videoconnections_, output);
+      4, *requestMessage_.matrix_, output);
   }
 
-  // optional .KwmConnections kwmConnections = 5;
-  if (has_kwmconnections()) {
+  // optional .Timer timer = 5;
+  if (has_timer()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *requestMessage_.kwmconnections_, output);
+      5, *requestMessage_.timer_, output);
+  }
+
+  // optional .Program program = 6;
+  if (has_program()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, *requestMessage_.program_, output);
+  }
+
+  // optional .AllConnections connections = 7;
+  if (has_connections()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, *requestMessage_.connections_, output);
+  }
+
+  // optional .Matrixs matrixs = 8;
+  if (has_matrixs()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, *requestMessage_.matrixs_, output);
+  }
+
+  // optional .Timers timers = 9;
+  if (has_timers()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, *requestMessage_.timers_, output);
+  }
+
+  // optional .Programs programs = 10;
+  if (has_programs()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, *requestMessage_.programs_, output);
   }
 
   // @@protoc_insertion_point(serialize_end:MattiResponse)
@@ -391,18 +536,53 @@ void MattiResponse::SerializeWithCachedSizes(
         3, *requestMessage_.kwmconnection_, target);
   }
 
-  // optional .VideoConnections videoConnections = 4;
-  if (has_videoconnections()) {
+  // optional .MatrixProto matrix = 4;
+  if (has_matrix()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, *requestMessage_.videoconnections_, target);
+        4, *requestMessage_.matrix_, target);
   }
 
-  // optional .KwmConnections kwmConnections = 5;
-  if (has_kwmconnections()) {
+  // optional .Timer timer = 5;
+  if (has_timer()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, *requestMessage_.kwmconnections_, target);
+        5, *requestMessage_.timer_, target);
+  }
+
+  // optional .Program program = 6;
+  if (has_program()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, *requestMessage_.program_, target);
+  }
+
+  // optional .AllConnections connections = 7;
+  if (has_connections()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, *requestMessage_.connections_, target);
+  }
+
+  // optional .Matrixs matrixs = 8;
+  if (has_matrixs()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        8, *requestMessage_.matrixs_, target);
+  }
+
+  // optional .Timers timers = 9;
+  if (has_timers()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, *requestMessage_.timers_, target);
+  }
+
+  // optional .Programs programs = 10;
+  if (has_programs()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        10, *requestMessage_.programs_, target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:MattiResponse)
@@ -434,18 +614,53 @@ int MattiResponse::ByteSize() const {
           *requestMessage_.kwmconnection_);
       break;
     }
-    // optional .VideoConnections videoConnections = 4;
-    case kVideoConnections: {
+    // optional .MatrixProto matrix = 4;
+    case kMatrix: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *requestMessage_.videoconnections_);
+          *requestMessage_.matrix_);
       break;
     }
-    // optional .KwmConnections kwmConnections = 5;
-    case kKwmConnections: {
+    // optional .Timer timer = 5;
+    case kTimer: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *requestMessage_.kwmconnections_);
+          *requestMessage_.timer_);
+      break;
+    }
+    // optional .Program program = 6;
+    case kProgram: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.program_);
+      break;
+    }
+    // optional .AllConnections connections = 7;
+    case kConnections: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.connections_);
+      break;
+    }
+    // optional .Matrixs matrixs = 8;
+    case kMatrixs: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.matrixs_);
+      break;
+    }
+    // optional .Timers timers = 9;
+    case kTimers: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.timers_);
+      break;
+    }
+    // optional .Programs programs = 10;
+    case kPrograms: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.programs_);
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -481,12 +696,32 @@ void MattiResponse::MergeFrom(const MattiResponse& from) {
       mutable_kwmconnection()->::KwmConnection::MergeFrom(from.kwmconnection());
       break;
     }
-    case kVideoConnections: {
-      mutable_videoconnections()->::VideoConnections::MergeFrom(from.videoconnections());
+    case kMatrix: {
+      mutable_matrix()->::MatrixProto::MergeFrom(from.matrix());
       break;
     }
-    case kKwmConnections: {
-      mutable_kwmconnections()->::KwmConnections::MergeFrom(from.kwmconnections());
+    case kTimer: {
+      mutable_timer()->::Timer::MergeFrom(from.timer());
+      break;
+    }
+    case kProgram: {
+      mutable_program()->::Program::MergeFrom(from.program());
+      break;
+    }
+    case kConnections: {
+      mutable_connections()->::AllConnections::MergeFrom(from.connections());
+      break;
+    }
+    case kMatrixs: {
+      mutable_matrixs()->::Matrixs::MergeFrom(from.matrixs());
+      break;
+    }
+    case kTimers: {
+      mutable_timers()->::Timers::MergeFrom(from.timers());
+      break;
+    }
+    case kPrograms: {
+      mutable_programs()->::Programs::MergeFrom(from.programs());
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -646,98 +881,333 @@ void MattiResponse::set_allocated_kwmconnection(::KwmConnection* kwmconnection) 
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.kwmConnection)
 }
 
-// optional .VideoConnections videoConnections = 4;
-bool MattiResponse::has_videoconnections() const {
-  return requestMessage_case() == kVideoConnections;
+// optional .MatrixProto matrix = 4;
+bool MattiResponse::has_matrix() const {
+  return requestMessage_case() == kMatrix;
 }
-void MattiResponse::set_has_videoconnections() {
-  _oneof_case_[0] = kVideoConnections;
+void MattiResponse::set_has_matrix() {
+  _oneof_case_[0] = kMatrix;
 }
-void MattiResponse::clear_videoconnections() {
-  if (has_videoconnections()) {
-    delete requestMessage_.videoconnections_;
+void MattiResponse::clear_matrix() {
+  if (has_matrix()) {
+    delete requestMessage_.matrix_;
     clear_has_requestMessage();
   }
 }
- const ::VideoConnections& MattiResponse::videoconnections() const {
-  // @@protoc_insertion_point(field_get:MattiResponse.videoConnections)
-  return has_videoconnections()
-      ? *requestMessage_.videoconnections_
-      : ::VideoConnections::default_instance();
+ const ::MatrixProto& MattiResponse::matrix() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.matrix)
+  return has_matrix()
+      ? *requestMessage_.matrix_
+      : ::MatrixProto::default_instance();
 }
-::VideoConnections* MattiResponse::mutable_videoconnections() {
-  if (!has_videoconnections()) {
+::MatrixProto* MattiResponse::mutable_matrix() {
+  if (!has_matrix()) {
     clear_requestMessage();
-    set_has_videoconnections();
-    requestMessage_.videoconnections_ = new ::VideoConnections;
+    set_has_matrix();
+    requestMessage_.matrix_ = new ::MatrixProto;
   }
-  // @@protoc_insertion_point(field_mutable:MattiResponse.videoConnections)
-  return requestMessage_.videoconnections_;
+  // @@protoc_insertion_point(field_mutable:MattiResponse.matrix)
+  return requestMessage_.matrix_;
 }
-::VideoConnections* MattiResponse::release_videoconnections() {
-  if (has_videoconnections()) {
+::MatrixProto* MattiResponse::release_matrix() {
+  if (has_matrix()) {
     clear_has_requestMessage();
-    ::VideoConnections* temp = requestMessage_.videoconnections_;
-    requestMessage_.videoconnections_ = NULL;
+    ::MatrixProto* temp = requestMessage_.matrix_;
+    requestMessage_.matrix_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_videoconnections(::VideoConnections* videoconnections) {
+void MattiResponse::set_allocated_matrix(::MatrixProto* matrix) {
   clear_requestMessage();
-  if (videoconnections) {
-    set_has_videoconnections();
-    requestMessage_.videoconnections_ = videoconnections;
+  if (matrix) {
+    set_has_matrix();
+    requestMessage_.matrix_ = matrix;
   }
-  // @@protoc_insertion_point(field_set_allocated:MattiResponse.videoConnections)
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.matrix)
 }
 
-// optional .KwmConnections kwmConnections = 5;
-bool MattiResponse::has_kwmconnections() const {
-  return requestMessage_case() == kKwmConnections;
+// optional .Timer timer = 5;
+bool MattiResponse::has_timer() const {
+  return requestMessage_case() == kTimer;
 }
-void MattiResponse::set_has_kwmconnections() {
-  _oneof_case_[0] = kKwmConnections;
+void MattiResponse::set_has_timer() {
+  _oneof_case_[0] = kTimer;
 }
-void MattiResponse::clear_kwmconnections() {
-  if (has_kwmconnections()) {
-    delete requestMessage_.kwmconnections_;
+void MattiResponse::clear_timer() {
+  if (has_timer()) {
+    delete requestMessage_.timer_;
     clear_has_requestMessage();
   }
 }
- const ::KwmConnections& MattiResponse::kwmconnections() const {
-  // @@protoc_insertion_point(field_get:MattiResponse.kwmConnections)
-  return has_kwmconnections()
-      ? *requestMessage_.kwmconnections_
-      : ::KwmConnections::default_instance();
+ const ::Timer& MattiResponse::timer() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.timer)
+  return has_timer()
+      ? *requestMessage_.timer_
+      : ::Timer::default_instance();
 }
-::KwmConnections* MattiResponse::mutable_kwmconnections() {
-  if (!has_kwmconnections()) {
+::Timer* MattiResponse::mutable_timer() {
+  if (!has_timer()) {
     clear_requestMessage();
-    set_has_kwmconnections();
-    requestMessage_.kwmconnections_ = new ::KwmConnections;
+    set_has_timer();
+    requestMessage_.timer_ = new ::Timer;
   }
-  // @@protoc_insertion_point(field_mutable:MattiResponse.kwmConnections)
-  return requestMessage_.kwmconnections_;
+  // @@protoc_insertion_point(field_mutable:MattiResponse.timer)
+  return requestMessage_.timer_;
 }
-::KwmConnections* MattiResponse::release_kwmconnections() {
-  if (has_kwmconnections()) {
+::Timer* MattiResponse::release_timer() {
+  if (has_timer()) {
     clear_has_requestMessage();
-    ::KwmConnections* temp = requestMessage_.kwmconnections_;
-    requestMessage_.kwmconnections_ = NULL;
+    ::Timer* temp = requestMessage_.timer_;
+    requestMessage_.timer_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_kwmconnections(::KwmConnections* kwmconnections) {
+void MattiResponse::set_allocated_timer(::Timer* timer) {
   clear_requestMessage();
-  if (kwmconnections) {
-    set_has_kwmconnections();
-    requestMessage_.kwmconnections_ = kwmconnections;
+  if (timer) {
+    set_has_timer();
+    requestMessage_.timer_ = timer;
   }
-  // @@protoc_insertion_point(field_set_allocated:MattiResponse.kwmConnections)
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.timer)
+}
+
+// optional .Program program = 6;
+bool MattiResponse::has_program() const {
+  return requestMessage_case() == kProgram;
+}
+void MattiResponse::set_has_program() {
+  _oneof_case_[0] = kProgram;
+}
+void MattiResponse::clear_program() {
+  if (has_program()) {
+    delete requestMessage_.program_;
+    clear_has_requestMessage();
+  }
+}
+ const ::Program& MattiResponse::program() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.program)
+  return has_program()
+      ? *requestMessage_.program_
+      : ::Program::default_instance();
+}
+::Program* MattiResponse::mutable_program() {
+  if (!has_program()) {
+    clear_requestMessage();
+    set_has_program();
+    requestMessage_.program_ = new ::Program;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.program)
+  return requestMessage_.program_;
+}
+::Program* MattiResponse::release_program() {
+  if (has_program()) {
+    clear_has_requestMessage();
+    ::Program* temp = requestMessage_.program_;
+    requestMessage_.program_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_program(::Program* program) {
+  clear_requestMessage();
+  if (program) {
+    set_has_program();
+    requestMessage_.program_ = program;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.program)
+}
+
+// optional .AllConnections connections = 7;
+bool MattiResponse::has_connections() const {
+  return requestMessage_case() == kConnections;
+}
+void MattiResponse::set_has_connections() {
+  _oneof_case_[0] = kConnections;
+}
+void MattiResponse::clear_connections() {
+  if (has_connections()) {
+    delete requestMessage_.connections_;
+    clear_has_requestMessage();
+  }
+}
+ const ::AllConnections& MattiResponse::connections() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.connections)
+  return has_connections()
+      ? *requestMessage_.connections_
+      : ::AllConnections::default_instance();
+}
+::AllConnections* MattiResponse::mutable_connections() {
+  if (!has_connections()) {
+    clear_requestMessage();
+    set_has_connections();
+    requestMessage_.connections_ = new ::AllConnections;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.connections)
+  return requestMessage_.connections_;
+}
+::AllConnections* MattiResponse::release_connections() {
+  if (has_connections()) {
+    clear_has_requestMessage();
+    ::AllConnections* temp = requestMessage_.connections_;
+    requestMessage_.connections_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_connections(::AllConnections* connections) {
+  clear_requestMessage();
+  if (connections) {
+    set_has_connections();
+    requestMessage_.connections_ = connections;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.connections)
+}
+
+// optional .Matrixs matrixs = 8;
+bool MattiResponse::has_matrixs() const {
+  return requestMessage_case() == kMatrixs;
+}
+void MattiResponse::set_has_matrixs() {
+  _oneof_case_[0] = kMatrixs;
+}
+void MattiResponse::clear_matrixs() {
+  if (has_matrixs()) {
+    delete requestMessage_.matrixs_;
+    clear_has_requestMessage();
+  }
+}
+ const ::Matrixs& MattiResponse::matrixs() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.matrixs)
+  return has_matrixs()
+      ? *requestMessage_.matrixs_
+      : ::Matrixs::default_instance();
+}
+::Matrixs* MattiResponse::mutable_matrixs() {
+  if (!has_matrixs()) {
+    clear_requestMessage();
+    set_has_matrixs();
+    requestMessage_.matrixs_ = new ::Matrixs;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.matrixs)
+  return requestMessage_.matrixs_;
+}
+::Matrixs* MattiResponse::release_matrixs() {
+  if (has_matrixs()) {
+    clear_has_requestMessage();
+    ::Matrixs* temp = requestMessage_.matrixs_;
+    requestMessage_.matrixs_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_matrixs(::Matrixs* matrixs) {
+  clear_requestMessage();
+  if (matrixs) {
+    set_has_matrixs();
+    requestMessage_.matrixs_ = matrixs;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.matrixs)
+}
+
+// optional .Timers timers = 9;
+bool MattiResponse::has_timers() const {
+  return requestMessage_case() == kTimers;
+}
+void MattiResponse::set_has_timers() {
+  _oneof_case_[0] = kTimers;
+}
+void MattiResponse::clear_timers() {
+  if (has_timers()) {
+    delete requestMessage_.timers_;
+    clear_has_requestMessage();
+  }
+}
+ const ::Timers& MattiResponse::timers() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.timers)
+  return has_timers()
+      ? *requestMessage_.timers_
+      : ::Timers::default_instance();
+}
+::Timers* MattiResponse::mutable_timers() {
+  if (!has_timers()) {
+    clear_requestMessage();
+    set_has_timers();
+    requestMessage_.timers_ = new ::Timers;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.timers)
+  return requestMessage_.timers_;
+}
+::Timers* MattiResponse::release_timers() {
+  if (has_timers()) {
+    clear_has_requestMessage();
+    ::Timers* temp = requestMessage_.timers_;
+    requestMessage_.timers_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_timers(::Timers* timers) {
+  clear_requestMessage();
+  if (timers) {
+    set_has_timers();
+    requestMessage_.timers_ = timers;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.timers)
+}
+
+// optional .Programs programs = 10;
+bool MattiResponse::has_programs() const {
+  return requestMessage_case() == kPrograms;
+}
+void MattiResponse::set_has_programs() {
+  _oneof_case_[0] = kPrograms;
+}
+void MattiResponse::clear_programs() {
+  if (has_programs()) {
+    delete requestMessage_.programs_;
+    clear_has_requestMessage();
+  }
+}
+ const ::Programs& MattiResponse::programs() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.programs)
+  return has_programs()
+      ? *requestMessage_.programs_
+      : ::Programs::default_instance();
+}
+::Programs* MattiResponse::mutable_programs() {
+  if (!has_programs()) {
+    clear_requestMessage();
+    set_has_programs();
+    requestMessage_.programs_ = new ::Programs;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.programs)
+  return requestMessage_.programs_;
+}
+::Programs* MattiResponse::release_programs() {
+  if (has_programs()) {
+    clear_has_requestMessage();
+    ::Programs* temp = requestMessage_.programs_;
+    requestMessage_.programs_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_programs(::Programs* programs) {
+  clear_requestMessage();
+  if (programs) {
+    set_has_programs();
+    requestMessage_.programs_ = programs;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.programs)
 }
 
 bool MattiResponse::has_requestMessage() const {
