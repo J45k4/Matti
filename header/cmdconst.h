@@ -2,9 +2,9 @@
 #define CMDCONST_H
 
 const unsigned char VIDEO_SIGNAL = 71;
-const unsigned char OUTPUT_OFF = 72;
+const unsigned char VIDEO_OFF = 72;
 const unsigned char MULTI_VIDEO_SIGNAL = 73;
-const unsigned char ALL_OUTPUT_OFF = 74;
+const unsigned char ALL_VIDEO_OFF = 74;
 
 const unsigned char KWM_SIGNAL = 75;
 const unsigned char KWM_OFF = 76;
