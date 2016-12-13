@@ -29,13 +29,15 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "VideoConnection.pb.h"
 #include "KwmConnection.pb.h"
-#include "Matrix.pb.h"
-#include "Program.pb.h"
-#include "Timer.pb.h"
+#include "MatrixProto.pb.h"
+#include "MatrixProtos.pb.h"
+#include "TimerProto.pb.h"
+#include "TimerProtos.pb.h"
+#include "ProgramProto.pb.h"
+#include "ProgramProtos.pb.h"
 #include "AllConnections.pb.h"
-#include "Matrixs.pb.h"
-#include "Programs.pb.h"
-#include "Timers.pb.h"
+#include "LockProto.pb.h"
+#include "LockProtos.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Internal implementation detail -- do not call these.
@@ -68,10 +70,12 @@ class MattiResponse : public ::google::protobuf::Message {
     kMatrix = 4,
     kTimer = 5,
     kProgram = 6,
-    kConnections = 7,
+    kAllConnections = 7,
     kMatrixs = 8,
     kTimers = 9,
     kPrograms = 10,
+    kLockProto = 11,
+    kLockProtos = 12,
     REQUESTMESSAGE_NOT_SET = 0,
   };
 
@@ -149,59 +153,77 @@ class MattiResponse : public ::google::protobuf::Message {
   ::MatrixProto* release_matrix();
   void set_allocated_matrix(::MatrixProto* matrix);
 
-  // optional .Timer timer = 5;
+  // optional .TimerProto timer = 5;
   bool has_timer() const;
   void clear_timer();
   static const int kTimerFieldNumber = 5;
-  const ::Timer& timer() const;
-  ::Timer* mutable_timer();
-  ::Timer* release_timer();
-  void set_allocated_timer(::Timer* timer);
+  const ::TimerProto& timer() const;
+  ::TimerProto* mutable_timer();
+  ::TimerProto* release_timer();
+  void set_allocated_timer(::TimerProto* timer);
 
-  // optional .Program program = 6;
+  // optional .ProgramProto program = 6;
   bool has_program() const;
   void clear_program();
   static const int kProgramFieldNumber = 6;
-  const ::Program& program() const;
-  ::Program* mutable_program();
-  ::Program* release_program();
-  void set_allocated_program(::Program* program);
+  const ::ProgramProto& program() const;
+  ::ProgramProto* mutable_program();
+  ::ProgramProto* release_program();
+  void set_allocated_program(::ProgramProto* program);
 
-  // optional .AllConnections connections = 7;
-  bool has_connections() const;
-  void clear_connections();
-  static const int kConnectionsFieldNumber = 7;
-  const ::AllConnections& connections() const;
-  ::AllConnections* mutable_connections();
-  ::AllConnections* release_connections();
-  void set_allocated_connections(::AllConnections* connections);
+  // optional .AllConnections allConnections = 7;
+  bool has_allconnections() const;
+  void clear_allconnections();
+  static const int kAllConnectionsFieldNumber = 7;
+  const ::AllConnections& allconnections() const;
+  ::AllConnections* mutable_allconnections();
+  ::AllConnections* release_allconnections();
+  void set_allocated_allconnections(::AllConnections* allconnections);
 
-  // optional .Matrixs matrixs = 8;
+  // optional .MatrixProtos matrixs = 8;
   bool has_matrixs() const;
   void clear_matrixs();
   static const int kMatrixsFieldNumber = 8;
-  const ::Matrixs& matrixs() const;
-  ::Matrixs* mutable_matrixs();
-  ::Matrixs* release_matrixs();
-  void set_allocated_matrixs(::Matrixs* matrixs);
+  const ::MatrixProtos& matrixs() const;
+  ::MatrixProtos* mutable_matrixs();
+  ::MatrixProtos* release_matrixs();
+  void set_allocated_matrixs(::MatrixProtos* matrixs);
 
-  // optional .Timers timers = 9;
+  // optional .TimerProtos timers = 9;
   bool has_timers() const;
   void clear_timers();
   static const int kTimersFieldNumber = 9;
-  const ::Timers& timers() const;
-  ::Timers* mutable_timers();
-  ::Timers* release_timers();
-  void set_allocated_timers(::Timers* timers);
+  const ::TimerProtos& timers() const;
+  ::TimerProtos* mutable_timers();
+  ::TimerProtos* release_timers();
+  void set_allocated_timers(::TimerProtos* timers);
 
-  // optional .Programs programs = 10;
+  // optional .ProgramProtos programs = 10;
   bool has_programs() const;
   void clear_programs();
   static const int kProgramsFieldNumber = 10;
-  const ::Programs& programs() const;
-  ::Programs* mutable_programs();
-  ::Programs* release_programs();
-  void set_allocated_programs(::Programs* programs);
+  const ::ProgramProtos& programs() const;
+  ::ProgramProtos* mutable_programs();
+  ::ProgramProtos* release_programs();
+  void set_allocated_programs(::ProgramProtos* programs);
+
+  // optional .LockProto lockProto = 11;
+  bool has_lockproto() const;
+  void clear_lockproto();
+  static const int kLockProtoFieldNumber = 11;
+  const ::LockProto& lockproto() const;
+  ::LockProto* mutable_lockproto();
+  ::LockProto* release_lockproto();
+  void set_allocated_lockproto(::LockProto* lockproto);
+
+  // optional .LockProtos lockProtos = 12;
+  bool has_lockprotos() const;
+  void clear_lockprotos();
+  static const int kLockProtosFieldNumber = 12;
+  const ::LockProtos& lockprotos() const;
+  ::LockProtos* mutable_lockprotos();
+  ::LockProtos* release_lockprotos();
+  void set_allocated_lockprotos(::LockProtos* lockprotos);
 
   RequestMessageCase requestMessage_case() const;
   // @@protoc_insertion_point(class_scope:MattiResponse)
@@ -211,10 +233,12 @@ class MattiResponse : public ::google::protobuf::Message {
   inline void set_has_matrix();
   inline void set_has_timer();
   inline void set_has_program();
-  inline void set_has_connections();
+  inline void set_has_allconnections();
   inline void set_has_matrixs();
   inline void set_has_timers();
   inline void set_has_programs();
+  inline void set_has_lockproto();
+  inline void set_has_lockprotos();
 
   inline bool has_requestMessage() const;
   void clear_requestMessage();
@@ -228,12 +252,14 @@ class MattiResponse : public ::google::protobuf::Message {
     ::VideoConnection* videoconnection_;
     ::KwmConnection* kwmconnection_;
     ::MatrixProto* matrix_;
-    ::Timer* timer_;
-    ::Program* program_;
-    ::AllConnections* connections_;
-    ::Matrixs* matrixs_;
-    ::Timers* timers_;
-    ::Programs* programs_;
+    ::TimerProto* timer_;
+    ::ProgramProto* program_;
+    ::AllConnections* allconnections_;
+    ::MatrixProtos* matrixs_;
+    ::TimerProtos* timers_;
+    ::ProgramProtos* programs_;
+    ::LockProto* lockproto_;
+    ::LockProtos* lockprotos_;
   } requestMessage_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -408,7 +434,7 @@ inline void MattiResponse::set_allocated_matrix(::MatrixProto* matrix) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.matrix)
 }
 
-// optional .Timer timer = 5;
+// optional .TimerProto timer = 5;
 inline bool MattiResponse::has_timer() const {
   return requestMessage_case() == kTimer;
 }
@@ -421,32 +447,32 @@ inline void MattiResponse::clear_timer() {
     clear_has_requestMessage();
   }
 }
-inline  const ::Timer& MattiResponse::timer() const {
+inline  const ::TimerProto& MattiResponse::timer() const {
   // @@protoc_insertion_point(field_get:MattiResponse.timer)
   return has_timer()
       ? *requestMessage_.timer_
-      : ::Timer::default_instance();
+      : ::TimerProto::default_instance();
 }
-inline ::Timer* MattiResponse::mutable_timer() {
+inline ::TimerProto* MattiResponse::mutable_timer() {
   if (!has_timer()) {
     clear_requestMessage();
     set_has_timer();
-    requestMessage_.timer_ = new ::Timer;
+    requestMessage_.timer_ = new ::TimerProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.timer)
   return requestMessage_.timer_;
 }
-inline ::Timer* MattiResponse::release_timer() {
+inline ::TimerProto* MattiResponse::release_timer() {
   if (has_timer()) {
     clear_has_requestMessage();
-    ::Timer* temp = requestMessage_.timer_;
+    ::TimerProto* temp = requestMessage_.timer_;
     requestMessage_.timer_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiResponse::set_allocated_timer(::Timer* timer) {
+inline void MattiResponse::set_allocated_timer(::TimerProto* timer) {
   clear_requestMessage();
   if (timer) {
     set_has_timer();
@@ -455,7 +481,7 @@ inline void MattiResponse::set_allocated_timer(::Timer* timer) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.timer)
 }
 
-// optional .Program program = 6;
+// optional .ProgramProto program = 6;
 inline bool MattiResponse::has_program() const {
   return requestMessage_case() == kProgram;
 }
@@ -468,32 +494,32 @@ inline void MattiResponse::clear_program() {
     clear_has_requestMessage();
   }
 }
-inline  const ::Program& MattiResponse::program() const {
+inline  const ::ProgramProto& MattiResponse::program() const {
   // @@protoc_insertion_point(field_get:MattiResponse.program)
   return has_program()
       ? *requestMessage_.program_
-      : ::Program::default_instance();
+      : ::ProgramProto::default_instance();
 }
-inline ::Program* MattiResponse::mutable_program() {
+inline ::ProgramProto* MattiResponse::mutable_program() {
   if (!has_program()) {
     clear_requestMessage();
     set_has_program();
-    requestMessage_.program_ = new ::Program;
+    requestMessage_.program_ = new ::ProgramProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.program)
   return requestMessage_.program_;
 }
-inline ::Program* MattiResponse::release_program() {
+inline ::ProgramProto* MattiResponse::release_program() {
   if (has_program()) {
     clear_has_requestMessage();
-    ::Program* temp = requestMessage_.program_;
+    ::ProgramProto* temp = requestMessage_.program_;
     requestMessage_.program_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiResponse::set_allocated_program(::Program* program) {
+inline void MattiResponse::set_allocated_program(::ProgramProto* program) {
   clear_requestMessage();
   if (program) {
     set_has_program();
@@ -502,54 +528,54 @@ inline void MattiResponse::set_allocated_program(::Program* program) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.program)
 }
 
-// optional .AllConnections connections = 7;
-inline bool MattiResponse::has_connections() const {
-  return requestMessage_case() == kConnections;
+// optional .AllConnections allConnections = 7;
+inline bool MattiResponse::has_allconnections() const {
+  return requestMessage_case() == kAllConnections;
 }
-inline void MattiResponse::set_has_connections() {
-  _oneof_case_[0] = kConnections;
+inline void MattiResponse::set_has_allconnections() {
+  _oneof_case_[0] = kAllConnections;
 }
-inline void MattiResponse::clear_connections() {
-  if (has_connections()) {
-    delete requestMessage_.connections_;
+inline void MattiResponse::clear_allconnections() {
+  if (has_allconnections()) {
+    delete requestMessage_.allconnections_;
     clear_has_requestMessage();
   }
 }
-inline  const ::AllConnections& MattiResponse::connections() const {
-  // @@protoc_insertion_point(field_get:MattiResponse.connections)
-  return has_connections()
-      ? *requestMessage_.connections_
+inline  const ::AllConnections& MattiResponse::allconnections() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.allConnections)
+  return has_allconnections()
+      ? *requestMessage_.allconnections_
       : ::AllConnections::default_instance();
 }
-inline ::AllConnections* MattiResponse::mutable_connections() {
-  if (!has_connections()) {
+inline ::AllConnections* MattiResponse::mutable_allconnections() {
+  if (!has_allconnections()) {
     clear_requestMessage();
-    set_has_connections();
-    requestMessage_.connections_ = new ::AllConnections;
+    set_has_allconnections();
+    requestMessage_.allconnections_ = new ::AllConnections;
   }
-  // @@protoc_insertion_point(field_mutable:MattiResponse.connections)
-  return requestMessage_.connections_;
+  // @@protoc_insertion_point(field_mutable:MattiResponse.allConnections)
+  return requestMessage_.allconnections_;
 }
-inline ::AllConnections* MattiResponse::release_connections() {
-  if (has_connections()) {
+inline ::AllConnections* MattiResponse::release_allconnections() {
+  if (has_allconnections()) {
     clear_has_requestMessage();
-    ::AllConnections* temp = requestMessage_.connections_;
-    requestMessage_.connections_ = NULL;
+    ::AllConnections* temp = requestMessage_.allconnections_;
+    requestMessage_.allconnections_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiResponse::set_allocated_connections(::AllConnections* connections) {
+inline void MattiResponse::set_allocated_allconnections(::AllConnections* allconnections) {
   clear_requestMessage();
-  if (connections) {
-    set_has_connections();
-    requestMessage_.connections_ = connections;
+  if (allconnections) {
+    set_has_allconnections();
+    requestMessage_.allconnections_ = allconnections;
   }
-  // @@protoc_insertion_point(field_set_allocated:MattiResponse.connections)
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.allConnections)
 }
 
-// optional .Matrixs matrixs = 8;
+// optional .MatrixProtos matrixs = 8;
 inline bool MattiResponse::has_matrixs() const {
   return requestMessage_case() == kMatrixs;
 }
@@ -562,32 +588,32 @@ inline void MattiResponse::clear_matrixs() {
     clear_has_requestMessage();
   }
 }
-inline  const ::Matrixs& MattiResponse::matrixs() const {
+inline  const ::MatrixProtos& MattiResponse::matrixs() const {
   // @@protoc_insertion_point(field_get:MattiResponse.matrixs)
   return has_matrixs()
       ? *requestMessage_.matrixs_
-      : ::Matrixs::default_instance();
+      : ::MatrixProtos::default_instance();
 }
-inline ::Matrixs* MattiResponse::mutable_matrixs() {
+inline ::MatrixProtos* MattiResponse::mutable_matrixs() {
   if (!has_matrixs()) {
     clear_requestMessage();
     set_has_matrixs();
-    requestMessage_.matrixs_ = new ::Matrixs;
+    requestMessage_.matrixs_ = new ::MatrixProtos;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.matrixs)
   return requestMessage_.matrixs_;
 }
-inline ::Matrixs* MattiResponse::release_matrixs() {
+inline ::MatrixProtos* MattiResponse::release_matrixs() {
   if (has_matrixs()) {
     clear_has_requestMessage();
-    ::Matrixs* temp = requestMessage_.matrixs_;
+    ::MatrixProtos* temp = requestMessage_.matrixs_;
     requestMessage_.matrixs_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiResponse::set_allocated_matrixs(::Matrixs* matrixs) {
+inline void MattiResponse::set_allocated_matrixs(::MatrixProtos* matrixs) {
   clear_requestMessage();
   if (matrixs) {
     set_has_matrixs();
@@ -596,7 +622,7 @@ inline void MattiResponse::set_allocated_matrixs(::Matrixs* matrixs) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.matrixs)
 }
 
-// optional .Timers timers = 9;
+// optional .TimerProtos timers = 9;
 inline bool MattiResponse::has_timers() const {
   return requestMessage_case() == kTimers;
 }
@@ -609,32 +635,32 @@ inline void MattiResponse::clear_timers() {
     clear_has_requestMessage();
   }
 }
-inline  const ::Timers& MattiResponse::timers() const {
+inline  const ::TimerProtos& MattiResponse::timers() const {
   // @@protoc_insertion_point(field_get:MattiResponse.timers)
   return has_timers()
       ? *requestMessage_.timers_
-      : ::Timers::default_instance();
+      : ::TimerProtos::default_instance();
 }
-inline ::Timers* MattiResponse::mutable_timers() {
+inline ::TimerProtos* MattiResponse::mutable_timers() {
   if (!has_timers()) {
     clear_requestMessage();
     set_has_timers();
-    requestMessage_.timers_ = new ::Timers;
+    requestMessage_.timers_ = new ::TimerProtos;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.timers)
   return requestMessage_.timers_;
 }
-inline ::Timers* MattiResponse::release_timers() {
+inline ::TimerProtos* MattiResponse::release_timers() {
   if (has_timers()) {
     clear_has_requestMessage();
-    ::Timers* temp = requestMessage_.timers_;
+    ::TimerProtos* temp = requestMessage_.timers_;
     requestMessage_.timers_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiResponse::set_allocated_timers(::Timers* timers) {
+inline void MattiResponse::set_allocated_timers(::TimerProtos* timers) {
   clear_requestMessage();
   if (timers) {
     set_has_timers();
@@ -643,7 +669,7 @@ inline void MattiResponse::set_allocated_timers(::Timers* timers) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.timers)
 }
 
-// optional .Programs programs = 10;
+// optional .ProgramProtos programs = 10;
 inline bool MattiResponse::has_programs() const {
   return requestMessage_case() == kPrograms;
 }
@@ -656,38 +682,132 @@ inline void MattiResponse::clear_programs() {
     clear_has_requestMessage();
   }
 }
-inline  const ::Programs& MattiResponse::programs() const {
+inline  const ::ProgramProtos& MattiResponse::programs() const {
   // @@protoc_insertion_point(field_get:MattiResponse.programs)
   return has_programs()
       ? *requestMessage_.programs_
-      : ::Programs::default_instance();
+      : ::ProgramProtos::default_instance();
 }
-inline ::Programs* MattiResponse::mutable_programs() {
+inline ::ProgramProtos* MattiResponse::mutable_programs() {
   if (!has_programs()) {
     clear_requestMessage();
     set_has_programs();
-    requestMessage_.programs_ = new ::Programs;
+    requestMessage_.programs_ = new ::ProgramProtos;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.programs)
   return requestMessage_.programs_;
 }
-inline ::Programs* MattiResponse::release_programs() {
+inline ::ProgramProtos* MattiResponse::release_programs() {
   if (has_programs()) {
     clear_has_requestMessage();
-    ::Programs* temp = requestMessage_.programs_;
+    ::ProgramProtos* temp = requestMessage_.programs_;
     requestMessage_.programs_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiResponse::set_allocated_programs(::Programs* programs) {
+inline void MattiResponse::set_allocated_programs(::ProgramProtos* programs) {
   clear_requestMessage();
   if (programs) {
     set_has_programs();
     requestMessage_.programs_ = programs;
   }
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.programs)
+}
+
+// optional .LockProto lockProto = 11;
+inline bool MattiResponse::has_lockproto() const {
+  return requestMessage_case() == kLockProto;
+}
+inline void MattiResponse::set_has_lockproto() {
+  _oneof_case_[0] = kLockProto;
+}
+inline void MattiResponse::clear_lockproto() {
+  if (has_lockproto()) {
+    delete requestMessage_.lockproto_;
+    clear_has_requestMessage();
+  }
+}
+inline  const ::LockProto& MattiResponse::lockproto() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.lockProto)
+  return has_lockproto()
+      ? *requestMessage_.lockproto_
+      : ::LockProto::default_instance();
+}
+inline ::LockProto* MattiResponse::mutable_lockproto() {
+  if (!has_lockproto()) {
+    clear_requestMessage();
+    set_has_lockproto();
+    requestMessage_.lockproto_ = new ::LockProto;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.lockProto)
+  return requestMessage_.lockproto_;
+}
+inline ::LockProto* MattiResponse::release_lockproto() {
+  if (has_lockproto()) {
+    clear_has_requestMessage();
+    ::LockProto* temp = requestMessage_.lockproto_;
+    requestMessage_.lockproto_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void MattiResponse::set_allocated_lockproto(::LockProto* lockproto) {
+  clear_requestMessage();
+  if (lockproto) {
+    set_has_lockproto();
+    requestMessage_.lockproto_ = lockproto;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.lockProto)
+}
+
+// optional .LockProtos lockProtos = 12;
+inline bool MattiResponse::has_lockprotos() const {
+  return requestMessage_case() == kLockProtos;
+}
+inline void MattiResponse::set_has_lockprotos() {
+  _oneof_case_[0] = kLockProtos;
+}
+inline void MattiResponse::clear_lockprotos() {
+  if (has_lockprotos()) {
+    delete requestMessage_.lockprotos_;
+    clear_has_requestMessage();
+  }
+}
+inline  const ::LockProtos& MattiResponse::lockprotos() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.lockProtos)
+  return has_lockprotos()
+      ? *requestMessage_.lockprotos_
+      : ::LockProtos::default_instance();
+}
+inline ::LockProtos* MattiResponse::mutable_lockprotos() {
+  if (!has_lockprotos()) {
+    clear_requestMessage();
+    set_has_lockprotos();
+    requestMessage_.lockprotos_ = new ::LockProtos;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.lockProtos)
+  return requestMessage_.lockprotos_;
+}
+inline ::LockProtos* MattiResponse::release_lockprotos() {
+  if (has_lockprotos()) {
+    clear_has_requestMessage();
+    ::LockProtos* temp = requestMessage_.lockprotos_;
+    requestMessage_.lockprotos_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void MattiResponse::set_allocated_lockprotos(::LockProtos* lockprotos) {
+  clear_requestMessage();
+  if (lockprotos) {
+    set_has_lockprotos();
+    requestMessage_.lockprotos_ = lockprotos;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.lockProtos)
 }
 
 inline bool MattiResponse::has_requestMessage() const {

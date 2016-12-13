@@ -78,10 +78,14 @@ void protobuf_AddDesc_AllConnections_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::protobuf_AddDesc_VideoConnections_2eproto();
+  ::protobuf_AddDesc_KwmConnections_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\024AllConnections.proto\"T\n\016AllConnections"
-    "\022\030\n\020videoConnections\030\001 \003(\r\022\026\n\016kwmConnect"
-    "ions\030\002 \003(\r\022\020\n\010matrixId\030\003 \001(\rb\006proto3", 116);
+    "\n\024AllConnections.proto\032\026VideoConnections"
+    ".proto\032\024KwmConnections.proto\"x\n\016AllConne"
+    "ctions\022+\n\020videoConnections\030\001 \001(\0132\021.Video"
+    "Connections\022\'\n\016kwmConnections\030\002 \001(\0132\017.Kw"
+    "mConnections\022\020\n\010matrixId\030\003 \001(\rb\006proto3", 198);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "AllConnections.proto", &protobuf_RegisterTypes);
   AllConnections::default_instance_ = new AllConnections();
@@ -122,6 +126,8 @@ AllConnections::AllConnections()
 
 void AllConnections::InitAsDefaultInstance() {
   _is_default_instance_ = true;
+  videoconnections_ = const_cast< ::VideoConnections*>(&::VideoConnections::default_instance());
+  kwmconnections_ = const_cast< ::KwmConnections*>(&::KwmConnections::default_instance());
 }
 
 AllConnections::AllConnections(const AllConnections& from)
@@ -135,6 +141,8 @@ AllConnections::AllConnections(const AllConnections& from)
 void AllConnections::SharedCtor() {
     _is_default_instance_ = false;
   _cached_size_ = 0;
+  videoconnections_ = NULL;
+  kwmconnections_ = NULL;
   matrixid_ = 0u;
 }
 
@@ -145,6 +153,8 @@ AllConnections::~AllConnections() {
 
 void AllConnections::SharedDtor() {
   if (this != default_instance_) {
+    delete videoconnections_;
+    delete kwmconnections_;
   }
 }
 
@@ -174,9 +184,11 @@ AllConnections* AllConnections::New(::google::protobuf::Arena* arena) const {
 }
 
 void AllConnections::Clear() {
+  if (GetArenaNoVirtual() == NULL && videoconnections_ != NULL) delete videoconnections_;
+  videoconnections_ = NULL;
+  if (GetArenaNoVirtual() == NULL && kwmconnections_ != NULL) delete kwmconnections_;
+  kwmconnections_ = NULL;
   matrixid_ = 0u;
-  videoconnections_.Clear();
-  kwmconnections_.Clear();
 }
 
 bool AllConnections::MergePartialFromCodedStream(
@@ -189,16 +201,11 @@ bool AllConnections::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated uint32 videoConnections = 1;
+      // optional .VideoConnections videoConnections = 1;
       case 1: {
         if (tag == 10) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, this->mutable_videoconnections())));
-        } else if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 1, 10, input, this->mutable_videoconnections())));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_videoconnections()));
         } else {
           goto handle_unusual;
         }
@@ -206,17 +213,12 @@ bool AllConnections::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated uint32 kwmConnections = 2;
+      // optional .KwmConnections kwmConnections = 2;
       case 2: {
         if (tag == 18) {
          parse_kwmConnections:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, this->mutable_kwmconnections())));
-        } else if (tag == 16) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 1, 18, input, this->mutable_kwmconnections())));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_kwmconnections()));
         } else {
           goto handle_unusual;
         }
@@ -263,24 +265,16 @@ failure:
 void AllConnections::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:AllConnections)
-  // repeated uint32 videoConnections = 1;
-  if (this->videoconnections_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(1, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(_videoconnections_cached_byte_size_);
-  }
-  for (int i = 0; i < this->videoconnections_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
-      this->videoconnections(i), output);
+  // optional .VideoConnections videoConnections = 1;
+  if (this->has_videoconnections()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->videoconnections_, output);
   }
 
-  // repeated uint32 kwmConnections = 2;
-  if (this->kwmconnections_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(2, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(_kwmconnections_cached_byte_size_);
-  }
-  for (int i = 0; i < this->kwmconnections_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
-      this->kwmconnections(i), output);
+  // optional .KwmConnections kwmConnections = 2;
+  if (this->has_kwmconnections()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *this->kwmconnections_, output);
   }
 
   // optional uint32 matrixId = 3;
@@ -294,32 +288,18 @@ void AllConnections::SerializeWithCachedSizes(
 ::google::protobuf::uint8* AllConnections::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:AllConnections)
-  // repeated uint32 videoConnections = 1;
-  if (this->videoconnections_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      1,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-      _videoconnections_cached_byte_size_, target);
-  }
-  for (int i = 0; i < this->videoconnections_size(); i++) {
+  // optional .VideoConnections videoConnections = 1;
+  if (this->has_videoconnections()) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt32NoTagToArray(this->videoconnections(i), target);
+      WriteMessageNoVirtualToArray(
+        1, *this->videoconnections_, target);
   }
 
-  // repeated uint32 kwmConnections = 2;
-  if (this->kwmconnections_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      2,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-      _kwmconnections_cached_byte_size_, target);
-  }
-  for (int i = 0; i < this->kwmconnections_size(); i++) {
+  // optional .KwmConnections kwmConnections = 2;
+  if (this->has_kwmconnections()) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt32NoTagToArray(this->kwmconnections(i), target);
+      WriteMessageNoVirtualToArray(
+        2, *this->kwmconnections_, target);
   }
 
   // optional uint32 matrixId = 3;
@@ -334,45 +314,25 @@ void AllConnections::SerializeWithCachedSizes(
 int AllConnections::ByteSize() const {
   int total_size = 0;
 
+  // optional .VideoConnections videoConnections = 1;
+  if (this->has_videoconnections()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->videoconnections_);
+  }
+
+  // optional .KwmConnections kwmConnections = 2;
+  if (this->has_kwmconnections()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->kwmconnections_);
+  }
+
   // optional uint32 matrixId = 3;
   if (this->matrixid() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->matrixid());
-  }
-
-  // repeated uint32 videoConnections = 1;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->videoconnections_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        UInt32Size(this->videoconnections(i));
-    }
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
-    }
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _videoconnections_cached_byte_size_ = data_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated uint32 kwmConnections = 2;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->kwmconnections_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        UInt32Size(this->kwmconnections(i));
-    }
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
-    }
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _kwmconnections_cached_byte_size_ = data_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -395,8 +355,12 @@ void AllConnections::MergeFrom(const ::google::protobuf::Message& from) {
 
 void AllConnections::MergeFrom(const AllConnections& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  videoconnections_.MergeFrom(from.videoconnections_);
-  kwmconnections_.MergeFrom(from.kwmconnections_);
+  if (from.has_videoconnections()) {
+    mutable_videoconnections()->::VideoConnections::MergeFrom(from.videoconnections());
+  }
+  if (from.has_kwmconnections()) {
+    mutable_kwmconnections()->::KwmConnections::MergeFrom(from.kwmconnections());
+  }
   if (from.matrixid() != 0) {
     set_matrixid(from.matrixid());
   }
@@ -424,8 +388,8 @@ void AllConnections::Swap(AllConnections* other) {
   InternalSwap(other);
 }
 void AllConnections::InternalSwap(AllConnections* other) {
-  videoconnections_.UnsafeArenaSwap(&other->videoconnections_);
-  kwmconnections_.UnsafeArenaSwap(&other->kwmconnections_);
+  std::swap(videoconnections_, other->videoconnections_);
+  std::swap(kwmconnections_, other->kwmconnections_);
   std::swap(matrixid_, other->matrixid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -442,64 +406,78 @@ void AllConnections::InternalSwap(AllConnections* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // AllConnections
 
-// repeated uint32 videoConnections = 1;
-int AllConnections::videoconnections_size() const {
-  return videoconnections_.size();
+// optional .VideoConnections videoConnections = 1;
+bool AllConnections::has_videoconnections() const {
+  return !_is_default_instance_ && videoconnections_ != NULL;
 }
 void AllConnections::clear_videoconnections() {
-  videoconnections_.Clear();
+  if (GetArenaNoVirtual() == NULL && videoconnections_ != NULL) delete videoconnections_;
+  videoconnections_ = NULL;
 }
- ::google::protobuf::uint32 AllConnections::videoconnections(int index) const {
+const ::VideoConnections& AllConnections::videoconnections() const {
   // @@protoc_insertion_point(field_get:AllConnections.videoConnections)
-  return videoconnections_.Get(index);
+  return videoconnections_ != NULL ? *videoconnections_ : *default_instance_->videoconnections_;
 }
- void AllConnections::set_videoconnections(int index, ::google::protobuf::uint32 value) {
-  videoconnections_.Set(index, value);
-  // @@protoc_insertion_point(field_set:AllConnections.videoConnections)
-}
- void AllConnections::add_videoconnections(::google::protobuf::uint32 value) {
-  videoconnections_.Add(value);
-  // @@protoc_insertion_point(field_add:AllConnections.videoConnections)
-}
- const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-AllConnections::videoconnections() const {
-  // @@protoc_insertion_point(field_list:AllConnections.videoConnections)
+::VideoConnections* AllConnections::mutable_videoconnections() {
+  
+  if (videoconnections_ == NULL) {
+    videoconnections_ = new ::VideoConnections;
+  }
+  // @@protoc_insertion_point(field_mutable:AllConnections.videoConnections)
   return videoconnections_;
 }
- ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-AllConnections::mutable_videoconnections() {
-  // @@protoc_insertion_point(field_mutable_list:AllConnections.videoConnections)
-  return &videoconnections_;
+::VideoConnections* AllConnections::release_videoconnections() {
+  
+  ::VideoConnections* temp = videoconnections_;
+  videoconnections_ = NULL;
+  return temp;
+}
+void AllConnections::set_allocated_videoconnections(::VideoConnections* videoconnections) {
+  delete videoconnections_;
+  videoconnections_ = videoconnections;
+  if (videoconnections) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:AllConnections.videoConnections)
 }
 
-// repeated uint32 kwmConnections = 2;
-int AllConnections::kwmconnections_size() const {
-  return kwmconnections_.size();
+// optional .KwmConnections kwmConnections = 2;
+bool AllConnections::has_kwmconnections() const {
+  return !_is_default_instance_ && kwmconnections_ != NULL;
 }
 void AllConnections::clear_kwmconnections() {
-  kwmconnections_.Clear();
+  if (GetArenaNoVirtual() == NULL && kwmconnections_ != NULL) delete kwmconnections_;
+  kwmconnections_ = NULL;
 }
- ::google::protobuf::uint32 AllConnections::kwmconnections(int index) const {
+const ::KwmConnections& AllConnections::kwmconnections() const {
   // @@protoc_insertion_point(field_get:AllConnections.kwmConnections)
-  return kwmconnections_.Get(index);
+  return kwmconnections_ != NULL ? *kwmconnections_ : *default_instance_->kwmconnections_;
 }
- void AllConnections::set_kwmconnections(int index, ::google::protobuf::uint32 value) {
-  kwmconnections_.Set(index, value);
-  // @@protoc_insertion_point(field_set:AllConnections.kwmConnections)
-}
- void AllConnections::add_kwmconnections(::google::protobuf::uint32 value) {
-  kwmconnections_.Add(value);
-  // @@protoc_insertion_point(field_add:AllConnections.kwmConnections)
-}
- const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-AllConnections::kwmconnections() const {
-  // @@protoc_insertion_point(field_list:AllConnections.kwmConnections)
+::KwmConnections* AllConnections::mutable_kwmconnections() {
+  
+  if (kwmconnections_ == NULL) {
+    kwmconnections_ = new ::KwmConnections;
+  }
+  // @@protoc_insertion_point(field_mutable:AllConnections.kwmConnections)
   return kwmconnections_;
 }
- ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-AllConnections::mutable_kwmconnections() {
-  // @@protoc_insertion_point(field_mutable_list:AllConnections.kwmConnections)
-  return &kwmconnections_;
+::KwmConnections* AllConnections::release_kwmconnections() {
+  
+  ::KwmConnections* temp = kwmconnections_;
+  kwmconnections_ = NULL;
+  return temp;
+}
+void AllConnections::set_allocated_kwmconnections(::KwmConnections* kwmconnections) {
+  delete kwmconnections_;
+  kwmconnections_ = kwmconnections;
+  if (kwmconnections) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:AllConnections.kwmConnections)
 }
 
 // optional uint32 matrixId = 3;

@@ -29,9 +29,10 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "VideoConnection.pb.h"
 #include "KwmConnection.pb.h"
-#include "Matrix.pb.h"
-#include "Program.pb.h"
-#include "Timer.pb.h"
+#include "MatrixProto.pb.h"
+#include "TimerProto.pb.h"
+#include "ProgramProto.pb.h"
+#include "LockProto.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Internal implementation detail -- do not call these.
@@ -66,11 +67,13 @@ class MattiRequest : public ::google::protobuf::Message {
     kInsertMatrix = 6,
     kInsertTimer = 7,
     kInsertProgram = 8,
-    kRemoveVideoConnection = 9,
-    kRemoveKwmConnection = 10,
-    kRemoveMatrix = 11,
-    kRemoveTimer = 12,
-    kRemoveProgram = 13,
+    kInsertLock = 9,
+    kRemoveVideoConnection = 10,
+    kRemoveKwmConnection = 11,
+    kRemoveMatrix = 12,
+    kRemoveTimer = 13,
+    kRemoveProgram = 14,
+    kRemoveLock = 15,
     REQUESTMESSAGE_NOT_SET = 0,
   };
 
@@ -166,68 +169,86 @@ class MattiRequest : public ::google::protobuf::Message {
   ::MatrixProto* release_insertmatrix();
   void set_allocated_insertmatrix(::MatrixProto* insertmatrix);
 
-  // optional .Timer insertTimer = 7;
+  // optional .TimerProto insertTimer = 7;
   bool has_inserttimer() const;
   void clear_inserttimer();
   static const int kInsertTimerFieldNumber = 7;
-  const ::Timer& inserttimer() const;
-  ::Timer* mutable_inserttimer();
-  ::Timer* release_inserttimer();
-  void set_allocated_inserttimer(::Timer* inserttimer);
+  const ::TimerProto& inserttimer() const;
+  ::TimerProto* mutable_inserttimer();
+  ::TimerProto* release_inserttimer();
+  void set_allocated_inserttimer(::TimerProto* inserttimer);
 
-  // optional .Program insertProgram = 8;
+  // optional .ProgramProto insertProgram = 8;
   bool has_insertprogram() const;
   void clear_insertprogram();
   static const int kInsertProgramFieldNumber = 8;
-  const ::Program& insertprogram() const;
-  ::Program* mutable_insertprogram();
-  ::Program* release_insertprogram();
-  void set_allocated_insertprogram(::Program* insertprogram);
+  const ::ProgramProto& insertprogram() const;
+  ::ProgramProto* mutable_insertprogram();
+  ::ProgramProto* release_insertprogram();
+  void set_allocated_insertprogram(::ProgramProto* insertprogram);
 
-  // optional uint32 removeVideoConnection = 9;
+  // optional .LockProto insertLock = 9;
+  bool has_insertlock() const;
+  void clear_insertlock();
+  static const int kInsertLockFieldNumber = 9;
+  const ::LockProto& insertlock() const;
+  ::LockProto* mutable_insertlock();
+  ::LockProto* release_insertlock();
+  void set_allocated_insertlock(::LockProto* insertlock);
+
+  // optional uint32 removeVideoConnection = 10;
   private:
   bool has_removevideoconnection() const;
   public:
   void clear_removevideoconnection();
-  static const int kRemoveVideoConnectionFieldNumber = 9;
+  static const int kRemoveVideoConnectionFieldNumber = 10;
   ::google::protobuf::uint32 removevideoconnection() const;
   void set_removevideoconnection(::google::protobuf::uint32 value);
 
-  // optional uint32 removeKwmConnection = 10;
+  // optional uint32 removeKwmConnection = 11;
   private:
   bool has_removekwmconnection() const;
   public:
   void clear_removekwmconnection();
-  static const int kRemoveKwmConnectionFieldNumber = 10;
+  static const int kRemoveKwmConnectionFieldNumber = 11;
   ::google::protobuf::uint32 removekwmconnection() const;
   void set_removekwmconnection(::google::protobuf::uint32 value);
 
-  // optional uint32 removeMatrix = 11;
+  // optional uint32 removeMatrix = 12;
   private:
   bool has_removematrix() const;
   public:
   void clear_removematrix();
-  static const int kRemoveMatrixFieldNumber = 11;
+  static const int kRemoveMatrixFieldNumber = 12;
   ::google::protobuf::uint32 removematrix() const;
   void set_removematrix(::google::protobuf::uint32 value);
 
-  // optional uint32 removeTimer = 12;
+  // optional uint32 removeTimer = 13;
   private:
   bool has_removetimer() const;
   public:
   void clear_removetimer();
-  static const int kRemoveTimerFieldNumber = 12;
+  static const int kRemoveTimerFieldNumber = 13;
   ::google::protobuf::uint32 removetimer() const;
   void set_removetimer(::google::protobuf::uint32 value);
 
-  // optional uint32 removeProgram = 13;
+  // optional uint32 removeProgram = 14;
   private:
   bool has_removeprogram() const;
   public:
   void clear_removeprogram();
-  static const int kRemoveProgramFieldNumber = 13;
+  static const int kRemoveProgramFieldNumber = 14;
   ::google::protobuf::uint32 removeprogram() const;
   void set_removeprogram(::google::protobuf::uint32 value);
+
+  // optional uint32 removeLock = 15;
+  private:
+  bool has_removelock() const;
+  public:
+  void clear_removelock();
+  static const int kRemoveLockFieldNumber = 15;
+  ::google::protobuf::uint32 removelock() const;
+  void set_removelock(::google::protobuf::uint32 value);
 
   RequestMessageCase requestMessage_case() const;
   // @@protoc_insertion_point(class_scope:MattiRequest)
@@ -239,11 +260,13 @@ class MattiRequest : public ::google::protobuf::Message {
   inline void set_has_insertmatrix();
   inline void set_has_inserttimer();
   inline void set_has_insertprogram();
+  inline void set_has_insertlock();
   inline void set_has_removevideoconnection();
   inline void set_has_removekwmconnection();
   inline void set_has_removematrix();
   inline void set_has_removetimer();
   inline void set_has_removeprogram();
+  inline void set_has_removelock();
 
   inline bool has_requestMessage() const;
   void clear_requestMessage();
@@ -259,13 +282,15 @@ class MattiRequest : public ::google::protobuf::Message {
     ::VideoConnection* insertvideoconnection_;
     ::KwmConnection* insertkwmconnection_;
     ::MatrixProto* insertmatrix_;
-    ::Timer* inserttimer_;
-    ::Program* insertprogram_;
+    ::TimerProto* inserttimer_;
+    ::ProgramProto* insertprogram_;
+    ::LockProto* insertlock_;
     ::google::protobuf::uint32 removevideoconnection_;
     ::google::protobuf::uint32 removekwmconnection_;
     ::google::protobuf::uint32 removematrix_;
     ::google::protobuf::uint32 removetimer_;
     ::google::protobuf::uint32 removeprogram_;
+    ::google::protobuf::uint32 removelock_;
   } requestMessage_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -498,7 +523,7 @@ inline void MattiRequest::set_allocated_insertmatrix(::MatrixProto* insertmatrix
   // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertMatrix)
 }
 
-// optional .Timer insertTimer = 7;
+// optional .TimerProto insertTimer = 7;
 inline bool MattiRequest::has_inserttimer() const {
   return requestMessage_case() == kInsertTimer;
 }
@@ -511,32 +536,32 @@ inline void MattiRequest::clear_inserttimer() {
     clear_has_requestMessage();
   }
 }
-inline  const ::Timer& MattiRequest::inserttimer() const {
+inline  const ::TimerProto& MattiRequest::inserttimer() const {
   // @@protoc_insertion_point(field_get:MattiRequest.insertTimer)
   return has_inserttimer()
       ? *requestMessage_.inserttimer_
-      : ::Timer::default_instance();
+      : ::TimerProto::default_instance();
 }
-inline ::Timer* MattiRequest::mutable_inserttimer() {
+inline ::TimerProto* MattiRequest::mutable_inserttimer() {
   if (!has_inserttimer()) {
     clear_requestMessage();
     set_has_inserttimer();
-    requestMessage_.inserttimer_ = new ::Timer;
+    requestMessage_.inserttimer_ = new ::TimerProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiRequest.insertTimer)
   return requestMessage_.inserttimer_;
 }
-inline ::Timer* MattiRequest::release_inserttimer() {
+inline ::TimerProto* MattiRequest::release_inserttimer() {
   if (has_inserttimer()) {
     clear_has_requestMessage();
-    ::Timer* temp = requestMessage_.inserttimer_;
+    ::TimerProto* temp = requestMessage_.inserttimer_;
     requestMessage_.inserttimer_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiRequest::set_allocated_inserttimer(::Timer* inserttimer) {
+inline void MattiRequest::set_allocated_inserttimer(::TimerProto* inserttimer) {
   clear_requestMessage();
   if (inserttimer) {
     set_has_inserttimer();
@@ -545,7 +570,7 @@ inline void MattiRequest::set_allocated_inserttimer(::Timer* inserttimer) {
   // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertTimer)
 }
 
-// optional .Program insertProgram = 8;
+// optional .ProgramProto insertProgram = 8;
 inline bool MattiRequest::has_insertprogram() const {
   return requestMessage_case() == kInsertProgram;
 }
@@ -558,32 +583,32 @@ inline void MattiRequest::clear_insertprogram() {
     clear_has_requestMessage();
   }
 }
-inline  const ::Program& MattiRequest::insertprogram() const {
+inline  const ::ProgramProto& MattiRequest::insertprogram() const {
   // @@protoc_insertion_point(field_get:MattiRequest.insertProgram)
   return has_insertprogram()
       ? *requestMessage_.insertprogram_
-      : ::Program::default_instance();
+      : ::ProgramProto::default_instance();
 }
-inline ::Program* MattiRequest::mutable_insertprogram() {
+inline ::ProgramProto* MattiRequest::mutable_insertprogram() {
   if (!has_insertprogram()) {
     clear_requestMessage();
     set_has_insertprogram();
-    requestMessage_.insertprogram_ = new ::Program;
+    requestMessage_.insertprogram_ = new ::ProgramProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiRequest.insertProgram)
   return requestMessage_.insertprogram_;
 }
-inline ::Program* MattiRequest::release_insertprogram() {
+inline ::ProgramProto* MattiRequest::release_insertprogram() {
   if (has_insertprogram()) {
     clear_has_requestMessage();
-    ::Program* temp = requestMessage_.insertprogram_;
+    ::ProgramProto* temp = requestMessage_.insertprogram_;
     requestMessage_.insertprogram_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void MattiRequest::set_allocated_insertprogram(::Program* insertprogram) {
+inline void MattiRequest::set_allocated_insertprogram(::ProgramProto* insertprogram) {
   clear_requestMessage();
   if (insertprogram) {
     set_has_insertprogram();
@@ -592,7 +617,54 @@ inline void MattiRequest::set_allocated_insertprogram(::Program* insertprogram) 
   // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertProgram)
 }
 
-// optional uint32 removeVideoConnection = 9;
+// optional .LockProto insertLock = 9;
+inline bool MattiRequest::has_insertlock() const {
+  return requestMessage_case() == kInsertLock;
+}
+inline void MattiRequest::set_has_insertlock() {
+  _oneof_case_[0] = kInsertLock;
+}
+inline void MattiRequest::clear_insertlock() {
+  if (has_insertlock()) {
+    delete requestMessage_.insertlock_;
+    clear_has_requestMessage();
+  }
+}
+inline  const ::LockProto& MattiRequest::insertlock() const {
+  // @@protoc_insertion_point(field_get:MattiRequest.insertLock)
+  return has_insertlock()
+      ? *requestMessage_.insertlock_
+      : ::LockProto::default_instance();
+}
+inline ::LockProto* MattiRequest::mutable_insertlock() {
+  if (!has_insertlock()) {
+    clear_requestMessage();
+    set_has_insertlock();
+    requestMessage_.insertlock_ = new ::LockProto;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiRequest.insertLock)
+  return requestMessage_.insertlock_;
+}
+inline ::LockProto* MattiRequest::release_insertlock() {
+  if (has_insertlock()) {
+    clear_has_requestMessage();
+    ::LockProto* temp = requestMessage_.insertlock_;
+    requestMessage_.insertlock_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void MattiRequest::set_allocated_insertlock(::LockProto* insertlock) {
+  clear_requestMessage();
+  if (insertlock) {
+    set_has_insertlock();
+    requestMessage_.insertlock_ = insertlock;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertLock)
+}
+
+// optional uint32 removeVideoConnection = 10;
 inline bool MattiRequest::has_removevideoconnection() const {
   return requestMessage_case() == kRemoveVideoConnection;
 }
@@ -621,7 +693,7 @@ inline void MattiRequest::set_removevideoconnection(::google::protobuf::uint32 v
   // @@protoc_insertion_point(field_set:MattiRequest.removeVideoConnection)
 }
 
-// optional uint32 removeKwmConnection = 10;
+// optional uint32 removeKwmConnection = 11;
 inline bool MattiRequest::has_removekwmconnection() const {
   return requestMessage_case() == kRemoveKwmConnection;
 }
@@ -650,7 +722,7 @@ inline void MattiRequest::set_removekwmconnection(::google::protobuf::uint32 val
   // @@protoc_insertion_point(field_set:MattiRequest.removeKwmConnection)
 }
 
-// optional uint32 removeMatrix = 11;
+// optional uint32 removeMatrix = 12;
 inline bool MattiRequest::has_removematrix() const {
   return requestMessage_case() == kRemoveMatrix;
 }
@@ -679,7 +751,7 @@ inline void MattiRequest::set_removematrix(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:MattiRequest.removeMatrix)
 }
 
-// optional uint32 removeTimer = 12;
+// optional uint32 removeTimer = 13;
 inline bool MattiRequest::has_removetimer() const {
   return requestMessage_case() == kRemoveTimer;
 }
@@ -708,7 +780,7 @@ inline void MattiRequest::set_removetimer(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:MattiRequest.removeTimer)
 }
 
-// optional uint32 removeProgram = 13;
+// optional uint32 removeProgram = 14;
 inline bool MattiRequest::has_removeprogram() const {
   return requestMessage_case() == kRemoveProgram;
 }
@@ -735,6 +807,35 @@ inline void MattiRequest::set_removeprogram(::google::protobuf::uint32 value) {
   }
   requestMessage_.removeprogram_ = value;
   // @@protoc_insertion_point(field_set:MattiRequest.removeProgram)
+}
+
+// optional uint32 removeLock = 15;
+inline bool MattiRequest::has_removelock() const {
+  return requestMessage_case() == kRemoveLock;
+}
+inline void MattiRequest::set_has_removelock() {
+  _oneof_case_[0] = kRemoveLock;
+}
+inline void MattiRequest::clear_removelock() {
+  if (has_removelock()) {
+    requestMessage_.removelock_ = 0u;
+    clear_has_requestMessage();
+  }
+}
+inline ::google::protobuf::uint32 MattiRequest::removelock() const {
+  // @@protoc_insertion_point(field_get:MattiRequest.removeLock)
+  if (has_removelock()) {
+    return requestMessage_.removelock_;
+  }
+  return 0u;
+}
+inline void MattiRequest::set_removelock(::google::protobuf::uint32 value) {
+  if (!has_removelock()) {
+    clear_requestMessage();
+    set_has_removelock();
+  }
+  requestMessage_.removelock_ = value;
+  // @@protoc_insertion_point(field_set:MattiRequest.removeLock)
 }
 
 inline bool MattiRequest::has_requestMessage() const {

@@ -34,7 +34,7 @@ void protobuf_AssignDesc_KwmConnections_2eproto() {
   GOOGLE_CHECK(file != NULL);
   KwmConnections_descriptor_ = file->message_type(0);
   static const int KwmConnections_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KwmConnections, kwmconnections_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KwmConnections, kwmconnection_),
   };
   KwmConnections_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -79,8 +79,8 @@ void protobuf_AddDesc_KwmConnections_2eproto() {
   ::protobuf_AddDesc_KwmConnection_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\024KwmConnections.proto\032\023KwmConnection.pr"
-    "oto\"8\n\016KwmConnections\022&\n\016kwmConnections\030"
-    "\001 \003(\0132\016.KwmConnectionb\006proto3", 109);
+    "oto\"7\n\016KwmConnections\022%\n\rkwmConnection\030\001"
+    " \003(\0132\016.KwmConnectionb\006proto3", 108);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "KwmConnections.proto", &protobuf_RegisterTypes);
   KwmConnections::default_instance_ = new KwmConnections();
@@ -108,7 +108,7 @@ static void MergeFromFail(int line) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int KwmConnections::kKwmConnectionsFieldNumber;
+const int KwmConnections::kKwmConnectionFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 KwmConnections::KwmConnections()
@@ -170,7 +170,7 @@ KwmConnections* KwmConnections::New(::google::protobuf::Arena* arena) const {
 }
 
 void KwmConnections::Clear() {
-  kwmconnections_.Clear();
+  kwmconnection_.Clear();
 }
 
 bool KwmConnections::MergePartialFromCodedStream(
@@ -183,17 +183,17 @@ bool KwmConnections::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .KwmConnection kwmConnections = 1;
+      // repeated .KwmConnection kwmConnection = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
-         parse_loop_kwmConnections:
+         parse_loop_kwmConnection:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_kwmconnections()));
+                input, add_kwmconnection()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(10)) goto parse_loop_kwmConnections;
+        if (input->ExpectTag(10)) goto parse_loop_kwmConnection;
         input->UnsafeDecrementRecursionDepth();
         if (input->ExpectAtEnd()) goto success;
         break;
@@ -223,10 +223,10 @@ failure:
 void KwmConnections::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:KwmConnections)
-  // repeated .KwmConnection kwmConnections = 1;
-  for (unsigned int i = 0, n = this->kwmconnections_size(); i < n; i++) {
+  // repeated .KwmConnection kwmConnection = 1;
+  for (unsigned int i = 0, n = this->kwmconnection_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->kwmconnections(i), output);
+      1, this->kwmconnection(i), output);
   }
 
   // @@protoc_insertion_point(serialize_end:KwmConnections)
@@ -235,11 +235,11 @@ void KwmConnections::SerializeWithCachedSizes(
 ::google::protobuf::uint8* KwmConnections::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:KwmConnections)
-  // repeated .KwmConnection kwmConnections = 1;
-  for (unsigned int i = 0, n = this->kwmconnections_size(); i < n; i++) {
+  // repeated .KwmConnection kwmConnection = 1;
+  for (unsigned int i = 0, n = this->kwmconnection_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->kwmconnections(i), target);
+        1, this->kwmconnection(i), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:KwmConnections)
@@ -249,12 +249,12 @@ void KwmConnections::SerializeWithCachedSizes(
 int KwmConnections::ByteSize() const {
   int total_size = 0;
 
-  // repeated .KwmConnection kwmConnections = 1;
-  total_size += 1 * this->kwmconnections_size();
-  for (int i = 0; i < this->kwmconnections_size(); i++) {
+  // repeated .KwmConnection kwmConnection = 1;
+  total_size += 1 * this->kwmconnection_size();
+  for (int i = 0; i < this->kwmconnection_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->kwmconnections(i));
+        this->kwmconnection(i));
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -277,7 +277,7 @@ void KwmConnections::MergeFrom(const ::google::protobuf::Message& from) {
 
 void KwmConnections::MergeFrom(const KwmConnections& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  kwmconnections_.MergeFrom(from.kwmconnections_);
+  kwmconnection_.MergeFrom(from.kwmconnection_);
 }
 
 void KwmConnections::CopyFrom(const ::google::protobuf::Message& from) {
@@ -302,7 +302,7 @@ void KwmConnections::Swap(KwmConnections* other) {
   InternalSwap(other);
 }
 void KwmConnections::InternalSwap(KwmConnections* other) {
-  kwmconnections_.UnsafeArenaSwap(&other->kwmconnections_);
+  kwmconnection_.UnsafeArenaSwap(&other->kwmconnection_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -318,34 +318,34 @@ void KwmConnections::InternalSwap(KwmConnections* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // KwmConnections
 
-// repeated .KwmConnection kwmConnections = 1;
-int KwmConnections::kwmconnections_size() const {
-  return kwmconnections_.size();
+// repeated .KwmConnection kwmConnection = 1;
+int KwmConnections::kwmconnection_size() const {
+  return kwmconnection_.size();
 }
-void KwmConnections::clear_kwmconnections() {
-  kwmconnections_.Clear();
+void KwmConnections::clear_kwmconnection() {
+  kwmconnection_.Clear();
 }
-const ::KwmConnection& KwmConnections::kwmconnections(int index) const {
-  // @@protoc_insertion_point(field_get:KwmConnections.kwmConnections)
-  return kwmconnections_.Get(index);
+const ::KwmConnection& KwmConnections::kwmconnection(int index) const {
+  // @@protoc_insertion_point(field_get:KwmConnections.kwmConnection)
+  return kwmconnection_.Get(index);
 }
-::KwmConnection* KwmConnections::mutable_kwmconnections(int index) {
-  // @@protoc_insertion_point(field_mutable:KwmConnections.kwmConnections)
-  return kwmconnections_.Mutable(index);
+::KwmConnection* KwmConnections::mutable_kwmconnection(int index) {
+  // @@protoc_insertion_point(field_mutable:KwmConnections.kwmConnection)
+  return kwmconnection_.Mutable(index);
 }
-::KwmConnection* KwmConnections::add_kwmconnections() {
-  // @@protoc_insertion_point(field_add:KwmConnections.kwmConnections)
-  return kwmconnections_.Add();
+::KwmConnection* KwmConnections::add_kwmconnection() {
+  // @@protoc_insertion_point(field_add:KwmConnections.kwmConnection)
+  return kwmconnection_.Add();
 }
 ::google::protobuf::RepeatedPtrField< ::KwmConnection >*
-KwmConnections::mutable_kwmconnections() {
-  // @@protoc_insertion_point(field_mutable_list:KwmConnections.kwmConnections)
-  return &kwmconnections_;
+KwmConnections::mutable_kwmconnection() {
+  // @@protoc_insertion_point(field_mutable_list:KwmConnections.kwmConnection)
+  return &kwmconnection_;
 }
 const ::google::protobuf::RepeatedPtrField< ::KwmConnection >&
-KwmConnections::kwmconnections() const {
-  // @@protoc_insertion_point(field_list:KwmConnections.kwmConnections)
-  return kwmconnections_;
+KwmConnections::kwmconnection() const {
+  // @@protoc_insertion_point(field_list:KwmConnections.kwmConnection)
+  return kwmconnection_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

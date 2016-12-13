@@ -26,12 +26,14 @@ struct MattiResponseOneofInstance {
   const ::VideoConnection* videoconnection_;
   const ::KwmConnection* kwmconnection_;
   const ::MatrixProto* matrix_;
-  const ::Timer* timer_;
-  const ::Program* program_;
-  const ::AllConnections* connections_;
-  const ::Matrixs* matrixs_;
-  const ::Timers* timers_;
-  const ::Programs* programs_;
+  const ::TimerProto* timer_;
+  const ::ProgramProto* program_;
+  const ::AllConnections* allconnections_;
+  const ::MatrixProtos* matrixs_;
+  const ::TimerProtos* timers_;
+  const ::ProgramProtos* programs_;
+  const ::LockProto* lockproto_;
+  const ::LockProtos* lockprotos_;
 }* MattiResponse_default_oneof_instance_ = NULL;
 
 }  // namespace
@@ -44,17 +46,19 @@ void protobuf_AssignDesc_MattiResponse_2eproto() {
       "MattiResponse.proto");
   GOOGLE_CHECK(file != NULL);
   MattiResponse_descriptor_ = file->message_type(0);
-  static const int MattiResponse_offsets_[11] = {
+  static const int MattiResponse_offsets_[13] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiResponse, ticket_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, videoconnection_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, kwmconnection_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, matrix_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, timer_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, program_),
-    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, connections_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, allconnections_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, matrixs_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, timers_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, programs_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, lockproto_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiResponse_default_oneof_instance_, lockprotos_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiResponse, requestMessage_),
   };
   MattiResponse_reflection_ =
@@ -102,28 +106,34 @@ void protobuf_AddDesc_MattiResponse_2eproto() {
 
   ::protobuf_AddDesc_VideoConnection_2eproto();
   ::protobuf_AddDesc_KwmConnection_2eproto();
-  ::protobuf_AddDesc_Matrix_2eproto();
-  ::protobuf_AddDesc_Program_2eproto();
-  ::protobuf_AddDesc_Timer_2eproto();
+  ::protobuf_AddDesc_MatrixProto_2eproto();
+  ::protobuf_AddDesc_MatrixProtos_2eproto();
+  ::protobuf_AddDesc_TimerProto_2eproto();
+  ::protobuf_AddDesc_TimerProtos_2eproto();
+  ::protobuf_AddDesc_ProgramProto_2eproto();
+  ::protobuf_AddDesc_ProgramProtos_2eproto();
   ::protobuf_AddDesc_AllConnections_2eproto();
-  ::protobuf_AddDesc_Matrixs_2eproto();
-  ::protobuf_AddDesc_Programs_2eproto();
-  ::protobuf_AddDesc_Timers_2eproto();
+  ::protobuf_AddDesc_LockProto_2eproto();
+  ::protobuf_AddDesc_LockProtos_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\023MattiResponse.proto\032\025VideoConnection.p"
-    "roto\032\023KwmConnection.proto\032\014Matrix.proto\032"
-    "\rProgram.proto\032\013Timer.proto\032\024AllConnecti"
-    "ons.proto\032\rMatrixs.proto\032\016Programs.proto"
-    "\032\014Timers.proto\"\334\002\n\rMattiResponse\022\016\n\006tick"
-    "et\030\001 \001(\r\022+\n\017videoConnection\030\002 \001(\0132\020.Vide"
-    "oConnectionH\000\022\'\n\rkwmConnection\030\003 \001(\0132\016.K"
-    "wmConnectionH\000\022\036\n\006matrix\030\004 \001(\0132\014.MatrixP"
-    "rotoH\000\022\027\n\005timer\030\005 \001(\0132\006.TimerH\000\022\033\n\007progr"
-    "am\030\006 \001(\0132\010.ProgramH\000\022&\n\013connections\030\007 \001("
-    "\0132\017.AllConnectionsH\000\022\033\n\007matrixs\030\010 \001(\0132\010."
-    "MatrixsH\000\022\031\n\006timers\030\t \001(\0132\007.TimersH\000\022\035\n\010"
-    "programs\030\n \001(\0132\t.ProgramsH\000B\020\n\016requestMe"
-    "ssageb\006proto3", 533);
+    "roto\032\023KwmConnection.proto\032\021MatrixProto.p"
+    "roto\032\022MatrixProtos.proto\032\020TimerProto.pro"
+    "to\032\021TimerProtos.proto\032\022ProgramProto.prot"
+    "o\032\023ProgramProtos.proto\032\024AllConnections.p"
+    "roto\032\017LockProto.proto\032\020LockProtos.proto\""
+    "\274\003\n\rMattiResponse\022\016\n\006ticket\030\001 \001(\r\022+\n\017vid"
+    "eoConnection\030\002 \001(\0132\020.VideoConnectionH\000\022\'"
+    "\n\rkwmConnection\030\003 \001(\0132\016.KwmConnectionH\000\022"
+    "\036\n\006matrix\030\004 \001(\0132\014.MatrixProtoH\000\022\034\n\005timer"
+    "\030\005 \001(\0132\013.TimerProtoH\000\022 \n\007program\030\006 \001(\0132\r"
+    ".ProgramProtoH\000\022)\n\016allConnections\030\007 \001(\0132"
+    "\017.AllConnectionsH\000\022 \n\007matrixs\030\010 \001(\0132\r.Ma"
+    "trixProtosH\000\022\036\n\006timers\030\t \001(\0132\014.TimerProt"
+    "osH\000\022\"\n\010programs\030\n \001(\0132\016.ProgramProtosH\000"
+    "\022\037\n\tlockProto\030\013 \001(\0132\n.LockProtoH\000\022!\n\nloc"
+    "kProtos\030\014 \001(\0132\013.LockProtosH\000B\020\n\016requestM"
+    "essageb\006proto3", 694);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MattiResponse.proto", &protobuf_RegisterTypes);
   MattiResponse::default_instance_ = new MattiResponse();
@@ -158,10 +168,12 @@ const int MattiResponse::kKwmConnectionFieldNumber;
 const int MattiResponse::kMatrixFieldNumber;
 const int MattiResponse::kTimerFieldNumber;
 const int MattiResponse::kProgramFieldNumber;
-const int MattiResponse::kConnectionsFieldNumber;
+const int MattiResponse::kAllConnectionsFieldNumber;
 const int MattiResponse::kMatrixsFieldNumber;
 const int MattiResponse::kTimersFieldNumber;
 const int MattiResponse::kProgramsFieldNumber;
+const int MattiResponse::kLockProtoFieldNumber;
+const int MattiResponse::kLockProtosFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MattiResponse::MattiResponse()
@@ -175,12 +187,14 @@ void MattiResponse::InitAsDefaultInstance() {
   MattiResponse_default_oneof_instance_->videoconnection_ = const_cast< ::VideoConnection*>(&::VideoConnection::default_instance());
   MattiResponse_default_oneof_instance_->kwmconnection_ = const_cast< ::KwmConnection*>(&::KwmConnection::default_instance());
   MattiResponse_default_oneof_instance_->matrix_ = const_cast< ::MatrixProto*>(&::MatrixProto::default_instance());
-  MattiResponse_default_oneof_instance_->timer_ = const_cast< ::Timer*>(&::Timer::default_instance());
-  MattiResponse_default_oneof_instance_->program_ = const_cast< ::Program*>(&::Program::default_instance());
-  MattiResponse_default_oneof_instance_->connections_ = const_cast< ::AllConnections*>(&::AllConnections::default_instance());
-  MattiResponse_default_oneof_instance_->matrixs_ = const_cast< ::Matrixs*>(&::Matrixs::default_instance());
-  MattiResponse_default_oneof_instance_->timers_ = const_cast< ::Timers*>(&::Timers::default_instance());
-  MattiResponse_default_oneof_instance_->programs_ = const_cast< ::Programs*>(&::Programs::default_instance());
+  MattiResponse_default_oneof_instance_->timer_ = const_cast< ::TimerProto*>(&::TimerProto::default_instance());
+  MattiResponse_default_oneof_instance_->program_ = const_cast< ::ProgramProto*>(&::ProgramProto::default_instance());
+  MattiResponse_default_oneof_instance_->allconnections_ = const_cast< ::AllConnections*>(&::AllConnections::default_instance());
+  MattiResponse_default_oneof_instance_->matrixs_ = const_cast< ::MatrixProtos*>(&::MatrixProtos::default_instance());
+  MattiResponse_default_oneof_instance_->timers_ = const_cast< ::TimerProtos*>(&::TimerProtos::default_instance());
+  MattiResponse_default_oneof_instance_->programs_ = const_cast< ::ProgramProtos*>(&::ProgramProtos::default_instance());
+  MattiResponse_default_oneof_instance_->lockproto_ = const_cast< ::LockProto*>(&::LockProto::default_instance());
+  MattiResponse_default_oneof_instance_->lockprotos_ = const_cast< ::LockProtos*>(&::LockProtos::default_instance());
 }
 
 MattiResponse::MattiResponse(const MattiResponse& from)
@@ -258,8 +272,8 @@ void MattiResponse::clear_requestMessage() {
       delete requestMessage_.program_;
       break;
     }
-    case kConnections: {
-      delete requestMessage_.connections_;
+    case kAllConnections: {
+      delete requestMessage_.allconnections_;
       break;
     }
     case kMatrixs: {
@@ -272,6 +286,14 @@ void MattiResponse::clear_requestMessage() {
     }
     case kPrograms: {
       delete requestMessage_.programs_;
+      break;
+    }
+    case kLockProto: {
+      delete requestMessage_.lockproto_;
+      break;
+    }
+    case kLockProtos: {
+      delete requestMessage_.lockprotos_;
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -350,7 +372,7 @@ bool MattiResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Timer timer = 5;
+      // optional .TimerProto timer = 5;
       case 5: {
         if (tag == 42) {
          parse_timer:
@@ -363,7 +385,7 @@ bool MattiResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Program program = 6;
+      // optional .ProgramProto program = 6;
       case 6: {
         if (tag == 50) {
          parse_program:
@@ -372,16 +394,16 @@ bool MattiResponse::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_connections;
+        if (input->ExpectTag(58)) goto parse_allConnections;
         break;
       }
 
-      // optional .AllConnections connections = 7;
+      // optional .AllConnections allConnections = 7;
       case 7: {
         if (tag == 58) {
-         parse_connections:
+         parse_allConnections:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_connections()));
+               input, mutable_allconnections()));
         } else {
           goto handle_unusual;
         }
@@ -389,7 +411,7 @@ bool MattiResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Matrixs matrixs = 8;
+      // optional .MatrixProtos matrixs = 8;
       case 8: {
         if (tag == 66) {
          parse_matrixs:
@@ -402,7 +424,7 @@ bool MattiResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Timers timers = 9;
+      // optional .TimerProtos timers = 9;
       case 9: {
         if (tag == 74) {
          parse_timers:
@@ -415,12 +437,38 @@ bool MattiResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Programs programs = 10;
+      // optional .ProgramProtos programs = 10;
       case 10: {
         if (tag == 82) {
          parse_programs:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_programs()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(90)) goto parse_lockProto;
+        break;
+      }
+
+      // optional .LockProto lockProto = 11;
+      case 11: {
+        if (tag == 90) {
+         parse_lockProto:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_lockproto()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(98)) goto parse_lockProtos;
+        break;
+      }
+
+      // optional .LockProtos lockProtos = 12;
+      case 12: {
+        if (tag == 98) {
+         parse_lockProtos:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_lockprotos()));
         } else {
           goto handle_unusual;
         }
@@ -475,40 +523,52 @@ void MattiResponse::SerializeWithCachedSizes(
       4, *requestMessage_.matrix_, output);
   }
 
-  // optional .Timer timer = 5;
+  // optional .TimerProto timer = 5;
   if (has_timer()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, *requestMessage_.timer_, output);
   }
 
-  // optional .Program program = 6;
+  // optional .ProgramProto program = 6;
   if (has_program()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, *requestMessage_.program_, output);
   }
 
-  // optional .AllConnections connections = 7;
-  if (has_connections()) {
+  // optional .AllConnections allConnections = 7;
+  if (has_allconnections()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, *requestMessage_.connections_, output);
+      7, *requestMessage_.allconnections_, output);
   }
 
-  // optional .Matrixs matrixs = 8;
+  // optional .MatrixProtos matrixs = 8;
   if (has_matrixs()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, *requestMessage_.matrixs_, output);
   }
 
-  // optional .Timers timers = 9;
+  // optional .TimerProtos timers = 9;
   if (has_timers()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       9, *requestMessage_.timers_, output);
   }
 
-  // optional .Programs programs = 10;
+  // optional .ProgramProtos programs = 10;
   if (has_programs()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       10, *requestMessage_.programs_, output);
+  }
+
+  // optional .LockProto lockProto = 11;
+  if (has_lockproto()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      11, *requestMessage_.lockproto_, output);
+  }
+
+  // optional .LockProtos lockProtos = 12;
+  if (has_lockprotos()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      12, *requestMessage_.lockprotos_, output);
   }
 
   // @@protoc_insertion_point(serialize_end:MattiResponse)
@@ -543,46 +603,60 @@ void MattiResponse::SerializeWithCachedSizes(
         4, *requestMessage_.matrix_, target);
   }
 
-  // optional .Timer timer = 5;
+  // optional .TimerProto timer = 5;
   if (has_timer()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         5, *requestMessage_.timer_, target);
   }
 
-  // optional .Program program = 6;
+  // optional .ProgramProto program = 6;
   if (has_program()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         6, *requestMessage_.program_, target);
   }
 
-  // optional .AllConnections connections = 7;
-  if (has_connections()) {
+  // optional .AllConnections allConnections = 7;
+  if (has_allconnections()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        7, *requestMessage_.connections_, target);
+        7, *requestMessage_.allconnections_, target);
   }
 
-  // optional .Matrixs matrixs = 8;
+  // optional .MatrixProtos matrixs = 8;
   if (has_matrixs()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         8, *requestMessage_.matrixs_, target);
   }
 
-  // optional .Timers timers = 9;
+  // optional .TimerProtos timers = 9;
   if (has_timers()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         9, *requestMessage_.timers_, target);
   }
 
-  // optional .Programs programs = 10;
+  // optional .ProgramProtos programs = 10;
   if (has_programs()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         10, *requestMessage_.programs_, target);
+  }
+
+  // optional .LockProto lockProto = 11;
+  if (has_lockproto()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        11, *requestMessage_.lockproto_, target);
+  }
+
+  // optional .LockProtos lockProtos = 12;
+  if (has_lockprotos()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        12, *requestMessage_.lockprotos_, target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:MattiResponse)
@@ -621,46 +695,60 @@ int MattiResponse::ByteSize() const {
           *requestMessage_.matrix_);
       break;
     }
-    // optional .Timer timer = 5;
+    // optional .TimerProto timer = 5;
     case kTimer: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *requestMessage_.timer_);
       break;
     }
-    // optional .Program program = 6;
+    // optional .ProgramProto program = 6;
     case kProgram: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *requestMessage_.program_);
       break;
     }
-    // optional .AllConnections connections = 7;
-    case kConnections: {
+    // optional .AllConnections allConnections = 7;
+    case kAllConnections: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *requestMessage_.connections_);
+          *requestMessage_.allconnections_);
       break;
     }
-    // optional .Matrixs matrixs = 8;
+    // optional .MatrixProtos matrixs = 8;
     case kMatrixs: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *requestMessage_.matrixs_);
       break;
     }
-    // optional .Timers timers = 9;
+    // optional .TimerProtos timers = 9;
     case kTimers: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *requestMessage_.timers_);
       break;
     }
-    // optional .Programs programs = 10;
+    // optional .ProgramProtos programs = 10;
     case kPrograms: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *requestMessage_.programs_);
+      break;
+    }
+    // optional .LockProto lockProto = 11;
+    case kLockProto: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.lockproto_);
+      break;
+    }
+    // optional .LockProtos lockProtos = 12;
+    case kLockProtos: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.lockprotos_);
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -701,27 +789,35 @@ void MattiResponse::MergeFrom(const MattiResponse& from) {
       break;
     }
     case kTimer: {
-      mutable_timer()->::Timer::MergeFrom(from.timer());
+      mutable_timer()->::TimerProto::MergeFrom(from.timer());
       break;
     }
     case kProgram: {
-      mutable_program()->::Program::MergeFrom(from.program());
+      mutable_program()->::ProgramProto::MergeFrom(from.program());
       break;
     }
-    case kConnections: {
-      mutable_connections()->::AllConnections::MergeFrom(from.connections());
+    case kAllConnections: {
+      mutable_allconnections()->::AllConnections::MergeFrom(from.allconnections());
       break;
     }
     case kMatrixs: {
-      mutable_matrixs()->::Matrixs::MergeFrom(from.matrixs());
+      mutable_matrixs()->::MatrixProtos::MergeFrom(from.matrixs());
       break;
     }
     case kTimers: {
-      mutable_timers()->::Timers::MergeFrom(from.timers());
+      mutable_timers()->::TimerProtos::MergeFrom(from.timers());
       break;
     }
     case kPrograms: {
-      mutable_programs()->::Programs::MergeFrom(from.programs());
+      mutable_programs()->::ProgramProtos::MergeFrom(from.programs());
+      break;
+    }
+    case kLockProto: {
+      mutable_lockproto()->::LockProto::MergeFrom(from.lockproto());
+      break;
+    }
+    case kLockProtos: {
+      mutable_lockprotos()->::LockProtos::MergeFrom(from.lockprotos());
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -928,7 +1024,7 @@ void MattiResponse::set_allocated_matrix(::MatrixProto* matrix) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.matrix)
 }
 
-// optional .Timer timer = 5;
+// optional .TimerProto timer = 5;
 bool MattiResponse::has_timer() const {
   return requestMessage_case() == kTimer;
 }
@@ -941,32 +1037,32 @@ void MattiResponse::clear_timer() {
     clear_has_requestMessage();
   }
 }
- const ::Timer& MattiResponse::timer() const {
+ const ::TimerProto& MattiResponse::timer() const {
   // @@protoc_insertion_point(field_get:MattiResponse.timer)
   return has_timer()
       ? *requestMessage_.timer_
-      : ::Timer::default_instance();
+      : ::TimerProto::default_instance();
 }
-::Timer* MattiResponse::mutable_timer() {
+::TimerProto* MattiResponse::mutable_timer() {
   if (!has_timer()) {
     clear_requestMessage();
     set_has_timer();
-    requestMessage_.timer_ = new ::Timer;
+    requestMessage_.timer_ = new ::TimerProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.timer)
   return requestMessage_.timer_;
 }
-::Timer* MattiResponse::release_timer() {
+::TimerProto* MattiResponse::release_timer() {
   if (has_timer()) {
     clear_has_requestMessage();
-    ::Timer* temp = requestMessage_.timer_;
+    ::TimerProto* temp = requestMessage_.timer_;
     requestMessage_.timer_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_timer(::Timer* timer) {
+void MattiResponse::set_allocated_timer(::TimerProto* timer) {
   clear_requestMessage();
   if (timer) {
     set_has_timer();
@@ -975,7 +1071,7 @@ void MattiResponse::set_allocated_timer(::Timer* timer) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.timer)
 }
 
-// optional .Program program = 6;
+// optional .ProgramProto program = 6;
 bool MattiResponse::has_program() const {
   return requestMessage_case() == kProgram;
 }
@@ -988,32 +1084,32 @@ void MattiResponse::clear_program() {
     clear_has_requestMessage();
   }
 }
- const ::Program& MattiResponse::program() const {
+ const ::ProgramProto& MattiResponse::program() const {
   // @@protoc_insertion_point(field_get:MattiResponse.program)
   return has_program()
       ? *requestMessage_.program_
-      : ::Program::default_instance();
+      : ::ProgramProto::default_instance();
 }
-::Program* MattiResponse::mutable_program() {
+::ProgramProto* MattiResponse::mutable_program() {
   if (!has_program()) {
     clear_requestMessage();
     set_has_program();
-    requestMessage_.program_ = new ::Program;
+    requestMessage_.program_ = new ::ProgramProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.program)
   return requestMessage_.program_;
 }
-::Program* MattiResponse::release_program() {
+::ProgramProto* MattiResponse::release_program() {
   if (has_program()) {
     clear_has_requestMessage();
-    ::Program* temp = requestMessage_.program_;
+    ::ProgramProto* temp = requestMessage_.program_;
     requestMessage_.program_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_program(::Program* program) {
+void MattiResponse::set_allocated_program(::ProgramProto* program) {
   clear_requestMessage();
   if (program) {
     set_has_program();
@@ -1022,54 +1118,54 @@ void MattiResponse::set_allocated_program(::Program* program) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.program)
 }
 
-// optional .AllConnections connections = 7;
-bool MattiResponse::has_connections() const {
-  return requestMessage_case() == kConnections;
+// optional .AllConnections allConnections = 7;
+bool MattiResponse::has_allconnections() const {
+  return requestMessage_case() == kAllConnections;
 }
-void MattiResponse::set_has_connections() {
-  _oneof_case_[0] = kConnections;
+void MattiResponse::set_has_allconnections() {
+  _oneof_case_[0] = kAllConnections;
 }
-void MattiResponse::clear_connections() {
-  if (has_connections()) {
-    delete requestMessage_.connections_;
+void MattiResponse::clear_allconnections() {
+  if (has_allconnections()) {
+    delete requestMessage_.allconnections_;
     clear_has_requestMessage();
   }
 }
- const ::AllConnections& MattiResponse::connections() const {
-  // @@protoc_insertion_point(field_get:MattiResponse.connections)
-  return has_connections()
-      ? *requestMessage_.connections_
+ const ::AllConnections& MattiResponse::allconnections() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.allConnections)
+  return has_allconnections()
+      ? *requestMessage_.allconnections_
       : ::AllConnections::default_instance();
 }
-::AllConnections* MattiResponse::mutable_connections() {
-  if (!has_connections()) {
+::AllConnections* MattiResponse::mutable_allconnections() {
+  if (!has_allconnections()) {
     clear_requestMessage();
-    set_has_connections();
-    requestMessage_.connections_ = new ::AllConnections;
+    set_has_allconnections();
+    requestMessage_.allconnections_ = new ::AllConnections;
   }
-  // @@protoc_insertion_point(field_mutable:MattiResponse.connections)
-  return requestMessage_.connections_;
+  // @@protoc_insertion_point(field_mutable:MattiResponse.allConnections)
+  return requestMessage_.allconnections_;
 }
-::AllConnections* MattiResponse::release_connections() {
-  if (has_connections()) {
+::AllConnections* MattiResponse::release_allconnections() {
+  if (has_allconnections()) {
     clear_has_requestMessage();
-    ::AllConnections* temp = requestMessage_.connections_;
-    requestMessage_.connections_ = NULL;
+    ::AllConnections* temp = requestMessage_.allconnections_;
+    requestMessage_.allconnections_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_connections(::AllConnections* connections) {
+void MattiResponse::set_allocated_allconnections(::AllConnections* allconnections) {
   clear_requestMessage();
-  if (connections) {
-    set_has_connections();
-    requestMessage_.connections_ = connections;
+  if (allconnections) {
+    set_has_allconnections();
+    requestMessage_.allconnections_ = allconnections;
   }
-  // @@protoc_insertion_point(field_set_allocated:MattiResponse.connections)
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.allConnections)
 }
 
-// optional .Matrixs matrixs = 8;
+// optional .MatrixProtos matrixs = 8;
 bool MattiResponse::has_matrixs() const {
   return requestMessage_case() == kMatrixs;
 }
@@ -1082,32 +1178,32 @@ void MattiResponse::clear_matrixs() {
     clear_has_requestMessage();
   }
 }
- const ::Matrixs& MattiResponse::matrixs() const {
+ const ::MatrixProtos& MattiResponse::matrixs() const {
   // @@protoc_insertion_point(field_get:MattiResponse.matrixs)
   return has_matrixs()
       ? *requestMessage_.matrixs_
-      : ::Matrixs::default_instance();
+      : ::MatrixProtos::default_instance();
 }
-::Matrixs* MattiResponse::mutable_matrixs() {
+::MatrixProtos* MattiResponse::mutable_matrixs() {
   if (!has_matrixs()) {
     clear_requestMessage();
     set_has_matrixs();
-    requestMessage_.matrixs_ = new ::Matrixs;
+    requestMessage_.matrixs_ = new ::MatrixProtos;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.matrixs)
   return requestMessage_.matrixs_;
 }
-::Matrixs* MattiResponse::release_matrixs() {
+::MatrixProtos* MattiResponse::release_matrixs() {
   if (has_matrixs()) {
     clear_has_requestMessage();
-    ::Matrixs* temp = requestMessage_.matrixs_;
+    ::MatrixProtos* temp = requestMessage_.matrixs_;
     requestMessage_.matrixs_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_matrixs(::Matrixs* matrixs) {
+void MattiResponse::set_allocated_matrixs(::MatrixProtos* matrixs) {
   clear_requestMessage();
   if (matrixs) {
     set_has_matrixs();
@@ -1116,7 +1212,7 @@ void MattiResponse::set_allocated_matrixs(::Matrixs* matrixs) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.matrixs)
 }
 
-// optional .Timers timers = 9;
+// optional .TimerProtos timers = 9;
 bool MattiResponse::has_timers() const {
   return requestMessage_case() == kTimers;
 }
@@ -1129,32 +1225,32 @@ void MattiResponse::clear_timers() {
     clear_has_requestMessage();
   }
 }
- const ::Timers& MattiResponse::timers() const {
+ const ::TimerProtos& MattiResponse::timers() const {
   // @@protoc_insertion_point(field_get:MattiResponse.timers)
   return has_timers()
       ? *requestMessage_.timers_
-      : ::Timers::default_instance();
+      : ::TimerProtos::default_instance();
 }
-::Timers* MattiResponse::mutable_timers() {
+::TimerProtos* MattiResponse::mutable_timers() {
   if (!has_timers()) {
     clear_requestMessage();
     set_has_timers();
-    requestMessage_.timers_ = new ::Timers;
+    requestMessage_.timers_ = new ::TimerProtos;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.timers)
   return requestMessage_.timers_;
 }
-::Timers* MattiResponse::release_timers() {
+::TimerProtos* MattiResponse::release_timers() {
   if (has_timers()) {
     clear_has_requestMessage();
-    ::Timers* temp = requestMessage_.timers_;
+    ::TimerProtos* temp = requestMessage_.timers_;
     requestMessage_.timers_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_timers(::Timers* timers) {
+void MattiResponse::set_allocated_timers(::TimerProtos* timers) {
   clear_requestMessage();
   if (timers) {
     set_has_timers();
@@ -1163,7 +1259,7 @@ void MattiResponse::set_allocated_timers(::Timers* timers) {
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.timers)
 }
 
-// optional .Programs programs = 10;
+// optional .ProgramProtos programs = 10;
 bool MattiResponse::has_programs() const {
   return requestMessage_case() == kPrograms;
 }
@@ -1176,38 +1272,132 @@ void MattiResponse::clear_programs() {
     clear_has_requestMessage();
   }
 }
- const ::Programs& MattiResponse::programs() const {
+ const ::ProgramProtos& MattiResponse::programs() const {
   // @@protoc_insertion_point(field_get:MattiResponse.programs)
   return has_programs()
       ? *requestMessage_.programs_
-      : ::Programs::default_instance();
+      : ::ProgramProtos::default_instance();
 }
-::Programs* MattiResponse::mutable_programs() {
+::ProgramProtos* MattiResponse::mutable_programs() {
   if (!has_programs()) {
     clear_requestMessage();
     set_has_programs();
-    requestMessage_.programs_ = new ::Programs;
+    requestMessage_.programs_ = new ::ProgramProtos;
   }
   // @@protoc_insertion_point(field_mutable:MattiResponse.programs)
   return requestMessage_.programs_;
 }
-::Programs* MattiResponse::release_programs() {
+::ProgramProtos* MattiResponse::release_programs() {
   if (has_programs()) {
     clear_has_requestMessage();
-    ::Programs* temp = requestMessage_.programs_;
+    ::ProgramProtos* temp = requestMessage_.programs_;
     requestMessage_.programs_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiResponse::set_allocated_programs(::Programs* programs) {
+void MattiResponse::set_allocated_programs(::ProgramProtos* programs) {
   clear_requestMessage();
   if (programs) {
     set_has_programs();
     requestMessage_.programs_ = programs;
   }
   // @@protoc_insertion_point(field_set_allocated:MattiResponse.programs)
+}
+
+// optional .LockProto lockProto = 11;
+bool MattiResponse::has_lockproto() const {
+  return requestMessage_case() == kLockProto;
+}
+void MattiResponse::set_has_lockproto() {
+  _oneof_case_[0] = kLockProto;
+}
+void MattiResponse::clear_lockproto() {
+  if (has_lockproto()) {
+    delete requestMessage_.lockproto_;
+    clear_has_requestMessage();
+  }
+}
+ const ::LockProto& MattiResponse::lockproto() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.lockProto)
+  return has_lockproto()
+      ? *requestMessage_.lockproto_
+      : ::LockProto::default_instance();
+}
+::LockProto* MattiResponse::mutable_lockproto() {
+  if (!has_lockproto()) {
+    clear_requestMessage();
+    set_has_lockproto();
+    requestMessage_.lockproto_ = new ::LockProto;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.lockProto)
+  return requestMessage_.lockproto_;
+}
+::LockProto* MattiResponse::release_lockproto() {
+  if (has_lockproto()) {
+    clear_has_requestMessage();
+    ::LockProto* temp = requestMessage_.lockproto_;
+    requestMessage_.lockproto_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_lockproto(::LockProto* lockproto) {
+  clear_requestMessage();
+  if (lockproto) {
+    set_has_lockproto();
+    requestMessage_.lockproto_ = lockproto;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.lockProto)
+}
+
+// optional .LockProtos lockProtos = 12;
+bool MattiResponse::has_lockprotos() const {
+  return requestMessage_case() == kLockProtos;
+}
+void MattiResponse::set_has_lockprotos() {
+  _oneof_case_[0] = kLockProtos;
+}
+void MattiResponse::clear_lockprotos() {
+  if (has_lockprotos()) {
+    delete requestMessage_.lockprotos_;
+    clear_has_requestMessage();
+  }
+}
+ const ::LockProtos& MattiResponse::lockprotos() const {
+  // @@protoc_insertion_point(field_get:MattiResponse.lockProtos)
+  return has_lockprotos()
+      ? *requestMessage_.lockprotos_
+      : ::LockProtos::default_instance();
+}
+::LockProtos* MattiResponse::mutable_lockprotos() {
+  if (!has_lockprotos()) {
+    clear_requestMessage();
+    set_has_lockprotos();
+    requestMessage_.lockprotos_ = new ::LockProtos;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiResponse.lockProtos)
+  return requestMessage_.lockprotos_;
+}
+::LockProtos* MattiResponse::release_lockprotos() {
+  if (has_lockprotos()) {
+    clear_has_requestMessage();
+    ::LockProtos* temp = requestMessage_.lockprotos_;
+    requestMessage_.lockprotos_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiResponse::set_allocated_lockprotos(::LockProtos* lockprotos) {
+  clear_requestMessage();
+  if (lockprotos) {
+    set_has_lockprotos();
+    requestMessage_.lockprotos_ = lockprotos;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiResponse.lockProtos)
 }
 
 bool MattiResponse::has_requestMessage() const {

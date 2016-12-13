@@ -95,24 +95,24 @@ class KwmConnections : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .KwmConnection kwmConnections = 1;
-  int kwmconnections_size() const;
-  void clear_kwmconnections();
-  static const int kKwmConnectionsFieldNumber = 1;
-  const ::KwmConnection& kwmconnections(int index) const;
-  ::KwmConnection* mutable_kwmconnections(int index);
-  ::KwmConnection* add_kwmconnections();
+  // repeated .KwmConnection kwmConnection = 1;
+  int kwmconnection_size() const;
+  void clear_kwmconnection();
+  static const int kKwmConnectionFieldNumber = 1;
+  const ::KwmConnection& kwmconnection(int index) const;
+  ::KwmConnection* mutable_kwmconnection(int index);
+  ::KwmConnection* add_kwmconnection();
   ::google::protobuf::RepeatedPtrField< ::KwmConnection >*
-      mutable_kwmconnections();
+      mutable_kwmconnection();
   const ::google::protobuf::RepeatedPtrField< ::KwmConnection >&
-      kwmconnections() const;
+      kwmconnection() const;
 
   // @@protoc_insertion_point(class_scope:KwmConnections)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::google::protobuf::RepeatedPtrField< ::KwmConnection > kwmconnections_;
+  ::google::protobuf::RepeatedPtrField< ::KwmConnection > kwmconnection_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_KwmConnections_2eproto();
   friend void protobuf_AssignDesc_KwmConnections_2eproto();
@@ -129,34 +129,34 @@ class KwmConnections : public ::google::protobuf::Message {
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // KwmConnections
 
-// repeated .KwmConnection kwmConnections = 1;
-inline int KwmConnections::kwmconnections_size() const {
-  return kwmconnections_.size();
+// repeated .KwmConnection kwmConnection = 1;
+inline int KwmConnections::kwmconnection_size() const {
+  return kwmconnection_.size();
 }
-inline void KwmConnections::clear_kwmconnections() {
-  kwmconnections_.Clear();
+inline void KwmConnections::clear_kwmconnection() {
+  kwmconnection_.Clear();
 }
-inline const ::KwmConnection& KwmConnections::kwmconnections(int index) const {
-  // @@protoc_insertion_point(field_get:KwmConnections.kwmConnections)
-  return kwmconnections_.Get(index);
+inline const ::KwmConnection& KwmConnections::kwmconnection(int index) const {
+  // @@protoc_insertion_point(field_get:KwmConnections.kwmConnection)
+  return kwmconnection_.Get(index);
 }
-inline ::KwmConnection* KwmConnections::mutable_kwmconnections(int index) {
-  // @@protoc_insertion_point(field_mutable:KwmConnections.kwmConnections)
-  return kwmconnections_.Mutable(index);
+inline ::KwmConnection* KwmConnections::mutable_kwmconnection(int index) {
+  // @@protoc_insertion_point(field_mutable:KwmConnections.kwmConnection)
+  return kwmconnection_.Mutable(index);
 }
-inline ::KwmConnection* KwmConnections::add_kwmconnections() {
-  // @@protoc_insertion_point(field_add:KwmConnections.kwmConnections)
-  return kwmconnections_.Add();
+inline ::KwmConnection* KwmConnections::add_kwmconnection() {
+  // @@protoc_insertion_point(field_add:KwmConnections.kwmConnection)
+  return kwmconnection_.Add();
 }
 inline ::google::protobuf::RepeatedPtrField< ::KwmConnection >*
-KwmConnections::mutable_kwmconnections() {
-  // @@protoc_insertion_point(field_mutable_list:KwmConnections.kwmConnections)
-  return &kwmconnections_;
+KwmConnections::mutable_kwmconnection() {
+  // @@protoc_insertion_point(field_mutable_list:KwmConnections.kwmConnection)
+  return &kwmconnection_;
 }
 inline const ::google::protobuf::RepeatedPtrField< ::KwmConnection >&
-KwmConnections::kwmconnections() const {
-  // @@protoc_insertion_point(field_list:KwmConnections.kwmConnections)
-  return kwmconnections_;
+KwmConnections::kwmconnection() const {
+  // @@protoc_insertion_point(field_list:KwmConnections.kwmConnection)
+  return kwmconnection_;
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

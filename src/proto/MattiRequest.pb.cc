@@ -28,13 +28,15 @@ struct MattiRequestOneofInstance {
   const ::VideoConnection* insertvideoconnection_;
   const ::KwmConnection* insertkwmconnection_;
   const ::MatrixProto* insertmatrix_;
-  const ::Timer* inserttimer_;
-  const ::Program* insertprogram_;
+  const ::TimerProto* inserttimer_;
+  const ::ProgramProto* insertprogram_;
+  const ::LockProto* insertlock_;
   ::google::protobuf::uint32 removevideoconnection_;
   ::google::protobuf::uint32 removekwmconnection_;
   ::google::protobuf::uint32 removematrix_;
   ::google::protobuf::uint32 removetimer_;
   ::google::protobuf::uint32 removeprogram_;
+  ::google::protobuf::uint32 removelock_;
 }* MattiRequest_default_oneof_instance_ = NULL;
 
 }  // namespace
@@ -47,7 +49,7 @@ void protobuf_AssignDesc_MattiRequest_2eproto() {
       "MattiRequest.proto");
   GOOGLE_CHECK(file != NULL);
   MattiRequest_descriptor_ = file->message_type(0);
-  static const int MattiRequest_offsets_[14] = {
+  static const int MattiRequest_offsets_[16] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiRequest, ticket_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, requestvalues_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, requestmatrixstates_),
@@ -56,11 +58,13 @@ void protobuf_AssignDesc_MattiRequest_2eproto() {
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, insertmatrix_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, inserttimer_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, insertprogram_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, insertlock_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, removevideoconnection_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, removekwmconnection_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, removematrix_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, removetimer_),
     PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, removeprogram_),
+    PROTO2_GENERATED_DEFAULT_ONEOF_FIELD_OFFSET(MattiRequest_default_oneof_instance_, removelock_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MattiRequest, requestMessage_),
   };
   MattiRequest_reflection_ =
@@ -108,24 +112,28 @@ void protobuf_AddDesc_MattiRequest_2eproto() {
 
   ::protobuf_AddDesc_VideoConnection_2eproto();
   ::protobuf_AddDesc_KwmConnection_2eproto();
-  ::protobuf_AddDesc_Matrix_2eproto();
-  ::protobuf_AddDesc_Program_2eproto();
-  ::protobuf_AddDesc_Timer_2eproto();
+  ::protobuf_AddDesc_MatrixProto_2eproto();
+  ::protobuf_AddDesc_TimerProto_2eproto();
+  ::protobuf_AddDesc_ProgramProto_2eproto();
+  ::protobuf_AddDesc_LockProto_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\022MattiRequest.proto\032\025VideoConnection.pr"
-    "oto\032\023KwmConnection.proto\032\014Matrix.proto\032\r"
-    "Program.proto\032\013Timer.proto\"\272\003\n\014MattiRequ"
-    "est\022\016\n\006ticket\030\001 \001(\r\022\027\n\rrequestValues\030\002 \001"
-    "(\rH\000\022\035\n\023requestMatrixStates\030\003 \001(\rH\000\0221\n\025i"
-    "nsertVideoConnection\030\004 \001(\0132\020.VideoConnec"
-    "tionH\000\022-\n\023insertKwmConnection\030\005 \001(\0132\016.Kw"
-    "mConnectionH\000\022$\n\014insertMatrix\030\006 \001(\0132\014.Ma"
-    "trixProtoH\000\022\035\n\013insertTimer\030\007 \001(\0132\006.Timer"
-    "H\000\022!\n\rinsertProgram\030\010 \001(\0132\010.ProgramH\000\022\037\n"
-    "\025removeVideoConnection\030\t \001(\rH\000\022\035\n\023remove"
-    "KwmConnection\030\n \001(\rH\000\022\026\n\014removeMatrix\030\013 "
-    "\001(\rH\000\022\025\n\013removeTimer\030\014 \001(\rH\000\022\027\n\rremovePr"
-    "ogram\030\r \001(\rH\000B\020\n\016requestMessageb\006proto3", 559);
+    "oto\032\023KwmConnection.proto\032\021MatrixProto.pr"
+    "oto\032\020TimerProto.proto\032\022ProgramProto.prot"
+    "o\032\017LockProto.proto\"\374\003\n\014MattiRequest\022\016\n\006t"
+    "icket\030\001 \001(\r\022\027\n\rrequestValues\030\002 \001(\rH\000\022\035\n\023"
+    "requestMatrixStates\030\003 \001(\rH\000\0221\n\025insertVid"
+    "eoConnection\030\004 \001(\0132\020.VideoConnectionH\000\022-"
+    "\n\023insertKwmConnection\030\005 \001(\0132\016.KwmConnect"
+    "ionH\000\022$\n\014insertMatrix\030\006 \001(\0132\014.MatrixProt"
+    "oH\000\022\"\n\013insertTimer\030\007 \001(\0132\013.TimerProtoH\000\022"
+    "&\n\rinsertProgram\030\010 \001(\0132\r.ProgramProtoH\000\022"
+    " \n\ninsertLock\030\t \001(\0132\n.LockProtoH\000\022\037\n\025rem"
+    "oveVideoConnection\030\n \001(\rH\000\022\035\n\023removeKwmC"
+    "onnection\030\013 \001(\rH\000\022\026\n\014removeMatrix\030\014 \001(\rH"
+    "\000\022\025\n\013removeTimer\030\r \001(\rH\000\022\027\n\rremoveProgra"
+    "m\030\016 \001(\rH\000\022\024\n\nremoveLock\030\017 \001(\rH\000B\020\n\016reque"
+    "stMessageb\006proto3", 657);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MattiRequest.proto", &protobuf_RegisterTypes);
   MattiRequest::default_instance_ = new MattiRequest();
@@ -162,11 +170,13 @@ const int MattiRequest::kInsertKwmConnectionFieldNumber;
 const int MattiRequest::kInsertMatrixFieldNumber;
 const int MattiRequest::kInsertTimerFieldNumber;
 const int MattiRequest::kInsertProgramFieldNumber;
+const int MattiRequest::kInsertLockFieldNumber;
 const int MattiRequest::kRemoveVideoConnectionFieldNumber;
 const int MattiRequest::kRemoveKwmConnectionFieldNumber;
 const int MattiRequest::kRemoveMatrixFieldNumber;
 const int MattiRequest::kRemoveTimerFieldNumber;
 const int MattiRequest::kRemoveProgramFieldNumber;
+const int MattiRequest::kRemoveLockFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MattiRequest::MattiRequest()
@@ -182,13 +192,15 @@ void MattiRequest::InitAsDefaultInstance() {
   MattiRequest_default_oneof_instance_->insertvideoconnection_ = const_cast< ::VideoConnection*>(&::VideoConnection::default_instance());
   MattiRequest_default_oneof_instance_->insertkwmconnection_ = const_cast< ::KwmConnection*>(&::KwmConnection::default_instance());
   MattiRequest_default_oneof_instance_->insertmatrix_ = const_cast< ::MatrixProto*>(&::MatrixProto::default_instance());
-  MattiRequest_default_oneof_instance_->inserttimer_ = const_cast< ::Timer*>(&::Timer::default_instance());
-  MattiRequest_default_oneof_instance_->insertprogram_ = const_cast< ::Program*>(&::Program::default_instance());
+  MattiRequest_default_oneof_instance_->inserttimer_ = const_cast< ::TimerProto*>(&::TimerProto::default_instance());
+  MattiRequest_default_oneof_instance_->insertprogram_ = const_cast< ::ProgramProto*>(&::ProgramProto::default_instance());
+  MattiRequest_default_oneof_instance_->insertlock_ = const_cast< ::LockProto*>(&::LockProto::default_instance());
   MattiRequest_default_oneof_instance_->removevideoconnection_ = 0u;
   MattiRequest_default_oneof_instance_->removekwmconnection_ = 0u;
   MattiRequest_default_oneof_instance_->removematrix_ = 0u;
   MattiRequest_default_oneof_instance_->removetimer_ = 0u;
   MattiRequest_default_oneof_instance_->removeprogram_ = 0u;
+  MattiRequest_default_oneof_instance_->removelock_ = 0u;
 }
 
 MattiRequest::MattiRequest(const MattiRequest& from)
@@ -274,6 +286,10 @@ void MattiRequest::clear_requestMessage() {
       delete requestMessage_.insertprogram_;
       break;
     }
+    case kInsertLock: {
+      delete requestMessage_.insertlock_;
+      break;
+    }
     case kRemoveVideoConnection: {
       // No need to clear
       break;
@@ -291,6 +307,10 @@ void MattiRequest::clear_requestMessage() {
       break;
     }
     case kRemoveProgram: {
+      // No need to clear
+      break;
+    }
+    case kRemoveLock: {
       // No need to clear
       break;
     }
@@ -402,7 +422,7 @@ bool MattiRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Timer insertTimer = 7;
+      // optional .TimerProto insertTimer = 7;
       case 7: {
         if (tag == 58) {
          parse_insertTimer:
@@ -415,7 +435,7 @@ bool MattiRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .Program insertProgram = 8;
+      // optional .ProgramProto insertProgram = 8;
       case 8: {
         if (tag == 66) {
          parse_insertProgram:
@@ -424,13 +444,26 @@ bool MattiRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(72)) goto parse_removeVideoConnection;
+        if (input->ExpectTag(74)) goto parse_insertLock;
         break;
       }
 
-      // optional uint32 removeVideoConnection = 9;
+      // optional .LockProto insertLock = 9;
       case 9: {
-        if (tag == 72) {
+        if (tag == 74) {
+         parse_insertLock:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_insertlock()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(80)) goto parse_removeVideoConnection;
+        break;
+      }
+
+      // optional uint32 removeVideoConnection = 10;
+      case 10: {
+        if (tag == 80) {
          parse_removeVideoConnection:
           clear_requestMessage();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -440,13 +473,13 @@ bool MattiRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(80)) goto parse_removeKwmConnection;
+        if (input->ExpectTag(88)) goto parse_removeKwmConnection;
         break;
       }
 
-      // optional uint32 removeKwmConnection = 10;
-      case 10: {
-        if (tag == 80) {
+      // optional uint32 removeKwmConnection = 11;
+      case 11: {
+        if (tag == 88) {
          parse_removeKwmConnection:
           clear_requestMessage();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -456,13 +489,13 @@ bool MattiRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(88)) goto parse_removeMatrix;
+        if (input->ExpectTag(96)) goto parse_removeMatrix;
         break;
       }
 
-      // optional uint32 removeMatrix = 11;
-      case 11: {
-        if (tag == 88) {
+      // optional uint32 removeMatrix = 12;
+      case 12: {
+        if (tag == 96) {
          parse_removeMatrix:
           clear_requestMessage();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -472,13 +505,13 @@ bool MattiRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(96)) goto parse_removeTimer;
+        if (input->ExpectTag(104)) goto parse_removeTimer;
         break;
       }
 
-      // optional uint32 removeTimer = 12;
-      case 12: {
-        if (tag == 96) {
+      // optional uint32 removeTimer = 13;
+      case 13: {
+        if (tag == 104) {
          parse_removeTimer:
           clear_requestMessage();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
@@ -488,19 +521,35 @@ bool MattiRequest::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(104)) goto parse_removeProgram;
+        if (input->ExpectTag(112)) goto parse_removeProgram;
         break;
       }
 
-      // optional uint32 removeProgram = 13;
-      case 13: {
-        if (tag == 104) {
+      // optional uint32 removeProgram = 14;
+      case 14: {
+        if (tag == 112) {
          parse_removeProgram:
           clear_requestMessage();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &requestMessage_.removeprogram_)));
           set_has_removeprogram();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(120)) goto parse_removeLock;
+        break;
+      }
+
+      // optional uint32 removeLock = 15;
+      case 15: {
+        if (tag == 120) {
+         parse_removeLock:
+          clear_requestMessage();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &requestMessage_.removelock_)));
+          set_has_removelock();
         } else {
           goto handle_unusual;
         }
@@ -565,41 +614,52 @@ void MattiRequest::SerializeWithCachedSizes(
       6, *requestMessage_.insertmatrix_, output);
   }
 
-  // optional .Timer insertTimer = 7;
+  // optional .TimerProto insertTimer = 7;
   if (has_inserttimer()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       7, *requestMessage_.inserttimer_, output);
   }
 
-  // optional .Program insertProgram = 8;
+  // optional .ProgramProto insertProgram = 8;
   if (has_insertprogram()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, *requestMessage_.insertprogram_, output);
   }
 
-  // optional uint32 removeVideoConnection = 9;
+  // optional .LockProto insertLock = 9;
+  if (has_insertlock()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, *requestMessage_.insertlock_, output);
+  }
+
+  // optional uint32 removeVideoConnection = 10;
   if (has_removevideoconnection()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->removevideoconnection(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->removevideoconnection(), output);
   }
 
-  // optional uint32 removeKwmConnection = 10;
+  // optional uint32 removeKwmConnection = 11;
   if (has_removekwmconnection()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->removekwmconnection(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->removekwmconnection(), output);
   }
 
-  // optional uint32 removeMatrix = 11;
+  // optional uint32 removeMatrix = 12;
   if (has_removematrix()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->removematrix(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->removematrix(), output);
   }
 
-  // optional uint32 removeTimer = 12;
+  // optional uint32 removeTimer = 13;
   if (has_removetimer()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->removetimer(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(13, this->removetimer(), output);
   }
 
-  // optional uint32 removeProgram = 13;
+  // optional uint32 removeProgram = 14;
   if (has_removeprogram()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(13, this->removeprogram(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(14, this->removeprogram(), output);
+  }
+
+  // optional uint32 removeLock = 15;
+  if (has_removelock()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(15, this->removelock(), output);
   }
 
   // @@protoc_insertion_point(serialize_end:MattiRequest)
@@ -644,43 +704,55 @@ void MattiRequest::SerializeWithCachedSizes(
         6, *requestMessage_.insertmatrix_, target);
   }
 
-  // optional .Timer insertTimer = 7;
+  // optional .TimerProto insertTimer = 7;
   if (has_inserttimer()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         7, *requestMessage_.inserttimer_, target);
   }
 
-  // optional .Program insertProgram = 8;
+  // optional .ProgramProto insertProgram = 8;
   if (has_insertprogram()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         8, *requestMessage_.insertprogram_, target);
   }
 
-  // optional uint32 removeVideoConnection = 9;
+  // optional .LockProto insertLock = 9;
+  if (has_insertlock()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, *requestMessage_.insertlock_, target);
+  }
+
+  // optional uint32 removeVideoConnection = 10;
   if (has_removevideoconnection()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->removevideoconnection(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->removevideoconnection(), target);
   }
 
-  // optional uint32 removeKwmConnection = 10;
+  // optional uint32 removeKwmConnection = 11;
   if (has_removekwmconnection()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->removekwmconnection(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->removekwmconnection(), target);
   }
 
-  // optional uint32 removeMatrix = 11;
+  // optional uint32 removeMatrix = 12;
   if (has_removematrix()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->removematrix(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->removematrix(), target);
   }
 
-  // optional uint32 removeTimer = 12;
+  // optional uint32 removeTimer = 13;
   if (has_removetimer()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->removetimer(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(13, this->removetimer(), target);
   }
 
-  // optional uint32 removeProgram = 13;
+  // optional uint32 removeProgram = 14;
   if (has_removeprogram()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(13, this->removeprogram(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(14, this->removeprogram(), target);
+  }
+
+  // optional uint32 removeLock = 15;
+  if (has_removelock()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(15, this->removelock(), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:MattiRequest)
@@ -733,53 +805,67 @@ int MattiRequest::ByteSize() const {
           *requestMessage_.insertmatrix_);
       break;
     }
-    // optional .Timer insertTimer = 7;
+    // optional .TimerProto insertTimer = 7;
     case kInsertTimer: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *requestMessage_.inserttimer_);
       break;
     }
-    // optional .Program insertProgram = 8;
+    // optional .ProgramProto insertProgram = 8;
     case kInsertProgram: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *requestMessage_.insertprogram_);
       break;
     }
-    // optional uint32 removeVideoConnection = 9;
+    // optional .LockProto insertLock = 9;
+    case kInsertLock: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *requestMessage_.insertlock_);
+      break;
+    }
+    // optional uint32 removeVideoConnection = 10;
     case kRemoveVideoConnection: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->removevideoconnection());
       break;
     }
-    // optional uint32 removeKwmConnection = 10;
+    // optional uint32 removeKwmConnection = 11;
     case kRemoveKwmConnection: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->removekwmconnection());
       break;
     }
-    // optional uint32 removeMatrix = 11;
+    // optional uint32 removeMatrix = 12;
     case kRemoveMatrix: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->removematrix());
       break;
     }
-    // optional uint32 removeTimer = 12;
+    // optional uint32 removeTimer = 13;
     case kRemoveTimer: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->removetimer());
       break;
     }
-    // optional uint32 removeProgram = 13;
+    // optional uint32 removeProgram = 14;
     case kRemoveProgram: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->removeprogram());
+      break;
+    }
+    // optional uint32 removeLock = 15;
+    case kRemoveLock: {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->removelock());
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -828,11 +914,15 @@ void MattiRequest::MergeFrom(const MattiRequest& from) {
       break;
     }
     case kInsertTimer: {
-      mutable_inserttimer()->::Timer::MergeFrom(from.inserttimer());
+      mutable_inserttimer()->::TimerProto::MergeFrom(from.inserttimer());
       break;
     }
     case kInsertProgram: {
-      mutable_insertprogram()->::Program::MergeFrom(from.insertprogram());
+      mutable_insertprogram()->::ProgramProto::MergeFrom(from.insertprogram());
+      break;
+    }
+    case kInsertLock: {
+      mutable_insertlock()->::LockProto::MergeFrom(from.insertlock());
       break;
     }
     case kRemoveVideoConnection: {
@@ -853,6 +943,10 @@ void MattiRequest::MergeFrom(const MattiRequest& from) {
     }
     case kRemoveProgram: {
       set_removeprogram(from.removeprogram());
+      break;
+    }
+    case kRemoveLock: {
+      set_removelock(from.removelock());
       break;
     }
     case REQUESTMESSAGE_NOT_SET: {
@@ -1117,7 +1211,7 @@ void MattiRequest::set_allocated_insertmatrix(::MatrixProto* insertmatrix) {
   // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertMatrix)
 }
 
-// optional .Timer insertTimer = 7;
+// optional .TimerProto insertTimer = 7;
 bool MattiRequest::has_inserttimer() const {
   return requestMessage_case() == kInsertTimer;
 }
@@ -1130,32 +1224,32 @@ void MattiRequest::clear_inserttimer() {
     clear_has_requestMessage();
   }
 }
- const ::Timer& MattiRequest::inserttimer() const {
+ const ::TimerProto& MattiRequest::inserttimer() const {
   // @@protoc_insertion_point(field_get:MattiRequest.insertTimer)
   return has_inserttimer()
       ? *requestMessage_.inserttimer_
-      : ::Timer::default_instance();
+      : ::TimerProto::default_instance();
 }
-::Timer* MattiRequest::mutable_inserttimer() {
+::TimerProto* MattiRequest::mutable_inserttimer() {
   if (!has_inserttimer()) {
     clear_requestMessage();
     set_has_inserttimer();
-    requestMessage_.inserttimer_ = new ::Timer;
+    requestMessage_.inserttimer_ = new ::TimerProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiRequest.insertTimer)
   return requestMessage_.inserttimer_;
 }
-::Timer* MattiRequest::release_inserttimer() {
+::TimerProto* MattiRequest::release_inserttimer() {
   if (has_inserttimer()) {
     clear_has_requestMessage();
-    ::Timer* temp = requestMessage_.inserttimer_;
+    ::TimerProto* temp = requestMessage_.inserttimer_;
     requestMessage_.inserttimer_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiRequest::set_allocated_inserttimer(::Timer* inserttimer) {
+void MattiRequest::set_allocated_inserttimer(::TimerProto* inserttimer) {
   clear_requestMessage();
   if (inserttimer) {
     set_has_inserttimer();
@@ -1164,7 +1258,7 @@ void MattiRequest::set_allocated_inserttimer(::Timer* inserttimer) {
   // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertTimer)
 }
 
-// optional .Program insertProgram = 8;
+// optional .ProgramProto insertProgram = 8;
 bool MattiRequest::has_insertprogram() const {
   return requestMessage_case() == kInsertProgram;
 }
@@ -1177,32 +1271,32 @@ void MattiRequest::clear_insertprogram() {
     clear_has_requestMessage();
   }
 }
- const ::Program& MattiRequest::insertprogram() const {
+ const ::ProgramProto& MattiRequest::insertprogram() const {
   // @@protoc_insertion_point(field_get:MattiRequest.insertProgram)
   return has_insertprogram()
       ? *requestMessage_.insertprogram_
-      : ::Program::default_instance();
+      : ::ProgramProto::default_instance();
 }
-::Program* MattiRequest::mutable_insertprogram() {
+::ProgramProto* MattiRequest::mutable_insertprogram() {
   if (!has_insertprogram()) {
     clear_requestMessage();
     set_has_insertprogram();
-    requestMessage_.insertprogram_ = new ::Program;
+    requestMessage_.insertprogram_ = new ::ProgramProto;
   }
   // @@protoc_insertion_point(field_mutable:MattiRequest.insertProgram)
   return requestMessage_.insertprogram_;
 }
-::Program* MattiRequest::release_insertprogram() {
+::ProgramProto* MattiRequest::release_insertprogram() {
   if (has_insertprogram()) {
     clear_has_requestMessage();
-    ::Program* temp = requestMessage_.insertprogram_;
+    ::ProgramProto* temp = requestMessage_.insertprogram_;
     requestMessage_.insertprogram_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-void MattiRequest::set_allocated_insertprogram(::Program* insertprogram) {
+void MattiRequest::set_allocated_insertprogram(::ProgramProto* insertprogram) {
   clear_requestMessage();
   if (insertprogram) {
     set_has_insertprogram();
@@ -1211,7 +1305,54 @@ void MattiRequest::set_allocated_insertprogram(::Program* insertprogram) {
   // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertProgram)
 }
 
-// optional uint32 removeVideoConnection = 9;
+// optional .LockProto insertLock = 9;
+bool MattiRequest::has_insertlock() const {
+  return requestMessage_case() == kInsertLock;
+}
+void MattiRequest::set_has_insertlock() {
+  _oneof_case_[0] = kInsertLock;
+}
+void MattiRequest::clear_insertlock() {
+  if (has_insertlock()) {
+    delete requestMessage_.insertlock_;
+    clear_has_requestMessage();
+  }
+}
+ const ::LockProto& MattiRequest::insertlock() const {
+  // @@protoc_insertion_point(field_get:MattiRequest.insertLock)
+  return has_insertlock()
+      ? *requestMessage_.insertlock_
+      : ::LockProto::default_instance();
+}
+::LockProto* MattiRequest::mutable_insertlock() {
+  if (!has_insertlock()) {
+    clear_requestMessage();
+    set_has_insertlock();
+    requestMessage_.insertlock_ = new ::LockProto;
+  }
+  // @@protoc_insertion_point(field_mutable:MattiRequest.insertLock)
+  return requestMessage_.insertlock_;
+}
+::LockProto* MattiRequest::release_insertlock() {
+  if (has_insertlock()) {
+    clear_has_requestMessage();
+    ::LockProto* temp = requestMessage_.insertlock_;
+    requestMessage_.insertlock_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+void MattiRequest::set_allocated_insertlock(::LockProto* insertlock) {
+  clear_requestMessage();
+  if (insertlock) {
+    set_has_insertlock();
+    requestMessage_.insertlock_ = insertlock;
+  }
+  // @@protoc_insertion_point(field_set_allocated:MattiRequest.insertLock)
+}
+
+// optional uint32 removeVideoConnection = 10;
 bool MattiRequest::has_removevideoconnection() const {
   return requestMessage_case() == kRemoveVideoConnection;
 }
@@ -1240,7 +1381,7 @@ void MattiRequest::clear_removevideoconnection() {
   // @@protoc_insertion_point(field_set:MattiRequest.removeVideoConnection)
 }
 
-// optional uint32 removeKwmConnection = 10;
+// optional uint32 removeKwmConnection = 11;
 bool MattiRequest::has_removekwmconnection() const {
   return requestMessage_case() == kRemoveKwmConnection;
 }
@@ -1269,7 +1410,7 @@ void MattiRequest::clear_removekwmconnection() {
   // @@protoc_insertion_point(field_set:MattiRequest.removeKwmConnection)
 }
 
-// optional uint32 removeMatrix = 11;
+// optional uint32 removeMatrix = 12;
 bool MattiRequest::has_removematrix() const {
   return requestMessage_case() == kRemoveMatrix;
 }
@@ -1298,7 +1439,7 @@ void MattiRequest::clear_removematrix() {
   // @@protoc_insertion_point(field_set:MattiRequest.removeMatrix)
 }
 
-// optional uint32 removeTimer = 12;
+// optional uint32 removeTimer = 13;
 bool MattiRequest::has_removetimer() const {
   return requestMessage_case() == kRemoveTimer;
 }
@@ -1327,7 +1468,7 @@ void MattiRequest::clear_removetimer() {
   // @@protoc_insertion_point(field_set:MattiRequest.removeTimer)
 }
 
-// optional uint32 removeProgram = 13;
+// optional uint32 removeProgram = 14;
 bool MattiRequest::has_removeprogram() const {
   return requestMessage_case() == kRemoveProgram;
 }
@@ -1354,6 +1495,35 @@ void MattiRequest::clear_removeprogram() {
   }
   requestMessage_.removeprogram_ = value;
   // @@protoc_insertion_point(field_set:MattiRequest.removeProgram)
+}
+
+// optional uint32 removeLock = 15;
+bool MattiRequest::has_removelock() const {
+  return requestMessage_case() == kRemoveLock;
+}
+void MattiRequest::set_has_removelock() {
+  _oneof_case_[0] = kRemoveLock;
+}
+void MattiRequest::clear_removelock() {
+  if (has_removelock()) {
+    requestMessage_.removelock_ = 0u;
+    clear_has_requestMessage();
+  }
+}
+ ::google::protobuf::uint32 MattiRequest::removelock() const {
+  // @@protoc_insertion_point(field_get:MattiRequest.removeLock)
+  if (has_removelock()) {
+    return requestMessage_.removelock_;
+  }
+  return 0u;
+}
+ void MattiRequest::set_removelock(::google::protobuf::uint32 value) {
+  if (!has_removelock()) {
+    clear_requestMessage();
+    set_has_removelock();
+  }
+  requestMessage_.removelock_ = value;
+  // @@protoc_insertion_point(field_set:MattiRequest.removeLock)
 }
 
 bool MattiRequest::has_requestMessage() const {
