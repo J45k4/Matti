@@ -10,12 +10,16 @@
 #include "matti.h"
 #include "MattiRequest.pb.h"
 
-#include "Matrix.pb.h"
-#include "Matrixs.pb.h"
-#include "Timer.pb.h"
-#include "Timers.pb.h"
-#include "Program.pb.h"
-#include "Programs.pb.h"
+#include "MatrixProto.pb.h"
+#include "MatrixProtos.pb.h"
+#include "TimerProto.pb.h"
+#include "TimerProtos.pb.h"
+#include "ProgramProto.pb.h"
+#include "ProgramProtos.pb.h"
+#include "LockProto.pb.h";
+#include "LockProtos.pb.h";
+#include "TurnOffConProto.pb.h";
+#include "TurnOffCpuProto.pb.h";
 #include "matrix.h"
 
 using namespace std;
@@ -203,29 +207,48 @@ void Matti::parseRequest(char *buffer, int socketfd) {
         }
         case 6: {
             MatrixProto matrixProto = request->insertmatrix();
-            Matrix *matrix = new Matrix(matrixProto.ip().c_str(), matrixProto.port(), (int)matrixProto.numconports(), (int)matrixProto.numcpuports());
-            matrixs[matrixId++] = matrix;
+            int newId = matrixId++;
+            Matrix *matrix = new Matrix(matrixProto.ip().c_str(), matrixProto.port(), (int)matrixProto.numconports(), (int)matrixProto.numcpuports(), newId);
+            matrixs[newId] = matrix;
             break;
         }
         case 7: {
+            TimerProto timerProto = request->insertLock();
+            locks.push_back(timerProto);
             break;
         }
         case 8: {
+            ProgramProto programProto = request->insertProgram();
+            programs.push_back(programProto);
             break;
         }
         case 9: {
+            LockProto lockProto = request->insertLock();
+            locks.push_back(lockProto);
             break;
         }
         case 10: {
+            RemoveConProto removeConProto = request->turnOffCon();
             break;
         }
         case 11: {
+            RemoveCpuProto removeCpuProto = request->turnOffCpu();
             break;
         }
         case 12: {
+            int index = request->removeMatrix();
             break;
         }
         case 13: {
+            int index = request->removeTimer();
+            break;
+        }
+        case 14: {
+            int index = request->removeProgram();
+            break;
+        }
+        case 15: {
+            int index = request->removeLock();
             break;
         }
     }

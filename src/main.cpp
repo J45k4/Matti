@@ -45,7 +45,7 @@ int serverfd;
 
 MattiResponse* serveRequest(MattiRequest *request, int fd);
 
-Matrix matrix("192.168.180.98", "5555", 16, 16);
+//Matrix matrix("192.168.180.98", "5555", 16, 16);
 
 void signal_callback_handler(int signum)
 {

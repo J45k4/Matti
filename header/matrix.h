@@ -11,6 +11,7 @@
 using namespace std;
 
 class Matrix {
+	int id;
 	int socketfd;
 	string ip;
 	string port;
@@ -38,7 +39,7 @@ class Matrix {
 	void emptyRequestAllStatesQueue();
 
 public:
-	Matrix(const char *ip, const char* port, int numOfCons, int numOfCpus);
+	Matrix(const char *ip, const char* port, int numOfCons, int numOfCpus, int id);
 	~Matrix();
 	
 	unsigned int *getVideoConnections();

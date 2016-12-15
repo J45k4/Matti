@@ -27,8 +27,8 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "VideoConnections.pb.h"
-#include "KwmConnections.pb.h"
+#include "VideoConnection.pb.h"
+#include "KwmConnection.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Internal implementation detail -- do not call these.
@@ -96,23 +96,29 @@ class AllConnections : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .VideoConnections videoConnections = 1;
-  bool has_videoconnections() const;
+  // repeated .VideoConnection videoConnections = 1;
+  int videoconnections_size() const;
   void clear_videoconnections();
   static const int kVideoConnectionsFieldNumber = 1;
-  const ::VideoConnections& videoconnections() const;
-  ::VideoConnections* mutable_videoconnections();
-  ::VideoConnections* release_videoconnections();
-  void set_allocated_videoconnections(::VideoConnections* videoconnections);
+  const ::VideoConnection& videoconnections(int index) const;
+  ::VideoConnection* mutable_videoconnections(int index);
+  ::VideoConnection* add_videoconnections();
+  ::google::protobuf::RepeatedPtrField< ::VideoConnection >*
+      mutable_videoconnections();
+  const ::google::protobuf::RepeatedPtrField< ::VideoConnection >&
+      videoconnections() const;
 
-  // optional .KwmConnections kwmConnections = 2;
-  bool has_kwmconnections() const;
+  // repeated .KwmConnection kwmConnections = 2;
+  int kwmconnections_size() const;
   void clear_kwmconnections();
   static const int kKwmConnectionsFieldNumber = 2;
-  const ::KwmConnections& kwmconnections() const;
-  ::KwmConnections* mutable_kwmconnections();
-  ::KwmConnections* release_kwmconnections();
-  void set_allocated_kwmconnections(::KwmConnections* kwmconnections);
+  const ::KwmConnection& kwmconnections(int index) const;
+  ::KwmConnection* mutable_kwmconnections(int index);
+  ::KwmConnection* add_kwmconnections();
+  ::google::protobuf::RepeatedPtrField< ::KwmConnection >*
+      mutable_kwmconnections();
+  const ::google::protobuf::RepeatedPtrField< ::KwmConnection >&
+      kwmconnections() const;
 
   // optional uint32 matrixId = 3;
   void clear_matrixid();
@@ -125,8 +131,8 @@ class AllConnections : public ::google::protobuf::Message {
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool _is_default_instance_;
-  ::VideoConnections* videoconnections_;
-  ::KwmConnections* kwmconnections_;
+  ::google::protobuf::RepeatedPtrField< ::VideoConnection > videoconnections_;
+  ::google::protobuf::RepeatedPtrField< ::KwmConnection > kwmconnections_;
   ::google::protobuf::uint32 matrixid_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_AllConnections_2eproto();
@@ -144,78 +150,64 @@ class AllConnections : public ::google::protobuf::Message {
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // AllConnections
 
-// optional .VideoConnections videoConnections = 1;
-inline bool AllConnections::has_videoconnections() const {
-  return !_is_default_instance_ && videoconnections_ != NULL;
+// repeated .VideoConnection videoConnections = 1;
+inline int AllConnections::videoconnections_size() const {
+  return videoconnections_.size();
 }
 inline void AllConnections::clear_videoconnections() {
-  if (GetArenaNoVirtual() == NULL && videoconnections_ != NULL) delete videoconnections_;
-  videoconnections_ = NULL;
+  videoconnections_.Clear();
 }
-inline const ::VideoConnections& AllConnections::videoconnections() const {
+inline const ::VideoConnection& AllConnections::videoconnections(int index) const {
   // @@protoc_insertion_point(field_get:AllConnections.videoConnections)
-  return videoconnections_ != NULL ? *videoconnections_ : *default_instance_->videoconnections_;
+  return videoconnections_.Get(index);
 }
-inline ::VideoConnections* AllConnections::mutable_videoconnections() {
-  
-  if (videoconnections_ == NULL) {
-    videoconnections_ = new ::VideoConnections;
-  }
+inline ::VideoConnection* AllConnections::mutable_videoconnections(int index) {
   // @@protoc_insertion_point(field_mutable:AllConnections.videoConnections)
+  return videoconnections_.Mutable(index);
+}
+inline ::VideoConnection* AllConnections::add_videoconnections() {
+  // @@protoc_insertion_point(field_add:AllConnections.videoConnections)
+  return videoconnections_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::VideoConnection >*
+AllConnections::mutable_videoconnections() {
+  // @@protoc_insertion_point(field_mutable_list:AllConnections.videoConnections)
+  return &videoconnections_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::VideoConnection >&
+AllConnections::videoconnections() const {
+  // @@protoc_insertion_point(field_list:AllConnections.videoConnections)
   return videoconnections_;
 }
-inline ::VideoConnections* AllConnections::release_videoconnections() {
-  
-  ::VideoConnections* temp = videoconnections_;
-  videoconnections_ = NULL;
-  return temp;
-}
-inline void AllConnections::set_allocated_videoconnections(::VideoConnections* videoconnections) {
-  delete videoconnections_;
-  videoconnections_ = videoconnections;
-  if (videoconnections) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:AllConnections.videoConnections)
-}
 
-// optional .KwmConnections kwmConnections = 2;
-inline bool AllConnections::has_kwmconnections() const {
-  return !_is_default_instance_ && kwmconnections_ != NULL;
+// repeated .KwmConnection kwmConnections = 2;
+inline int AllConnections::kwmconnections_size() const {
+  return kwmconnections_.size();
 }
 inline void AllConnections::clear_kwmconnections() {
-  if (GetArenaNoVirtual() == NULL && kwmconnections_ != NULL) delete kwmconnections_;
-  kwmconnections_ = NULL;
+  kwmconnections_.Clear();
 }
-inline const ::KwmConnections& AllConnections::kwmconnections() const {
+inline const ::KwmConnection& AllConnections::kwmconnections(int index) const {
   // @@protoc_insertion_point(field_get:AllConnections.kwmConnections)
-  return kwmconnections_ != NULL ? *kwmconnections_ : *default_instance_->kwmconnections_;
+  return kwmconnections_.Get(index);
 }
-inline ::KwmConnections* AllConnections::mutable_kwmconnections() {
-  
-  if (kwmconnections_ == NULL) {
-    kwmconnections_ = new ::KwmConnections;
-  }
+inline ::KwmConnection* AllConnections::mutable_kwmconnections(int index) {
   // @@protoc_insertion_point(field_mutable:AllConnections.kwmConnections)
+  return kwmconnections_.Mutable(index);
+}
+inline ::KwmConnection* AllConnections::add_kwmconnections() {
+  // @@protoc_insertion_point(field_add:AllConnections.kwmConnections)
+  return kwmconnections_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::KwmConnection >*
+AllConnections::mutable_kwmconnections() {
+  // @@protoc_insertion_point(field_mutable_list:AllConnections.kwmConnections)
+  return &kwmconnections_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::KwmConnection >&
+AllConnections::kwmconnections() const {
+  // @@protoc_insertion_point(field_list:AllConnections.kwmConnections)
   return kwmconnections_;
-}
-inline ::KwmConnections* AllConnections::release_kwmconnections() {
-  
-  ::KwmConnections* temp = kwmconnections_;
-  kwmconnections_ = NULL;
-  return temp;
-}
-inline void AllConnections::set_allocated_kwmconnections(::KwmConnections* kwmconnections) {
-  delete kwmconnections_;
-  kwmconnections_ = kwmconnections;
-  if (kwmconnections) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_set_allocated:AllConnections.kwmConnections)
 }
 
 // optional uint32 matrixId = 3;

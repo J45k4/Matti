@@ -5,9 +5,18 @@
 
 #include <poll.h>
 #include <list>
+#include <vector>
 #include <map>
-#include "Timer.pb.h"
-#include "Program.pb.h"
+
+#include "MatrixProto.pb.h"
+#include "MatrixProtos.pb.h"
+#include "TimerProto.pb.h"
+#include "TimerProtos.pb.h"
+#include "ProgramProto.pb.h"
+#include "ProgramProtos.pb.h"
+#include "LockProto.pb.h";
+#include "LockProtos.pb.h";
+
 #include "matrix.h"
 
 #include "MattiResponse.pb.h"
@@ -22,6 +31,8 @@ private:
 
 	int numfds = 0;
 
+	int uid = 1;
+
 	struct pollfd poll_set[POLL_SIZE];
 
 	list<int> clientsRequestedAllStates;
@@ -29,9 +40,11 @@ private:
 	list<int> clientsRequestedPrograms;
 	list<int> clientsRequestedTimers;
 
-	list<Timer> timers;
-	map<int,Matrix*> matrixs;
-	list<Program> programs;
+
+	map<int, Matrix*> matrixs;
+	list<TimerProto> timers;
+	list<ProgramProto> programs;
+	vector<LockProto> locks;
 
 	void parseArgs(int argc, char *argv[]);
 	void createServer();

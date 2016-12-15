@@ -33,13 +33,14 @@ socklen_t count_len = sizeof(keepalive_count);
 socklen_t internal_len = sizeof(keepalive_interval);
 
 
-Matrix::Matrix(const char *ip, const char* port, int numOfCons, int numOfCpus) {
+Matrix::Matrix(const char *ip, const char* port, int numOfCons, int numOfCpus, int id) {
 	this->ip = ip;
 	this->port = port;
 	this->numOfCons = numOfCons;
 	this->numOfCpus = numOfCpus;
 	videoConnections = new unsigned int[numOfCons];
 	kwmConnections = new unsigned int[numOfCpus];
+	this->id = id;
 }
 	
 Matrix::~Matrix() {
@@ -252,7 +253,8 @@ void Matrix::emptyRequestAllStatesQueue() {
 	{
 		AllConnections * allConnections = new AllConnections();
 		for (int i = 0; i < numOfCons; i++) {
-			allConnections->add_videoconnections(videoConnections[i]);
+			VideoConnection *videoConnection = allConnections->add_videoconnections();
+			videoConnection->matrixId 
 		}
 		for (int i = 0; i < numOfCpus; i++) {
 			allConnections->add_kwmconnections(kwmConnections[i]);
